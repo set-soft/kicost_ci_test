@@ -1,0 +1,88 @@
+2022-12-15T14:27:04.5678288Z ##[group]Run actions/checkout@v3
+2022-12-15T14:27:04.5678580Z with:
+2022-12-15T14:27:04.5678825Z   repository: set-soft/kicost_ci_test
+2022-12-15T14:27:04.5679355Z   token: ***
+2022-12-15T14:27:04.5679574Z   ssh-strict: true
+2022-12-15T14:27:04.5679825Z   persist-credentials: true
+2022-12-15T14:27:04.5680077Z   clean: true
+2022-12-15T14:27:04.5680297Z   fetch-depth: 1
+2022-12-15T14:27:04.5680508Z   lfs: false
+2022-12-15T14:27:04.5680714Z   submodules: false
+2022-12-15T14:27:04.5680961Z   set-safe-directory: true
+2022-12-15T14:27:04.5681201Z ##[endgroup]
+2022-12-15T14:27:04.5825517Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:04.9969719Z Syncing repository: set-soft/kicost_ci_test
+2022-12-15T14:27:04.9972207Z ##[group]Getting Git version info
+2022-12-15T14:27:04.9973074Z Working directory is '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:27:04.9974022Z [command]/usr/bin/git version
+2022-12-15T14:27:04.9984967Z git version 2.34.1
+2022-12-15T14:27:05.0007812Z ##[endgroup]
+2022-12-15T14:27:05.0028988Z Temporarily overriding HOME='/__w/_temp/f6d5c6af-8133-4277-b1b2-04d9299e0285' before making global git config changes
+2022-12-15T14:27:05.0029492Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:27:05.0033599Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.0078736Z Deleting the contents of '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:27:05.0085857Z ##[group]Initializing the repository
+2022-12-15T14:27:05.0090591Z [command]/usr/bin/git init /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.0124101Z hint: Using 'master' as the name for the initial branch. This default branch name
+2022-12-15T14:27:05.0124740Z hint: is subject to change. To configure the initial branch name to use in all
+2022-12-15T14:27:05.0125389Z hint: of your new repositories, which will suppress this warning, call:
+2022-12-15T14:27:05.0125856Z hint: 
+2022-12-15T14:27:05.0126767Z hint: 	git config --global init.defaultBranch <name>
+2022-12-15T14:27:05.0127126Z hint: 
+2022-12-15T14:27:05.0128308Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2022-12-15T14:27:05.0129029Z hint: 'development'. The just-created branch can be renamed via this command:
+2022-12-15T14:27:05.0129404Z hint: 
+2022-12-15T14:27:05.0130077Z hint: 	git branch -m <name>
+2022-12-15T14:27:05.0141319Z Initialized empty Git repository in /__w/kicost_ci_test/kicost_ci_test/.git/
+2022-12-15T14:27:05.0150174Z [command]/usr/bin/git remote add origin https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:27:05.0185344Z ##[endgroup]
+2022-12-15T14:27:05.0185838Z ##[group]Disabling automatic garbage collection
+2022-12-15T14:27:05.0190122Z [command]/usr/bin/git config --local gc.auto 0
+2022-12-15T14:27:05.0233426Z ##[endgroup]
+2022-12-15T14:27:05.0233863Z ##[group]Setting up auth
+2022-12-15T14:27:05.0234375Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:27:05.0263849Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:27:05.0488519Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:27:05.0519770Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2022-12-15T14:27:05.0738183Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2022-12-15T14:27:05.0777530Z ##[endgroup]
+2022-12-15T14:27:05.0778004Z ##[group]Fetching the repository
+2022-12-15T14:27:05.0786216Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +68b1aa4fe4f33119bcf317f7bef18400d46b3eea:refs/remotes/origin/master
+2022-12-15T14:27:05.2840138Z remote: Enumerating objects: 12, done.        
+2022-12-15T14:27:05.2843810Z remote: Counting objects:   8% (1/12)        
+2022-12-15T14:27:05.2845298Z remote: Counting objects:  16% (2/12)        
+2022-12-15T14:27:05.2845818Z remote: Counting objects:  25% (3/12)        
+2022-12-15T14:27:05.2846445Z remote: Counting objects:  33% (4/12)        
+2022-12-15T14:27:05.2846876Z remote: Counting objects:  41% (5/12)        
+2022-12-15T14:27:05.2847485Z remote: Counting objects:  50% (6/12)        
+2022-12-15T14:27:05.2847895Z remote: Counting objects:  58% (7/12)        
+2022-12-15T14:27:05.2848497Z remote: Counting objects:  66% (8/12)        
+2022-12-15T14:27:05.2848911Z remote: Counting objects:  75% (9/12)        
+2022-12-15T14:27:05.2849697Z remote: Counting objects:  83% (10/12)        
+2022-12-15T14:27:05.2850157Z remote: Counting objects:  91% (11/12)        
+2022-12-15T14:27:05.2850780Z remote: Counting objects: 100% (12/12)        
+2022-12-15T14:27:05.2851251Z remote: Counting objects: 100% (12/12), done.        
+2022-12-15T14:27:05.2851914Z remote: Compressing objects:  10% (1/10)        
+2022-12-15T14:27:05.2852378Z remote: Compressing objects:  20% (2/10)        
+2022-12-15T14:27:05.2853071Z remote: Compressing objects:  30% (3/10)        
+2022-12-15T14:27:05.2853511Z remote: Compressing objects:  40% (4/10)        
+2022-12-15T14:27:05.2854148Z remote: Compressing objects:  50% (5/10)        
+2022-12-15T14:27:05.2854579Z remote: Compressing objects:  60% (6/10)        
+2022-12-15T14:27:05.2855216Z remote: Compressing objects:  70% (7/10)        
+2022-12-15T14:27:05.2855665Z remote: Compressing objects:  80% (8/10)        
+2022-12-15T14:27:05.2856294Z remote: Compressing objects:  90% (9/10)        
+2022-12-15T14:27:05.2856741Z remote: Compressing objects: 100% (10/10)        
+2022-12-15T14:27:05.2857395Z remote: Compressing objects: 100% (10/10), done.        
+2022-12-15T14:27:05.3017027Z remote: Total 12 (delta 0), reused 10 (delta 0), pack-reused 0        
+2022-12-15T14:27:05.3176167Z From https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:27:05.3176917Z  * [new ref]         68b1aa4fe4f33119bcf317f7bef18400d46b3eea -> origin/master
+2022-12-15T14:27:05.3197771Z ##[endgroup]
+2022-12-15T14:27:05.3198431Z ##[group]Determining the checkout info
+2022-12-15T14:27:05.3202287Z ##[endgroup]
+2022-12-15T14:27:05.3203197Z ##[group]Checking out the ref
+2022-12-15T14:27:05.3208983Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2022-12-15T14:27:05.3294485Z Reset branch 'master'
+2022-12-15T14:27:05.3300595Z Branch 'master' set up to track remote branch 'master' from 'origin'.
+2022-12-15T14:27:05.3305636Z ##[endgroup]
+2022-12-15T14:27:05.3345178Z [command]/usr/bin/git log -1 --format='%H'
+2022-12-15T14:27:05.3373239Z '68b1aa4fe4f33119bcf317f7bef18400d46b3eea'

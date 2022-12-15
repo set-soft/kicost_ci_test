@@ -1,0 +1,10 @@
+2022-12-15T14:20:39.9910924Z ##[group]Run actions/upload-artifact@v1
+2022-12-15T14:20:39.9911231Z with:
+2022-12-15T14:20:39.9911468Z   name: All_Outputs
+2022-12-15T14:20:39.9911708Z   path: KiCost
+2022-12-15T14:20:39.9911931Z ##[endgroup]
+2022-12-15T14:20:40.4345889Z Uploading artifact 'All_Outputs' from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' for run #3
+2022-12-15T14:20:40.5342193Z Uploading 2 files
+2022-12-15T14:20:41.2688848Z File upload complete.
+2022-12-15T14:20:41.2701044Z Uploaded '4111999' bytes from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' to server
+2022-12-15T14:20:41.4054343Z Associated artifact All_Outputs (3557242) with run #3

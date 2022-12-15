@@ -1,0 +1,13 @@
+2022-12-15T14:27:16.4356601Z Post job cleanup.
+2022-12-15T14:27:16.4361310Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:16.7164086Z [command]/usr/bin/git version
+2022-12-15T14:27:16.7211635Z git version 2.34.1
+2022-12-15T14:27:16.7262932Z Temporarily overriding HOME='/__w/_temp/4b7a193b-deea-40f5-b7bb-2121f3425909' before making global git config changes
+2022-12-15T14:27:16.7265688Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:27:16.7270853Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:16.7311283Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:27:16.7343987Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:27:16.7563439Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:27:16.7588988Z http.https://github.com/.extraheader
+2022-12-15T14:27:16.7598332Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2022-12-15T14:27:16.7630789Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"

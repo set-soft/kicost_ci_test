@@ -1,0 +1,6 @@
+2022-12-15T14:20:41.4138835Z Post job cleanup.
+2022-12-15T14:20:41.4140936Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:20:41.7338058Z [command]/bin/tar --posix -z -cf cache.tgz --exclude cache.tgz -P -C /__w/kicost_ci_test/kicost_ci_test --files-from manifest.txt
+2022-12-15T14:20:42.2039359Z Cache Size: ~1 MB (725765 B)
+2022-12-15T14:20:42.2907034Z Cache saved successfully
+2022-12-15T14:20:42.2915059Z Cache saved with key: kicost_cache

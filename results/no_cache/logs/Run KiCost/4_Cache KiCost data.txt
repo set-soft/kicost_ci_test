@@ -1,0 +1,7 @@
+2022-12-15T14:18:38.7586706Z ##[group]Run set-soft/cache@main
+2022-12-15T14:18:38.7587055Z with:
+2022-12-15T14:18:38.7587353Z   path: ~/kicost_cache
+2022-12-15T14:18:38.7587667Z   key: kicost_cache
+2022-12-15T14:18:38.7588036Z ##[endgroup]
+2022-12-15T14:18:38.7591097Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:18:39.3326838Z Cache not found for input keys: kicost_cache

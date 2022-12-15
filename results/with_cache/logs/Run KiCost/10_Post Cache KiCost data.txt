@@ -1,0 +1,3 @@
+2022-12-15T14:27:16.1076666Z Post job cleanup.
+2022-12-15T14:27:16.1078620Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:16.4236586Z Cache hit occurred on the primary key kicost_cache, not saving cache.

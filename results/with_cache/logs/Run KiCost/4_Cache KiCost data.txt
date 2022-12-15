@@ -1,0 +1,11 @@
+2022-12-15T14:27:05.3808657Z ##[group]Run set-soft/cache@main
+2022-12-15T14:27:05.3808918Z with:
+2022-12-15T14:27:05.3809127Z   path: ~/kicost_cache
+2022-12-15T14:27:05.3809353Z   key: kicost_cache
+2022-12-15T14:27:05.3809569Z ##[endgroup]
+2022-12-15T14:27:05.3811768Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:05.9761269Z Received 725765 of 725765 (100.0%), 18.2 MBs/sec
+2022-12-15T14:27:05.9761581Z Cache Size: ~1 MB (725765 B)
+2022-12-15T14:27:05.9773058Z [command]/bin/tar -z -xf /__w/_temp/1cb7a779-e670-4884-bfe8-d5329da76de3/cache.tgz -P -C /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.9988100Z Cache restored successfully
+2022-12-15T14:27:06.3873220Z Cache restored from key: kicost_cache

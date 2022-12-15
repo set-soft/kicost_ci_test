@@ -1,0 +1,60 @@
+2022-12-15T14:18:04.6664917Z ##[group]Checking docker version
+2022-12-15T14:18:04.6681849Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2022-12-15T14:18:10.5430363Z '1.41'
+2022-12-15T14:18:10.5451880Z Docker daemon API version: '1.41'
+2022-12-15T14:18:10.5452350Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2022-12-15T14:18:10.5694663Z '1.41'
+2022-12-15T14:18:10.5714815Z Docker client API version: '1.41'
+2022-12-15T14:18:10.5721588Z ##[endgroup]
+2022-12-15T14:18:10.5724741Z ##[group]Clean up resources from previous jobs
+2022-12-15T14:18:10.5730921Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=290506"
+2022-12-15T14:18:10.5945298Z ##[command]/usr/bin/docker network prune --force --filter "label=290506"
+2022-12-15T14:18:10.6315843Z ##[endgroup]
+2022-12-15T14:18:10.6316243Z ##[group]Create local container network
+2022-12-15T14:18:10.6329081Z ##[command]/usr/bin/docker network create --label 290506 github_network_36c2e7e51f9d47d28b4c64cad89bda2e
+2022-12-15T14:18:10.7038366Z 2588d787b2e342baee25f9797f0b1b6cddaa90c206e5d6b3fe4e5f1de53bf048
+2022-12-15T14:18:10.7055141Z ##[endgroup]
+2022-12-15T14:18:10.7144714Z ##[group]Starting job container
+2022-12-15T14:18:10.7165868Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_46881b36-1c8d-4a8d-b5a4-cc1706b86fc9 login ghcr.io -u set-soft --password-stdin
+2022-12-15T14:18:11.2817916Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_46881b36-1c8d-4a8d-b5a4-cc1706b86fc9 pull ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:12.1848910Z dev: Pulling from inti-cmnb/kicad6_auto
+2022-12-15T14:18:12.2389467Z bd159e379b3b: Pulling fs layer
+2022-12-15T14:18:12.2393153Z c0d25d714a7e: Pulling fs layer
+2022-12-15T14:18:12.2400556Z fd3a5b7da5ea: Pulling fs layer
+2022-12-15T14:18:12.2402710Z 05b657998884: Pulling fs layer
+2022-12-15T14:18:12.2404718Z 4b11d6e85eed: Pulling fs layer
+2022-12-15T14:18:12.2406930Z 05b657998884: Waiting
+2022-12-15T14:18:12.2408794Z 4b11d6e85eed: Waiting
+2022-12-15T14:18:12.5837968Z c0d25d714a7e: Verifying Checksum
+2022-12-15T14:18:12.5846630Z c0d25d714a7e: Download complete
+2022-12-15T14:18:12.8803887Z bd159e379b3b: Verifying Checksum
+2022-12-15T14:18:12.8833724Z bd159e379b3b: Download complete
+2022-12-15T14:18:13.5959950Z 4b11d6e85eed: Verifying Checksum
+2022-12-15T14:18:13.5960965Z 4b11d6e85eed: Download complete
+2022-12-15T14:18:13.9841000Z 05b657998884: Verifying Checksum
+2022-12-15T14:18:13.9842015Z 05b657998884: Download complete
+2022-12-15T14:18:14.9087207Z bd159e379b3b: Pull complete
+2022-12-15T14:18:15.9974198Z fd3a5b7da5ea: Verifying Checksum
+2022-12-15T14:18:15.9974625Z fd3a5b7da5ea: Download complete
+2022-12-15T14:18:17.2453303Z c0d25d714a7e: Pull complete
+2022-12-15T14:18:30.2166923Z fd3a5b7da5ea: Pull complete
+2022-12-15T14:18:35.2040440Z 05b657998884: Pull complete
+2022-12-15T14:18:35.5489608Z 4b11d6e85eed: Pull complete
+2022-12-15T14:18:35.5547006Z Digest: sha256:8579c3a35f950fc29ca18f893400dd99a1954fd317cd0875477c562cd00e16a1
+2022-12-15T14:18:35.5566064Z Status: Downloaded newer image for ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:35.5573469Z ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:35.5728191Z ##[command]/usr/bin/docker create --name 93ca7a942b834bfd8d7d92cf57e85f1d_ghcriointicmnbkicad6_autodev_8ae9bc --label 290506 --workdir /__w/kicost_ci_test/kicost_ci_test --network github_network_36c2e7e51f9d47d28b4c64cad89bda2e  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/runners/2.299.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/inti-cmnb/kicad6_auto:dev "-f" "/dev/null"
+2022-12-15T14:18:35.6581807Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:35.6596103Z ##[command]/usr/bin/docker start 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.5529996Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.5552171Z ##[command]/usr/bin/docker ps --all --filter id=0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2022-12-15T14:18:37.5759313Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b Up Less than a second
+2022-12-15T14:18:37.5785295Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.6002387Z HOME=/github/home
+2022-12-15T14:18:37.6003562Z GITHUB_ACTIONS=true
+2022-12-15T14:18:37.6004240Z CI=true
+2022-12-15T14:18:37.6004621Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2022-12-15T14:18:37.6004947Z TZ=Etc/UTC
+2022-12-15T14:18:37.6033855Z ##[endgroup]
+2022-12-15T14:18:37.6066210Z ##[group]Waiting for all services to be ready
+2022-12-15T14:18:37.6068125Z ##[endgroup]

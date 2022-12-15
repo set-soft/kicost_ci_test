@@ -1,0 +1,1930 @@
+2022-12-15T14:17:56.2267070Z Requested labels: ubuntu-latest
+2022-12-15T14:17:56.2267120Z Job defined at: set-soft/kicost_ci_test/.github/workflows/kibot.yml@refs/heads/master
+2022-12-15T14:17:56.2267147Z Waiting for a runner to pick up this job...
+2022-12-15T14:17:57.1481586Z Job is waiting for a hosted runner to come online.
+2022-12-15T14:17:59.8163398Z Job is about to start running on the hosted runner: Hosted Agent (hosted)
+2022-12-15T14:18:02.1822374Z Current runner version: '2.299.1'
+2022-12-15T14:18:02.1853725Z ##[group]Operating System
+2022-12-15T14:18:02.1854374Z Ubuntu
+2022-12-15T14:18:02.1854767Z 22.04.1
+2022-12-15T14:18:02.1855092Z LTS
+2022-12-15T14:18:02.1855461Z ##[endgroup]
+2022-12-15T14:18:02.1855860Z ##[group]Runner Image
+2022-12-15T14:18:02.1856301Z Image: ubuntu-22.04
+2022-12-15T14:18:02.1856697Z Version: 20221212.1
+2022-12-15T14:18:02.1857298Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20221212.1/images/linux/Ubuntu2204-Readme.md
+2022-12-15T14:18:02.1858039Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20221212.1
+2022-12-15T14:18:02.1858586Z ##[endgroup]
+2022-12-15T14:18:02.1859005Z ##[group]Runner Image Provisioner
+2022-12-15T14:18:02.1859403Z 2.0.91.1
+2022-12-15T14:18:02.1859764Z ##[endgroup]
+2022-12-15T14:18:02.1861003Z ##[group]GITHUB_TOKEN Permissions
+2022-12-15T14:18:02.1861789Z Actions: write
+2022-12-15T14:18:02.1862158Z Checks: write
+2022-12-15T14:18:02.1862762Z Contents: write
+2022-12-15T14:18:02.1863237Z Deployments: write
+2022-12-15T14:18:02.1863617Z Discussions: write
+2022-12-15T14:18:02.1864037Z Issues: write
+2022-12-15T14:18:02.1864399Z Metadata: read
+2022-12-15T14:18:02.1864768Z Packages: write
+2022-12-15T14:18:02.1865136Z Pages: write
+2022-12-15T14:18:02.1865545Z PullRequests: write
+2022-12-15T14:18:02.1865963Z RepositoryProjects: write
+2022-12-15T14:18:02.1866398Z SecurityEvents: write
+2022-12-15T14:18:02.1866786Z Statuses: write
+2022-12-15T14:18:02.1867192Z ##[endgroup]
+2022-12-15T14:18:02.1870939Z Secret source: Actions
+2022-12-15T14:18:02.1871520Z Prepare workflow directory
+2022-12-15T14:18:02.2911537Z Prepare all required actions
+2022-12-15T14:18:02.3097236Z Getting action download info
+2022-12-15T14:18:02.7190880Z Download action repository 'actions/checkout@v3' (SHA:755da8c3cf115ac066823e79a1e1788f8940201b)
+2022-12-15T14:18:03.4470508Z Download action repository 'set-soft/cache@main' (SHA:baaa43ff1da8728ac1ac1f067c26a631830df13c)
+2022-12-15T14:18:04.1649568Z Download action repository 'actions/upload-artifact@v1' (SHA:3446296876d12d4e3a0f3145a3c87e67bf0a16b5)
+2022-12-15T14:18:04.6664938Z ##[group]Checking docker version
+2022-12-15T14:18:04.6681870Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2022-12-15T14:18:10.5430415Z '1.41'
+2022-12-15T14:18:10.5451905Z Docker daemon API version: '1.41'
+2022-12-15T14:18:10.5452355Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2022-12-15T14:18:10.5694703Z '1.41'
+2022-12-15T14:18:10.5714829Z Docker client API version: '1.41'
+2022-12-15T14:18:10.5721612Z ##[endgroup]
+2022-12-15T14:18:10.5724756Z ##[group]Clean up resources from previous jobs
+2022-12-15T14:18:10.5730943Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=290506"
+2022-12-15T14:18:10.5945326Z ##[command]/usr/bin/docker network prune --force --filter "label=290506"
+2022-12-15T14:18:10.6315875Z ##[endgroup]
+2022-12-15T14:18:10.6316247Z ##[group]Create local container network
+2022-12-15T14:18:10.6329177Z ##[command]/usr/bin/docker network create --label 290506 github_network_36c2e7e51f9d47d28b4c64cad89bda2e
+2022-12-15T14:18:10.7038425Z 2588d787b2e342baee25f9797f0b1b6cddaa90c206e5d6b3fe4e5f1de53bf048
+2022-12-15T14:18:10.7055163Z ##[endgroup]
+2022-12-15T14:18:10.7144727Z ##[group]Starting job container
+2022-12-15T14:18:10.7165887Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_46881b36-1c8d-4a8d-b5a4-cc1706b86fc9 login ghcr.io -u set-soft --password-stdin
+2022-12-15T14:18:11.2817954Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_46881b36-1c8d-4a8d-b5a4-cc1706b86fc9 pull ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:12.1848975Z dev: Pulling from inti-cmnb/kicad6_auto
+2022-12-15T14:18:12.2389520Z bd159e379b3b: Pulling fs layer
+2022-12-15T14:18:12.2393168Z c0d25d714a7e: Pulling fs layer
+2022-12-15T14:18:12.2400579Z fd3a5b7da5ea: Pulling fs layer
+2022-12-15T14:18:12.2402719Z 05b657998884: Pulling fs layer
+2022-12-15T14:18:12.2404726Z 4b11d6e85eed: Pulling fs layer
+2022-12-15T14:18:12.2406940Z 05b657998884: Waiting
+2022-12-15T14:18:12.2408802Z 4b11d6e85eed: Waiting
+2022-12-15T14:18:12.5838056Z c0d25d714a7e: Verifying Checksum
+2022-12-15T14:18:12.5846661Z c0d25d714a7e: Download complete
+2022-12-15T14:18:12.8803938Z bd159e379b3b: Verifying Checksum
+2022-12-15T14:18:12.8833738Z bd159e379b3b: Download complete
+2022-12-15T14:18:13.5960010Z 4b11d6e85eed: Verifying Checksum
+2022-12-15T14:18:13.5960970Z 4b11d6e85eed: Download complete
+2022-12-15T14:18:13.9841061Z 05b657998884: Verifying Checksum
+2022-12-15T14:18:13.9842022Z 05b657998884: Download complete
+2022-12-15T14:18:14.9087261Z bd159e379b3b: Pull complete
+2022-12-15T14:18:15.9974251Z fd3a5b7da5ea: Verifying Checksum
+2022-12-15T14:18:15.9974629Z fd3a5b7da5ea: Download complete
+2022-12-15T14:18:17.2453359Z c0d25d714a7e: Pull complete
+2022-12-15T14:18:30.2166978Z fd3a5b7da5ea: Pull complete
+2022-12-15T14:18:35.2040496Z 05b657998884: Pull complete
+2022-12-15T14:18:35.5489672Z 4b11d6e85eed: Pull complete
+2022-12-15T14:18:35.5547045Z Digest: sha256:8579c3a35f950fc29ca18f893400dd99a1954fd317cd0875477c562cd00e16a1
+2022-12-15T14:18:35.5566136Z Status: Downloaded newer image for ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:35.5573495Z ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:18:35.5728225Z ##[command]/usr/bin/docker create --name 93ca7a942b834bfd8d7d92cf57e85f1d_ghcriointicmnbkicad6_autodev_8ae9bc --label 290506 --workdir /__w/kicost_ci_test/kicost_ci_test --network github_network_36c2e7e51f9d47d28b4c64cad89bda2e  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/runners/2.299.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/inti-cmnb/kicad6_auto:dev "-f" "/dev/null"
+2022-12-15T14:18:35.6581872Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:35.6596417Z ##[command]/usr/bin/docker start 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.5530058Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.5552198Z ##[command]/usr/bin/docker ps --all --filter id=0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2022-12-15T14:18:37.5759372Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b Up Less than a second
+2022-12-15T14:18:37.5785322Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:18:37.6002446Z HOME=/github/home
+2022-12-15T14:18:37.6003569Z GITHUB_ACTIONS=true
+2022-12-15T14:18:37.6004279Z CI=true
+2022-12-15T14:18:37.6004626Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2022-12-15T14:18:37.6004951Z TZ=Etc/UTC
+2022-12-15T14:18:37.6033880Z ##[endgroup]
+2022-12-15T14:18:37.6066257Z ##[group]Waiting for all services to be ready
+2022-12-15T14:18:37.6068137Z ##[endgroup]
+2022-12-15T14:18:37.6442718Z ##[group]Run actions/checkout@v3
+2022-12-15T14:18:37.6443042Z with:
+2022-12-15T14:18:37.6443305Z   repository: set-soft/kicost_ci_test
+2022-12-15T14:18:37.6443991Z   token: ***
+2022-12-15T14:18:37.6444226Z   ssh-strict: true
+2022-12-15T14:18:37.6444501Z   persist-credentials: true
+2022-12-15T14:18:37.6444756Z   clean: true
+2022-12-15T14:18:37.6444988Z   fetch-depth: 1
+2022-12-15T14:18:37.6445215Z   lfs: false
+2022-12-15T14:18:37.6445432Z   submodules: false
+2022-12-15T14:18:37.6445689Z   set-safe-directory: true
+2022-12-15T14:18:37.6445939Z ##[endgroup]
+2022-12-15T14:18:37.6595132Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:18:38.1622095Z Syncing repository: set-soft/kicost_ci_test
+2022-12-15T14:18:38.1626483Z ##[group]Getting Git version info
+2022-12-15T14:18:38.1627047Z Working directory is '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:18:38.1627721Z [command]/usr/bin/git version
+2022-12-15T14:18:38.1640034Z git version 2.34.1
+2022-12-15T14:18:38.1679270Z ##[endgroup]
+2022-12-15T14:18:38.1701762Z Temporarily overriding HOME='/__w/_temp/42be9cf7-8d90-416d-82cd-4cc14fd180fa' before making global git config changes
+2022-12-15T14:18:38.1702294Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:18:38.1702877Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:18:38.1747978Z Deleting the contents of '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:18:38.1753727Z ##[group]Initializing the repository
+2022-12-15T14:18:38.1757163Z [command]/usr/bin/git init /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:18:38.1795065Z hint: Using 'master' as the name for the initial branch. This default branch name
+2022-12-15T14:18:38.1795549Z hint: is subject to change. To configure the initial branch name to use in all
+2022-12-15T14:18:38.1795996Z hint: of your new repositories, which will suppress this warning, call:
+2022-12-15T14:18:38.1796334Z hint: 
+2022-12-15T14:18:38.1796715Z hint: 	git config --global init.defaultBranch <name>
+2022-12-15T14:18:38.1797003Z hint: 
+2022-12-15T14:18:38.1797423Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2022-12-15T14:18:38.1797919Z hint: 'development'. The just-created branch can be renamed via this command:
+2022-12-15T14:18:38.1798230Z hint: 
+2022-12-15T14:18:38.1798494Z hint: 	git branch -m <name>
+2022-12-15T14:18:38.1834978Z Initialized empty Git repository in /__w/kicost_ci_test/kicost_ci_test/.git/
+2022-12-15T14:18:38.1846878Z [command]/usr/bin/git remote add origin https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:18:38.1944065Z ##[endgroup]
+2022-12-15T14:18:38.1944601Z ##[group]Disabling automatic garbage collection
+2022-12-15T14:18:38.1948620Z [command]/usr/bin/git config --local gc.auto 0
+2022-12-15T14:18:38.1989251Z ##[endgroup]
+2022-12-15T14:18:38.1989768Z ##[group]Setting up auth
+2022-12-15T14:18:38.1997937Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:18:38.2037000Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:18:38.2302289Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:18:38.2343796Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2022-12-15T14:18:38.2587981Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2022-12-15T14:18:38.2652039Z ##[endgroup]
+2022-12-15T14:18:38.2652524Z ##[group]Fetching the repository
+2022-12-15T14:18:38.2653862Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +747ee2b7b0ec28e1870b58c62c956393d4cc192b:refs/remotes/origin/master
+2022-12-15T14:18:38.5860340Z remote: Enumerating objects: 12, done.        
+2022-12-15T14:18:38.5860751Z remote: Counting objects:   8% (1/12)        
+2022-12-15T14:18:38.5861118Z remote: Counting objects:  16% (2/12)        
+2022-12-15T14:18:38.5861465Z remote: Counting objects:  25% (3/12)        
+2022-12-15T14:18:38.5861804Z remote: Counting objects:  33% (4/12)        
+2022-12-15T14:18:38.5862148Z remote: Counting objects:  41% (5/12)        
+2022-12-15T14:18:38.5862483Z remote: Counting objects:  50% (6/12)        
+2022-12-15T14:18:38.5862811Z remote: Counting objects:  58% (7/12)        
+2022-12-15T14:18:38.5863140Z remote: Counting objects:  66% (8/12)        
+2022-12-15T14:18:38.5863469Z remote: Counting objects:  75% (9/12)        
+2022-12-15T14:18:38.5864054Z remote: Counting objects:  83% (10/12)        
+2022-12-15T14:18:38.5864472Z remote: Counting objects:  91% (11/12)        
+2022-12-15T14:18:38.5865102Z remote: Counting objects: 100% (12/12)        
+2022-12-15T14:18:38.5865672Z remote: Counting objects: 100% (12/12), done.        
+2022-12-15T14:18:38.5866152Z remote: Compressing objects:  10% (1/10)        
+2022-12-15T14:18:38.5866610Z remote: Compressing objects:  20% (2/10)        
+2022-12-15T14:18:38.5867051Z remote: Compressing objects:  30% (3/10)        
+2022-12-15T14:18:38.5867534Z remote: Compressing objects:  40% (4/10)        
+2022-12-15T14:18:38.5868044Z remote: Compressing objects:  50% (5/10)        
+2022-12-15T14:18:38.5868509Z remote: Compressing objects:  60% (6/10)        
+2022-12-15T14:18:38.5868979Z remote: Compressing objects:  70% (7/10)        
+2022-12-15T14:18:38.5880091Z remote: Compressing objects:  80% (8/10)        
+2022-12-15T14:18:38.5880589Z remote: Compressing objects:  90% (9/10)        
+2022-12-15T14:18:38.5881077Z remote: Compressing objects: 100% (10/10)        
+2022-12-15T14:18:38.5881538Z remote: Compressing objects: 100% (10/10), done.        
+2022-12-15T14:18:38.6855791Z remote: Total 12 (delta 0), reused 10 (delta 0), pack-reused 0        
+2022-12-15T14:18:38.7000031Z From https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:18:38.7000825Z  * [new ref]         747ee2b7b0ec28e1870b58c62c956393d4cc192b -> origin/master
+2022-12-15T14:18:38.7025396Z ##[endgroup]
+2022-12-15T14:18:38.7026258Z ##[group]Determining the checkout info
+2022-12-15T14:18:38.7031092Z ##[endgroup]
+2022-12-15T14:18:38.7031729Z ##[group]Checking out the ref
+2022-12-15T14:18:38.7039572Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2022-12-15T14:18:38.7132864Z Reset branch 'master'
+2022-12-15T14:18:38.7133536Z Branch 'master' set up to track remote branch 'master' from 'origin'.
+2022-12-15T14:18:38.7141284Z ##[endgroup]
+2022-12-15T14:18:38.7186953Z [command]/usr/bin/git log -1 --format='%H'
+2022-12-15T14:18:38.7217341Z '747ee2b7b0ec28e1870b58c62c956393d4cc192b'
+2022-12-15T14:18:38.7586720Z ##[group]Run set-soft/cache@main
+2022-12-15T14:18:38.7587059Z with:
+2022-12-15T14:18:38.7587356Z   path: ~/kicost_cache
+2022-12-15T14:18:38.7587670Z   key: kicost_cache
+2022-12-15T14:18:38.7588039Z ##[endgroup]
+2022-12-15T14:18:38.7591104Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:18:39.3326892Z Cache not found for input keys: kicost_cache
+2022-12-15T14:18:39.3526238Z ##[group]Run ##### Experimental stuff:
+2022-12-15T14:18:39.3526717Z [36;1m##### Experimental stuff:[0m
+2022-12-15T14:18:39.3527165Z [36;1mapt-get update[0m
+2022-12-15T14:18:39.3527767Z [36;1mapt-get -y install --no-install-recommends  -t bullseye-backports python3-pip unzip curl python3-setuptools python3-wheel[0m
+2022-12-15T14:18:39.3528287Z [36;1m## Install KiCost@master[0m
+2022-12-15T14:18:39.3528834Z [36;1mcurl https://codeload.github.com/hildogjr/KiCost/zip/refs/heads/master --output pp.zip[0m
+2022-12-15T14:18:39.3529272Z [36;1munzip pp.zip[0m
+2022-12-15T14:18:39.3529621Z [36;1mpip3 install KiCost-master/[0m
+2022-12-15T14:18:39.3529988Z [36;1m## Clean the downloaded stuff[0m
+2022-12-15T14:18:39.3530393Z [36;1mrm -rf KiCost-master pp.zip[0m
+2022-12-15T14:18:39.3530771Z [36;1m##### End Experimental stuff:[0m
+2022-12-15T14:18:39.3531118Z [36;1mmkdir KiCost[0m
+2022-12-15T14:18:39.3531463Z [36;1mkibot -vvvv 2> KiCost/kibot.log[0m
+2022-12-15T14:18:39.3535923Z shell: sh -e {0}
+2022-12-15T14:18:39.3536259Z env:
+2022-12-15T14:18:39.3537005Z   ELEMENT14_KEY: ***
+2022-12-15T14:18:39.3537457Z   MOUSER_KEY: ***
+2022-12-15T14:18:39.3537842Z   TME_TOKEN: ***
+2022-12-15T14:18:39.3538182Z   TME_APP_SECRET: ***
+2022-12-15T14:18:39.3583792Z   NEXAR_CLIENT_ID: ***
+2022-12-15T14:18:39.3584129Z   NEXAR_CLIENT_SECRET: ***
+2022-12-15T14:18:39.3584411Z ##[endgroup]
+2022-12-15T14:18:39.5208510Z Get:1 http://deb.debian.org/debian bullseye InRelease [116 kB]
+2022-12-15T14:18:39.5605967Z Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [48.4 kB]
+2022-12-15T14:18:39.5758050Z Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+2022-12-15T14:18:39.5926851Z Get:4 http://deb.debian.org/debian bullseye-backports InRelease [49.0 kB]
+2022-12-15T14:18:39.6672481Z Get:5 http://deb.debian.org/debian bullseye/main amd64 Packages [8184 kB]
+2022-12-15T14:18:39.7795598Z Get:6 http://deb.debian.org/debian bullseye/non-free amd64 Packages [97.7 kB]
+2022-12-15T14:18:39.7804784Z Get:7 http://deb.debian.org/debian bullseye/contrib amd64 Packages [50.6 kB]
+2022-12-15T14:18:39.7810442Z Get:8 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [210 kB]
+2022-12-15T14:18:39.7821842Z Get:9 http://deb.debian.org/debian-security bullseye-security/non-free amd64 Packages [528 B]
+2022-12-15T14:18:39.8617641Z Get:10 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [14.6 kB]
+2022-12-15T14:18:39.9498652Z Get:11 http://deb.debian.org/debian bullseye-backports/contrib amd64 Packages [4400 B]
+2022-12-15T14:18:39.9650186Z Get:12 http://deb.debian.org/debian bullseye-backports/main amd64 Packages [367 kB]
+2022-12-15T14:18:39.9670305Z Get:13 http://deb.debian.org/debian bullseye-backports/non-free amd64 Packages [14.3 kB]
+2022-12-15T14:18:40.9001173Z Fetched 9200 kB in 1s (6465 kB/s)
+2022-12-15T14:18:41.4488824Z Reading package lists...
+2022-12-15T14:18:41.9963261Z Reading package lists...
+2022-12-15T14:18:42.1420439Z Building dependency tree...
+2022-12-15T14:18:42.1420838Z Reading state information...
+2022-12-15T14:18:42.2706769Z The following package was automatically installed and is no longer required:
+2022-12-15T14:18:42.2707483Z   python3-tqdm
+2022-12-15T14:18:42.2707848Z Use 'apt autoremove' to remove it.
+2022-12-15T14:18:42.2713224Z Suggested packages:
+2022-12-15T14:18:42.2713629Z   python-setuptools-doc zip
+2022-12-15T14:18:42.2713945Z Recommended packages:
+2022-12-15T14:18:42.2714322Z   build-essential python3-dev
+2022-12-15T14:18:42.3330259Z The following NEW packages will be installed:
+2022-12-15T14:18:42.3339168Z   curl python3-pip python3-setuptools python3-wheel unzip
+2022-12-15T14:18:42.3750660Z 0 upgraded, 5 newly installed, 0 to remove and 22 not upgraded.
+2022-12-15T14:18:42.3751081Z Need to get 1194 kB of archives.
+2022-12-15T14:18:42.3751470Z After this operation, 3888 kB of additional disk space will be used.
+2022-12-15T14:18:42.3752651Z Get:1 http://deb.debian.org/debian bullseye-backports/main amd64 curl amd64 7.85.0-1~bpo11+1 [295 kB]
+2022-12-15T14:18:42.4290550Z Get:2 http://deb.debian.org/debian bullseye/main amd64 python3-setuptools all 52.0.0-4 [366 kB]
+2022-12-15T14:18:42.4428823Z Get:3 http://deb.debian.org/debian bullseye/main amd64 python3-wheel all 0.34.2-1 [24.0 kB]
+2022-12-15T14:18:42.4434853Z Get:4 http://deb.debian.org/debian bullseye/main amd64 python3-pip all 20.3.4-4+deb11u1 [337 kB]
+2022-12-15T14:18:42.4472348Z Get:5 http://deb.debian.org/debian bullseye/main amd64 unzip amd64 6.0-26+deb11u1 [172 kB]
+2022-12-15T14:18:42.5850462Z debconf: delaying package configuration, since apt-utils is not installed
+2022-12-15T14:18:42.6211677Z Fetched 1194 kB in 0s (10.8 MB/s)
+2022-12-15T14:18:42.6404245Z Selecting previously unselected package curl.
+2022-12-15T14:18:42.6457747Z (Reading database ... 
+2022-12-15T14:18:42.6458033Z (Reading database ... 5%
+2022-12-15T14:18:42.6458309Z (Reading database ... 10%
+2022-12-15T14:18:42.6458568Z (Reading database ... 15%
+2022-12-15T14:18:42.6458816Z (Reading database ... 20%
+2022-12-15T14:18:42.6459092Z (Reading database ... 25%
+2022-12-15T14:18:42.6459341Z (Reading database ... 30%
+2022-12-15T14:18:42.6459590Z (Reading database ... 35%
+2022-12-15T14:18:42.6459835Z (Reading database ... 40%
+2022-12-15T14:18:42.6460080Z (Reading database ... 45%
+2022-12-15T14:18:42.6460324Z (Reading database ... 50%
+2022-12-15T14:18:42.6466902Z (Reading database ... 55%
+2022-12-15T14:18:42.6487362Z (Reading database ... 60%
+2022-12-15T14:18:42.6495124Z (Reading database ... 65%
+2022-12-15T14:18:42.6507966Z (Reading database ... 70%
+2022-12-15T14:18:42.6518189Z (Reading database ... 75%
+2022-12-15T14:18:42.6582483Z (Reading database ... 80%
+2022-12-15T14:18:42.6608858Z (Reading database ... 85%
+2022-12-15T14:18:42.6620513Z (Reading database ... 90%
+2022-12-15T14:18:42.6642271Z (Reading database ... 95%
+2022-12-15T14:18:42.6642553Z (Reading database ... 100%
+2022-12-15T14:18:42.6642903Z (Reading database ... 40631 files and directories currently installed.)
+2022-12-15T14:18:42.6659953Z Preparing to unpack .../curl_7.85.0-1~bpo11+1_amd64.deb ...
+2022-12-15T14:18:42.6672628Z Unpacking curl (7.85.0-1~bpo11+1) ...
+2022-12-15T14:18:42.7093985Z Selecting previously unselected package python3-setuptools.
+2022-12-15T14:18:42.7134531Z Preparing to unpack .../python3-setuptools_52.0.0-4_all.deb ...
+2022-12-15T14:18:42.7148191Z Unpacking python3-setuptools (52.0.0-4) ...
+2022-12-15T14:18:42.7647546Z Selecting previously unselected package python3-wheel.
+2022-12-15T14:18:42.7689545Z Preparing to unpack .../python3-wheel_0.34.2-1_all.deb ...
+2022-12-15T14:18:42.7716282Z Unpacking python3-wheel (0.34.2-1) ...
+2022-12-15T14:18:42.7980242Z Selecting previously unselected package python3-pip.
+2022-12-15T14:18:42.7980931Z Preparing to unpack .../python3-pip_20.3.4-4+deb11u1_all.deb ...
+2022-12-15T14:18:42.8005164Z Unpacking python3-pip (20.3.4-4+deb11u1) ...
+2022-12-15T14:18:42.8482370Z Selecting previously unselected package unzip.
+2022-12-15T14:18:42.8526566Z Preparing to unpack .../unzip_6.0-26+deb11u1_amd64.deb ...
+2022-12-15T14:18:42.8542376Z Unpacking unzip (6.0-26+deb11u1) ...
+2022-12-15T14:18:42.9006146Z Setting up python3-setuptools (52.0.0-4) ...
+2022-12-15T14:18:43.2067738Z Setting up unzip (6.0-26+deb11u1) ...
+2022-12-15T14:18:43.2309963Z Setting up python3-wheel (0.34.2-1) ...
+2022-12-15T14:18:43.3605311Z Setting up python3-pip (20.3.4-4+deb11u1) ...
+2022-12-15T14:18:43.6038544Z Setting up curl (7.85.0-1~bpo11+1) ...
+2022-12-15T14:18:43.6074601Z Processing triggers for mailcap (3.69) ...
+2022-12-15T14:18:43.6459764Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2022-12-15T14:18:43.6460296Z                                  Dload  Upload   Total   Spent    Left  Speed
+2022-12-15T14:18:43.6460579Z 
+2022-12-15T14:18:43.7161604Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2022-12-15T14:18:44.7162052Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2022-12-15T14:18:45.4229759Z 100 4652k    0 4652k    0     0  4346k      0 --:--:--  0:00:01 --:--:-- 4344k
+2022-12-15T14:18:45.4230513Z 100 9068k    0 9068k    0     0  5103k      0 --:--:--  0:00:01 --:--:-- 5103k
+2022-12-15T14:18:45.4266033Z Archive:  pp.zip
+2022-12-15T14:18:45.4268547Z d59534ef103342b5f654c74588b5ae1107994a34
+2022-12-15T14:18:45.4308627Z    creating: KiCost-master/
+2022-12-15T14:18:45.4310794Z   inflating: KiCost-master/.editorconfig  
+2022-12-15T14:18:45.4311426Z   inflating: KiCost-master/.flake8   
+2022-12-15T14:18:45.4312164Z    creating: KiCost-master/.github/
+2022-12-15T14:18:45.4312693Z    creating: KiCost-master/.github/workflows/
+2022-12-15T14:18:45.4313553Z   inflating: KiCost-master/.github/workflows/python-app.yml  
+2022-12-15T14:18:45.4314207Z   inflating: KiCost-master/.github/workflows/python-publish.yml  
+2022-12-15T14:18:45.4315014Z   inflating: KiCost-master/.github/workflows/release.yml  
+2022-12-15T14:18:45.4315554Z   inflating: KiCost-master/.gitignore  
+2022-12-15T14:18:45.4316256Z  extracting: KiCost-master/.nojekyll  
+2022-12-15T14:18:45.4316776Z   inflating: KiCost-master/.travis.yml  
+2022-12-15T14:18:45.4317500Z   inflating: KiCost-master/CONTRIBUTING.rst  
+2022-12-15T14:18:45.4318044Z   inflating: KiCost-master/ISSUE_TEMPLATE.md  
+2022-12-15T14:18:45.4318750Z   inflating: KiCost-master/LICENSE   
+2022-12-15T14:18:45.4319747Z   inflating: KiCost-master/MANIFEST.in  
+2022-12-15T14:18:45.4320267Z   inflating: KiCost-master/Makefile  
+2022-12-15T14:18:45.4321199Z   inflating: KiCost-master/README.md  
+2022-12-15T14:18:45.4321713Z   inflating: KiCost-master/README.rst  
+2022-12-15T14:18:45.4322403Z    creating: KiCost-master/debian/
+2022-12-15T14:18:45.4322934Z   inflating: KiCost-master/debian/README.Debian  
+2022-12-15T14:18:45.4323660Z   inflating: KiCost-master/debian/changelog  
+2022-12-15T14:18:45.4324190Z   inflating: KiCost-master/debian/control  
+2022-12-15T14:18:45.4324906Z   inflating: KiCost-master/debian/copyright  
+2022-12-15T14:18:45.4325434Z  extracting: KiCost-master/debian/docs  
+2022-12-15T14:18:45.4326167Z    creating: KiCost-master/debian/patches/
+2022-12-15T14:18:45.4326780Z   inflating: KiCost-master/debian/patches/001-Remove_integration  
+2022-12-15T14:18:45.4327559Z   inflating: KiCost-master/debian/patches/series  
+2022-12-15T14:18:45.4328085Z   inflating: KiCost-master/debian/rules  
+2022-12-15T14:18:45.4328800Z    creating: KiCost-master/debian/source/
+2022-12-15T14:18:45.4329689Z  extracting: KiCost-master/debian/source/format  
+2022-12-15T14:18:45.4330764Z  extracting: KiCost-master/debian/source/local-options  
+2022-12-15T14:18:45.4331152Z   inflating: KiCost-master/debian/watch  
+2022-12-15T14:18:45.4331483Z    creating: KiCost-master/docs/
+2022-12-15T14:18:45.4331828Z   inflating: KiCost-master/docs/Makefile  
+2022-12-15T14:18:45.4332177Z    creating: KiCost-master/docs/_build/
+2022-12-15T14:18:45.4332547Z    creating: KiCost-master/docs/_build/doctrees/
+2022-12-15T14:18:45.4332977Z   inflating: KiCost-master/docs/_build/doctrees/authors.doctree  
+2022-12-15T14:18:45.4333467Z   inflating: KiCost-master/docs/_build/doctrees/configuration.doctree  
+2022-12-15T14:18:45.4333966Z   inflating: KiCost-master/docs/_build/doctrees/contributing.doctree  
+2022-12-15T14:18:45.4355647Z   inflating: KiCost-master/docs/_build/doctrees/environment.pickle  
+2022-12-15T14:18:45.4363836Z   inflating: KiCost-master/docs/_build/doctrees/history.doctree  
+2022-12-15T14:18:45.4364336Z   inflating: KiCost-master/docs/_build/doctrees/index.doctree  
+2022-12-15T14:18:45.4366464Z   inflating: KiCost-master/docs/_build/doctrees/installation.doctree  
+2022-12-15T14:18:45.4367380Z   inflating: KiCost-master/docs/_build/doctrees/kicost.currency_converter.doctree  
+2022-12-15T14:18:45.4386926Z   inflating: KiCost-master/docs/_build/doctrees/kicost.distributors.doctree  
+2022-12-15T14:18:45.4405324Z   inflating: KiCost-master/docs/_build/doctrees/kicost.doctree  
+2022-12-15T14:18:45.4412517Z   inflating: KiCost-master/docs/_build/doctrees/kicost.edas.doctree  
+2022-12-15T14:18:45.4413023Z   inflating: KiCost-master/docs/_build/doctrees/modules.doctree  
+2022-12-15T14:18:45.4413666Z   inflating: KiCost-master/docs/_build/doctrees/readme.doctree  
+2022-12-15T14:18:45.4420160Z   inflating: KiCost-master/docs/_build/doctrees/usage.doctree  
+2022-12-15T14:18:45.4420576Z    creating: KiCost-master/docs/_build/html/
+2022-12-15T14:18:45.4420979Z   inflating: KiCost-master/docs/_build/html/.buildinfo  
+2022-12-15T14:18:45.4421383Z    creating: KiCost-master/docs/_build/html/_images/
+2022-12-15T14:18:45.4430633Z   inflating: KiCost-master/docs/_build/html/_images/block_diag.png  
+2022-12-15T14:18:45.4435619Z   inflating: KiCost-master/docs/_build/html/_images/gui.png  
+2022-12-15T14:18:45.4439342Z   inflating: KiCost-master/docs/_build/html/_images/guide_screen.png  
+2022-12-15T14:18:45.4445513Z   inflating: KiCost-master/docs/_build/html/_images/kitspace.png  
+2022-12-15T14:18:45.4450460Z    creating: KiCost-master/docs/_build/html/_modules/
+2022-12-15T14:18:45.4452598Z   inflating: KiCost-master/docs/_build/html/_modules/index.html  
+2022-12-15T14:18:45.4453215Z    creating: KiCost-master/docs/_build/html/_modules/kicost/
+2022-12-15T14:18:45.4453680Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/ansi.html  
+2022-12-15T14:18:45.4456225Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/config.html  
+2022-12-15T14:18:45.4456735Z    creating: KiCost-master/docs/_build/html/_modules/kicost/currency_converter/
+2022-12-15T14:18:45.4457311Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/currency_converter/currency_converter.html  
+2022-12-15T14:18:45.4458094Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/currency_converter/download_rates.html  
+2022-12-15T14:18:45.4458654Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors.html  
+2022-12-15T14:18:45.4460862Z    creating: KiCost-master/docs/_build/html/_modules/kicost/distributors/
+2022-12-15T14:18:45.4461592Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_digikey.html  
+2022-12-15T14:18:45.4462578Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_element14.html  
+2022-12-15T14:18:45.4465685Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_mouser.html  
+2022-12-15T14:18:45.4472181Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_nexar.html  
+2022-12-15T14:18:45.4476734Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_partinfo_kitspace.html  
+2022-12-15T14:18:45.4482204Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/api_tme.html  
+2022-12-15T14:18:45.4484934Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/dist_local_template.html  
+2022-12-15T14:18:45.4492747Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/distributor.html  
+2022-12-15T14:18:45.4494599Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/distributors_info.html  
+2022-12-15T14:18:45.4495330Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/distributors/log__.html  
+2022-12-15T14:18:45.4497583Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/edas.html  
+2022-12-15T14:18:45.4498053Z    creating: KiCost-master/docs/_build/html/_modules/kicost/edas/
+2022-12-15T14:18:45.4500284Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/edas/eda_altium.html  
+2022-12-15T14:18:45.4500843Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/edas/eda_kicad.html  
+2022-12-15T14:18:45.4501752Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/edas/generic_csv.html  
+2022-12-15T14:18:45.4511235Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/edas/tools.html  
+2022-12-15T14:18:45.4511773Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/global_vars.html  
+2022-12-15T14:18:45.4515132Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/kicad_config.html  
+2022-12-15T14:18:45.4519156Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/kicost.html  
+2022-12-15T14:18:45.4523207Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/kicost_config.html  
+2022-12-15T14:18:45.4538641Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/kicost_gui.html  
+2022-12-15T14:18:45.4542019Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/kicost_kicadplugin.html  
+2022-12-15T14:18:45.4543119Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/log.html  
+2022-12-15T14:18:45.4543605Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/log__.html  
+2022-12-15T14:18:45.4547829Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/sexpdata.html  
+2022-12-15T14:18:45.4576710Z   inflating: KiCost-master/docs/_build/html/_modules/kicost/spreadsheet.html  
+2022-12-15T14:18:45.4577394Z    creating: KiCost-master/docs/_build/html/_sources/
+2022-12-15T14:18:45.4577873Z  extracting: KiCost-master/docs/_build/html/_sources/authors.rst.txt  
+2022-12-15T14:18:45.4578373Z   inflating: KiCost-master/docs/_build/html/_sources/configuration.rst.txt  
+2022-12-15T14:18:45.4578894Z  extracting: KiCost-master/docs/_build/html/_sources/contributing.rst.txt  
+2022-12-15T14:18:45.4579380Z  extracting: KiCost-master/docs/_build/html/_sources/history.rst.txt  
+2022-12-15T14:18:45.4579853Z   inflating: KiCost-master/docs/_build/html/_sources/index.rst.txt  
+2022-12-15T14:18:45.4580337Z   inflating: KiCost-master/docs/_build/html/_sources/installation.rst.txt  
+2022-12-15T14:18:45.4580868Z   inflating: KiCost-master/docs/_build/html/_sources/kicost.currency_converter.rst.txt  
+2022-12-15T14:18:45.4581647Z   inflating: KiCost-master/docs/_build/html/_sources/kicost.distributors.rst.txt  
+2022-12-15T14:18:45.4582159Z   inflating: KiCost-master/docs/_build/html/_sources/kicost.edas.rst.txt  
+2022-12-15T14:18:45.4582634Z   inflating: KiCost-master/docs/_build/html/_sources/kicost.rst.txt  
+2022-12-15T14:18:45.4583103Z   inflating: KiCost-master/docs/_build/html/_sources/modules.rst.txt  
+2022-12-15T14:18:45.4583575Z  extracting: KiCost-master/docs/_build/html/_sources/readme.rst.txt  
+2022-12-15T14:18:45.4584608Z   inflating: KiCost-master/docs/_build/html/_sources/usage.rst.txt  
+2022-12-15T14:18:45.4585036Z    creating: KiCost-master/docs/_build/html/_static/
+2022-12-15T14:18:45.4585465Z   inflating: KiCost-master/docs/_build/html/_static/basic.css  
+2022-12-15T14:18:45.4585917Z   inflating: KiCost-master/docs/_build/html/_static/classic.css  
+2022-12-15T14:18:45.4586358Z  extracting: KiCost-master/docs/_build/html/_static/default.css  
+2022-12-15T14:18:45.4586807Z   inflating: KiCost-master/docs/_build/html/_static/doctools.js  
+2022-12-15T14:18:45.4587294Z   inflating: KiCost-master/docs/_build/html/_static/documentation_options.js  
+2022-12-15T14:18:45.4587782Z  extracting: KiCost-master/docs/_build/html/_static/file.png  
+2022-12-15T14:18:45.4606541Z   inflating: KiCost-master/docs/_build/html/_static/jquery.js  
+2022-12-15T14:18:45.4607102Z   inflating: KiCost-master/docs/_build/html/_static/language_data.js  
+2022-12-15T14:18:45.4607566Z   inflating: KiCost-master/docs/_build/html/_static/minus.png  
+2022-12-15T14:18:45.4608010Z   inflating: KiCost-master/docs/_build/html/_static/plus.png  
+2022-12-15T14:18:45.4608463Z   inflating: KiCost-master/docs/_build/html/_static/pygments.css  
+2022-12-15T14:18:45.4609320Z   inflating: KiCost-master/docs/_build/html/_static/searchtools.js  
+2022-12-15T14:18:45.4609775Z   inflating: KiCost-master/docs/_build/html/_static/sidebar.js  
+2022-12-15T14:18:45.4615832Z   inflating: KiCost-master/docs/_build/html/_static/underscore.js  
+2022-12-15T14:18:45.4616306Z   inflating: KiCost-master/docs/_build/html/authors.html  
+2022-12-15T14:18:45.4616760Z   inflating: KiCost-master/docs/_build/html/configuration.html  
+2022-12-15T14:18:45.4617232Z   inflating: KiCost-master/docs/_build/html/contributing.html  
+2022-12-15T14:18:45.4620607Z   inflating: KiCost-master/docs/_build/html/genindex.html  
+2022-12-15T14:18:45.4627681Z   inflating: KiCost-master/docs/_build/html/history.html  
+2022-12-15T14:18:45.4628266Z   inflating: KiCost-master/docs/_build/html/index.html  
+2022-12-15T14:18:45.4628872Z   inflating: KiCost-master/docs/_build/html/installation.html  
+2022-12-15T14:18:45.4629373Z   inflating: KiCost-master/docs/_build/html/kicost.currency_converter.html  
+2022-12-15T14:18:45.4635549Z   inflating: KiCost-master/docs/_build/html/kicost.distributors.html  
+2022-12-15T14:18:45.4636395Z   inflating: KiCost-master/docs/_build/html/kicost.edas.html  
+2022-12-15T14:18:45.4648222Z   inflating: KiCost-master/docs/_build/html/kicost.html  
+2022-12-15T14:18:45.4648684Z   inflating: KiCost-master/docs/_build/html/modules.html  
+2022-12-15T14:18:45.4649124Z  extracting: KiCost-master/docs/_build/html/objects.inv  
+2022-12-15T14:18:45.4649572Z   inflating: KiCost-master/docs/_build/html/py-modindex.html  
+2022-12-15T14:18:45.4651761Z   inflating: KiCost-master/docs/_build/html/readme.html  
+2022-12-15T14:18:45.4652192Z   inflating: KiCost-master/docs/_build/html/search.html  
+2022-12-15T14:18:45.4653020Z   inflating: KiCost-master/docs/_build/html/searchindex.js  
+2022-12-15T14:18:45.4656992Z   inflating: KiCost-master/docs/_build/html/usage.html  
+2022-12-15T14:18:45.4657405Z    creating: KiCost-master/docs/_build/singlehtml/
+2022-12-15T14:18:45.4657829Z   inflating: KiCost-master/docs/_build/singlehtml/.buildinfo  
+2022-12-15T14:18:45.4658257Z    creating: KiCost-master/docs/_build/singlehtml/_images/
+2022-12-15T14:18:45.4667616Z   inflating: KiCost-master/docs/_build/singlehtml/_images/block_diag.png  
+2022-12-15T14:18:45.4672514Z   inflating: KiCost-master/docs/_build/singlehtml/_images/gui.png  
+2022-12-15T14:18:45.4680492Z   inflating: KiCost-master/docs/_build/singlehtml/_images/guide_screen.png  
+2022-12-15T14:18:45.4683649Z   inflating: KiCost-master/docs/_build/singlehtml/_images/kitspace.png  
+2022-12-15T14:18:45.4684114Z    creating: KiCost-master/docs/_build/singlehtml/_static/
+2022-12-15T14:18:45.4684569Z   inflating: KiCost-master/docs/_build/singlehtml/_static/basic.css  
+2022-12-15T14:18:45.4685048Z   inflating: KiCost-master/docs/_build/singlehtml/_static/classic.css  
+2022-12-15T14:18:45.4685536Z  extracting: KiCost-master/docs/_build/singlehtml/_static/default.css  
+2022-12-15T14:18:45.4686014Z   inflating: KiCost-master/docs/_build/singlehtml/_static/doctools.js  
+2022-12-15T14:18:45.4686524Z   inflating: KiCost-master/docs/_build/singlehtml/_static/documentation_options.js  
+2022-12-15T14:18:45.4687021Z  extracting: KiCost-master/docs/_build/singlehtml/_static/file.png  
+2022-12-15T14:18:45.4712667Z   inflating: KiCost-master/docs/_build/singlehtml/_static/jquery.js  
+2022-12-15T14:18:45.4713208Z   inflating: KiCost-master/docs/_build/singlehtml/_static/language_data.js  
+2022-12-15T14:18:45.4713707Z   inflating: KiCost-master/docs/_build/singlehtml/_static/minus.png  
+2022-12-15T14:18:45.4714186Z   inflating: KiCost-master/docs/_build/singlehtml/_static/plus.png  
+2022-12-15T14:18:45.4714671Z   inflating: KiCost-master/docs/_build/singlehtml/_static/pygments.css  
+2022-12-15T14:18:45.4715162Z   inflating: KiCost-master/docs/_build/singlehtml/_static/searchtools.js  
+2022-12-15T14:18:45.4715648Z   inflating: KiCost-master/docs/_build/singlehtml/_static/sidebar.js  
+2022-12-15T14:18:45.4718326Z   inflating: KiCost-master/docs/_build/singlehtml/_static/underscore.js  
+2022-12-15T14:18:45.4741121Z   inflating: KiCost-master/docs/_build/singlehtml/index.html  
+2022-12-15T14:18:45.4741614Z  extracting: KiCost-master/docs/_build/singlehtml/objects.inv  
+2022-12-15T14:18:45.4742031Z  extracting: KiCost-master/docs/authors.rst  
+2022-12-15T14:18:45.4750664Z   inflating: KiCost-master/docs/block_diag.png  
+2022-12-15T14:18:45.4865552Z   inflating: KiCost-master/docs/block_diag.svg  
+2022-12-15T14:18:45.4865978Z   inflating: KiCost-master/docs/conf.py  
+2022-12-15T14:18:45.4866376Z   inflating: KiCost-master/docs/configuration.rst  
+2022-12-15T14:18:45.4866790Z  extracting: KiCost-master/docs/contributing.rst  
+2022-12-15T14:18:45.4870096Z   inflating: KiCost-master/docs/gui.png  
+2022-12-15T14:18:45.4879691Z   inflating: KiCost-master/docs/guide_screen.png  
+2022-12-15T14:18:45.4881933Z  extracting: KiCost-master/docs/history.rst  
+2022-12-15T14:18:45.4889440Z   inflating: KiCost-master/docs/index.rst  
+2022-12-15T14:18:45.4986734Z   inflating: KiCost-master/docs/installation.rst  
+2022-12-15T14:18:45.4988120Z   inflating: KiCost-master/docs/kicost.currency_converter.rst  
+2022-12-15T14:18:45.4989443Z   inflating: KiCost-master/docs/kicost.distributors.rst  
+2022-12-15T14:18:45.4990721Z   inflating: KiCost-master/docs/kicost.edas.rst  
+2022-12-15T14:18:45.4991988Z   inflating: KiCost-master/docs/kicost.rst  
+2022-12-15T14:18:45.4993308Z     linking: KiCost-master/docs/kitspace.png  -> ../kicost/kitspace.png 
+2022-12-15T14:18:45.4996146Z   inflating: KiCost-master/docs/log_system.txt  
+2022-12-15T14:18:45.4997444Z   inflating: KiCost-master/docs/make.bat  
+2022-12-15T14:18:45.4998704Z   inflating: KiCost-master/docs/modules.rst  
+2022-12-15T14:18:45.5000257Z  extracting: KiCost-master/docs/readme.rst  
+2022-12-15T14:18:45.5001507Z   inflating: KiCost-master/docs/usage.rst  
+2022-12-15T14:18:45.5002756Z   inflating: KiCost-master/docs/xess.ico  
+2022-12-15T14:18:45.5005567Z  extracting: KiCost-master/docs/xess.png  
+2022-12-15T14:18:45.5006881Z   inflating: KiCost-master/index.html  
+2022-12-15T14:18:45.5008113Z    creating: KiCost-master/kicost/
+2022-12-15T14:18:45.5009407Z   inflating: KiCost-master/kicost/AUTHORS.rst  
+2022-12-15T14:18:45.5010667Z   inflating: KiCost-master/kicost/HISTORY.rst  
+2022-12-15T14:18:45.5014765Z   inflating: KiCost-master/kicost/__init__.py  
+2022-12-15T14:18:45.5017360Z   inflating: KiCost-master/kicost/__main__.py  
+2022-12-15T14:18:45.5021988Z   inflating: KiCost-master/kicost/ansi.py  
+2022-12-15T14:18:45.5023294Z   inflating: KiCost-master/kicost/config.py  
+2022-12-15T14:18:45.5024648Z    creating: KiCost-master/kicost/currency_converter/
+2022-12-15T14:18:45.5025967Z   inflating: KiCost-master/kicost/currency_converter/LICENSE  
+2022-12-15T14:18:45.5027301Z   inflating: KiCost-master/kicost/currency_converter/__init__.py  
+2022-12-15T14:18:45.5028715Z   inflating: KiCost-master/kicost/currency_converter/currency_converter.py  
+2022-12-15T14:18:45.5030099Z   inflating: KiCost-master/kicost/currency_converter/currency_tables.py  
+2022-12-15T14:18:45.5032816Z   inflating: KiCost-master/kicost/currency_converter/default_rates.py  
+2022-12-15T14:18:45.5034396Z   inflating: KiCost-master/kicost/currency_converter/download_rates.py  
+2022-12-15T14:18:45.5035713Z    creating: KiCost-master/kicost/distributors/
+2022-12-15T14:18:45.5038377Z   inflating: KiCost-master/kicost/distributors/__init__.py  
+2022-12-15T14:18:45.5040307Z   inflating: KiCost-master/kicost/distributors/api_digikey.py  
+2022-12-15T14:18:45.5104994Z   inflating: KiCost-master/kicost/distributors/api_element14.py  
+2022-12-15T14:18:45.5105654Z   inflating: KiCost-master/kicost/distributors/api_mouser.py  
+2022-12-15T14:18:45.5106115Z   inflating: KiCost-master/kicost/distributors/api_nexar.py  
+2022-12-15T14:18:45.5106593Z   inflating: KiCost-master/kicost/distributors/api_partinfo_kitspace.py  
+2022-12-15T14:18:45.5107067Z   inflating: KiCost-master/kicost/distributors/api_tme.py  
+2022-12-15T14:18:45.5107536Z   inflating: KiCost-master/kicost/distributors/dist_local_template.py  
+2022-12-15T14:18:45.5484746Z   inflating: KiCost-master/kicost/distributors/distributor.py  
+2022-12-15T14:18:45.5507601Z   inflating: KiCost-master/kicost/distributors/distributors_info.py  
+2022-12-15T14:18:45.5508196Z   inflating: KiCost-master/kicost/distributors/global_vars.py  
+2022-12-15T14:18:45.5508648Z   inflating: KiCost-master/kicost/distributors/log__.py  
+2022-12-15T14:18:45.5509028Z    creating: KiCost-master/kicost/edas/
+2022-12-15T14:18:45.5542830Z   inflating: KiCost-master/kicost/edas/__init__.py  
+2022-12-15T14:18:45.5543259Z   inflating: KiCost-master/kicost/edas/eda.py  
+2022-12-15T14:18:45.5543671Z   inflating: KiCost-master/kicost/edas/eda_altium.py  
+2022-12-15T14:18:45.5544080Z   inflating: KiCost-master/kicost/edas/eda_kicad.py  
+2022-12-15T14:18:45.5544717Z   inflating: KiCost-master/kicost/edas/generic_csv.py  
+2022-12-15T14:18:45.5596567Z   inflating: KiCost-master/kicost/edas/log__.py  
+2022-12-15T14:18:45.5597081Z   inflating: KiCost-master/kicost/edas/tools.py  
+2022-12-15T14:18:45.5597479Z   inflating: KiCost-master/kicost/global_vars.py  
+2022-12-15T14:18:45.5597877Z   inflating: KiCost-master/kicost/kicad_config.py  
+2022-12-15T14:18:45.5598266Z   inflating: KiCost-master/kicost/kicost.ico  
+2022-12-15T14:18:45.5598657Z   inflating: KiCost-master/kicost/kicost.py  
+2022-12-15T14:18:45.5599143Z   inflating: KiCost-master/kicost/kicost_config.py  
+2022-12-15T14:18:45.5599556Z   inflating: KiCost-master/kicost/kicost_gui.py  
+2022-12-15T14:18:45.5599991Z   inflating: KiCost-master/kicost/kicost_gui_wxFormBuilder.fbp  
+2022-12-15T14:18:45.5600436Z   inflating: KiCost-master/kicost/kicost_kicadplugin.py  
+2022-12-15T14:18:45.5600839Z   inflating: KiCost-master/kicost/kitspace.png  
+2022-12-15T14:18:45.5601215Z   inflating: KiCost-master/kicost/log.py  
+2022-12-15T14:18:45.5607289Z   inflating: KiCost-master/kicost/log__.py  
+2022-12-15T14:18:45.5607690Z   inflating: KiCost-master/kicost/os_windows.py  
+2022-12-15T14:18:45.5608091Z   inflating: KiCost-master/kicost/sexpdata.py  
+2022-12-15T14:18:45.5608495Z   inflating: KiCost-master/kicost/spreadsheet.py  
+2022-12-15T14:18:45.5608885Z   inflating: KiCost-master/kicost/version.py  
+2022-12-15T14:18:45.5609266Z   inflating: KiCost-master/requirements.txt  
+2022-12-15T14:18:45.5609835Z   inflating: KiCost-master/setup.cfg  
+2022-12-15T14:18:45.5610188Z   inflating: KiCost-master/setup.py  
+2022-12-15T14:18:45.5610520Z    creating: KiCost-master/src/
+2022-12-15T14:18:45.5610867Z   inflating: KiCost-master/src/kicost  
+2022-12-15T14:18:45.5611221Z    creating: KiCost-master/tests/
+2022-12-15T14:18:45.5611575Z   inflating: KiCost-master/tests/.gitignore  
+2022-12-15T14:18:45.5611966Z   inflating: KiCost-master/tests/300-010.xml  
+2022-12-15T14:18:45.5612349Z   inflating: KiCost-master/tests/Aeronav_R.xml  
+2022-12-15T14:18:45.5612788Z   inflating: KiCost-master/tests/BoulderCreekMotherBoard.xml  
+2022-12-15T14:18:45.5613218Z   inflating: KiCost-master/tests/CAN Balancer.xml  
+2022-12-15T14:18:45.5613604Z   inflating: KiCost-master/tests/Decoder.xml  
+2022-12-15T14:18:45.5613986Z   inflating: KiCost-master/tests/Indium_X2.xml  
+2022-12-15T14:18:45.5614366Z   inflating: KiCost-master/tests/LedTest.xml  
+2022-12-15T14:18:45.5614758Z   inflating: KiCost-master/tests/NF6X_TestBoard.xml  
+2022-12-15T14:18:45.5615144Z   inflating: KiCost-master/tests/README.md  
+2022-12-15T14:18:45.5615523Z   inflating: KiCost-master/tests/RPi-Test.xml  
+2022-12-15T14:18:45.5615911Z   inflating: KiCost-master/tests/RX LR lite.xml  
+2022-12-15T14:18:45.5616295Z   inflating: KiCost-master/tests/Receiver_1W.xml  
+2022-12-15T14:18:45.5616704Z   inflating: KiCost-master/tests/StickIt-Hat-old.xml  
+2022-12-15T14:18:45.5617122Z   inflating: KiCost-master/tests/StickIt-Hat.xml  
+2022-12-15T14:18:45.5617531Z   inflating: KiCost-master/tests/StickIt-QuadDAC.xml  
+2022-12-15T14:18:45.5617976Z   inflating: KiCost-master/tests/StickIt-RotaryEncoder.xml  
+2022-12-15T14:18:45.5618427Z   inflating: KiCost-master/tests/SubPartGroupTest_266.xml  
+2022-12-15T14:18:45.5618834Z   inflating: KiCost-master/tests/TestParts.xml  
+2022-12-15T14:18:45.5619216Z  extracting: KiCost-master/tests/__init__.py  
+2022-12-15T14:18:45.5619608Z   inflating: KiCost-master/tests/acquire-PWM.xml  
+2022-12-15T14:18:45.5620206Z   inflating: KiCost-master/tests/acquire-PWM_2.xml  
+2022-12-15T14:18:45.5620600Z   inflating: KiCost-master/tests/b3u_test.xml  
+2022-12-15T14:18:45.5628258Z   inflating: KiCost-master/tests/bbsram.xml  
+2022-12-15T14:18:45.5628683Z   inflating: KiCost-master/tests/complex_multipart.xml  
+2022-12-15T14:18:45.5629071Z    creating: KiCost-master/tests/configs/
+2022-12-15T14:18:45.5629465Z   inflating: KiCost-master/tests/configs/default.yaml  
+2022-12-15T14:18:45.5629880Z   inflating: KiCost-master/tests/configs/digikey.yaml  
+2022-12-15T14:18:45.5630483Z   inflating: KiCost-master/tests/configs/digikey_eur.yaml  
+2022-12-15T14:18:45.5630919Z   inflating: KiCost-master/tests/configs/element14.yaml  
+2022-12-15T14:18:45.5631359Z   inflating: KiCost-master/tests/configs/kitspace_no_cache.yaml  
+2022-12-15T14:18:45.5631788Z   inflating: KiCost-master/tests/configs/mouser.yaml  
+2022-12-15T14:18:45.5632200Z   inflating: KiCost-master/tests/configs/nexar.yaml  
+2022-12-15T14:18:45.5632626Z   inflating: KiCost-master/tests/configs/nexar_no_cache.yaml  
+2022-12-15T14:18:45.5638386Z   inflating: KiCost-master/tests/configs/nexar_no_path.yaml  
+2022-12-15T14:18:45.5638810Z   inflating: KiCost-master/tests/configs/tme.yaml  
+2022-12-15T14:18:45.5639373Z   inflating: KiCost-master/tests/currency_rates.xml  
+2022-12-15T14:18:45.5639748Z    creating: KiCost-master/tests/digikey/
+2022-12-15T14:18:45.5640138Z  extracting: KiCost-master/tests/digikey/.gitignore  
+2022-12-15T14:18:45.5640616Z   inflating: KiCost-master/tests/digikey/dpn_1080-1584-2-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5641152Z   inflating: KiCost-master/tests/digikey/dpn_118-CR0603-JW-223ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5641701Z   inflating: KiCost-master/tests/digikey/dpn_118-CR0603-JW-510ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5642226Z   inflating: KiCost-master/tests/digikey/dpn_118-CR0603-JW-512ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5642727Z   inflating: KiCost-master/tests/digikey/dpn_1188-1099-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5643385Z   inflating: KiCost-master/tests/digikey/dpn_1188-1099-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5648808Z   inflating: KiCost-master/tests/digikey/dpn_12401598E4#2ACT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5649319Z   inflating: KiCost-master/tests/digikey/dpn_1276-1000-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5649798Z   inflating: KiCost-master/tests/digikey/dpn_1276-1008-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5650281Z   inflating: KiCost-master/tests/digikey/dpn_1276-1019-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5650763Z   inflating: KiCost-master/tests/digikey/dpn_1276-1023-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5651239Z   inflating: KiCost-master/tests/digikey/dpn_1276-1027-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5651712Z   inflating: KiCost-master/tests/digikey/dpn_1276-1131-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5663152Z   inflating: KiCost-master/tests/digikey/dpn_1276-1162-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5663744Z   inflating: KiCost-master/tests/digikey/dpn_1276-1196-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5664235Z   inflating: KiCost-master/tests/digikey/dpn_1276-1961-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5664712Z   inflating: KiCost-master/tests/digikey/dpn_1276-2192-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5665199Z   inflating: KiCost-master/tests/digikey/dpn_1276-6455-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5665681Z   inflating: KiCost-master/tests/digikey/dpn_1276-6720-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5666183Z   inflating: KiCost-master/tests/digikey/dpn_1428-ICM-42670-PCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5666686Z   inflating: KiCost-master/tests/digikey/dpn_1727-1306-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5667156Z   inflating: KiCost-master/tests/digikey/dpn_1727-5317-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5667630Z   inflating: KiCost-master/tests/digikey/dpn_1727-5828-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5668122Z   inflating: KiCost-master/tests/digikey/dpn_1N4148W-FDICT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5668675Z   inflating: KiCost-master/tests/digikey/dpn_2073-SIM8060-6-0-14-00-ACT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5669218Z   inflating: KiCost-master/tests/digikey/dpn_2184-BBBK00160808601Y00CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5669722Z   inflating: KiCost-master/tests/digikey/dpn_2266-1977120-6-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5670217Z   inflating: KiCost-master/tests/digikey/dpn_2266-G5LE14DC12-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5670748Z   inflating: KiCost-master/tests/digikey/dpn_2388-SXT2148DA48-32.000M-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5671407Z   inflating: KiCost-master/tests/digikey/dpn_277-1578-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5671899Z   inflating: KiCost-master/tests/digikey/dpn_277-1578-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5672376Z   inflating: KiCost-master/tests/digikey/dpn_277-1667-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5672845Z   inflating: KiCost-master/tests/digikey/dpn_277-1667-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5673332Z   inflating: KiCost-master/tests/digikey/dpn_296-15844-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5673813Z   inflating: KiCost-master/tests/digikey/dpn_296-19072-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5674301Z   inflating: KiCost-master/tests/digikey/dpn_296-19643-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5674775Z   inflating: KiCost-master/tests/digikey/dpn_296-23541-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5680508Z   inflating: KiCost-master/tests/digikey/dpn_296-23541-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5681017Z   inflating: KiCost-master/tests/digikey/dpn_296-26093-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5681502Z   inflating: KiCost-master/tests/digikey/dpn_296-29298-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5681972Z   inflating: KiCost-master/tests/digikey/dpn_296-29298-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5682448Z   inflating: KiCost-master/tests/digikey/dpn_296-35965-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5682928Z   inflating: KiCost-master/tests/digikey/dpn_296-36883-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5683560Z   inflating: KiCost-master/tests/digikey/dpn_296-36883-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5684032Z   inflating: KiCost-master/tests/digikey/dpn_296-39852-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5684512Z   inflating: KiCost-master/tests/digikey/dpn_296-41033-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5684986Z   inflating: KiCost-master/tests/digikey/dpn_296-44634-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5685471Z   inflating: KiCost-master/tests/digikey/dpn_296-45561-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5685938Z   inflating: KiCost-master/tests/digikey/dpn_296-47488-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5686411Z   inflating: KiCost-master/tests/digikey/dpn_296-6607-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5686915Z   inflating: KiCost-master/tests/digikey/dpn_296-TPS26620DRCRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5687424Z   inflating: KiCost-master/tests/digikey/dpn_2N7002ET1GOSCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5687913Z   inflating: KiCost-master/tests/digikey/dpn_308-2309-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5688415Z   inflating: KiCost-master/tests/digikey/dpn_3082-OBDSTN2100R10-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5694215Z   inflating: KiCost-master/tests/digikey/dpn_311-0.0JRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5694721Z   inflating: KiCost-master/tests/digikey/dpn_311-1.0KJRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5695228Z   inflating: KiCost-master/tests/digikey/dpn_311-10.0KLRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5695753Z   inflating: KiCost-master/tests/digikey/dpn_311-100JRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5696252Z   inflating: KiCost-master/tests/digikey/dpn_311-100KLRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5696735Z   inflating: KiCost-master/tests/digikey/dpn_311-1029-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5697216Z   inflating: KiCost-master/tests/digikey/dpn_311-1041-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5697697Z   inflating: KiCost-master/tests/digikey/dpn_311-10JRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5698187Z   inflating: KiCost-master/tests/digikey/dpn_311-10KJRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5698679Z   inflating: KiCost-master/tests/digikey/dpn_311-12.1KLRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5699163Z   inflating: KiCost-master/tests/digikey/dpn_311-1336-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5699638Z   inflating: KiCost-master/tests/digikey/dpn_311-2.7KJRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5700128Z   inflating: KiCost-master/tests/digikey/dpn_311-240LRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5700778Z   inflating: KiCost-master/tests/digikey/dpn_311-27JRCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5701266Z   inflating: KiCost-master/tests/digikey/dpn_311-3749-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5701756Z   inflating: KiCost-master/tests/digikey/dpn_336-5886-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5702236Z   inflating: KiCost-master/tests/digikey/dpn_36-5001-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5702711Z   inflating: KiCost-master/tests/digikey/dpn_36-5001-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5703183Z   inflating: KiCost-master/tests/digikey/dpn_398-1010-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5708448Z   inflating: KiCost-master/tests/digikey/dpn_398-1010-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5713523Z   inflating: KiCost-master/tests/digikey/dpn_399-5514-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5732903Z   inflating: KiCost-master/tests/digikey/dpn_399-8101-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5733554Z   inflating: KiCost-master/tests/digikey/dpn_399-C0805C104K5RAC7800TR-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5734095Z   inflating: KiCost-master/tests/digikey/dpn_400MDP1R1BLKM2QE-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5734618Z   inflating: KiCost-master/tests/digikey/dpn_400MDP1R1BLKM2QE-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5735124Z   inflating: KiCost-master/tests/digikey/dpn_445-5223-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5735614Z   inflating: KiCost-master/tests/digikey/dpn_450-1650-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5736253Z   inflating: KiCost-master/tests/digikey/dpn_450-1650-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5736727Z   inflating: KiCost-master/tests/digikey/dpn_478-11288-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5737206Z   inflating: KiCost-master/tests/digikey/dpn_478-2498-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5737688Z   inflating: KiCost-master/tests/digikey/dpn_478-8156-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5738167Z   inflating: KiCost-master/tests/digikey/dpn_486-1175-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5738646Z   inflating: KiCost-master/tests/digikey/dpn_490-10525-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5739119Z   inflating: KiCost-master/tests/digikey/dpn_490-17329-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5739602Z   inflating: KiCost-master/tests/digikey/dpn_490-2623-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5740076Z   inflating: KiCost-master/tests/digikey/dpn_490-3295-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5740549Z   inflating: KiCost-master/tests/digikey/dpn_490-4025-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5741021Z   inflating: KiCost-master/tests/digikey/dpn_490-4683-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5741509Z   inflating: KiCost-master/tests/digikey/dpn_490-5926-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5741978Z   inflating: KiCost-master/tests/digikey/dpn_490-5936-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5742445Z   inflating: KiCost-master/tests/digikey/dpn_490-6715-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5742918Z   inflating: KiCost-master/tests/digikey/dpn_490-9660-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5743388Z   inflating: KiCost-master/tests/digikey/dpn_490-9666-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5743857Z   inflating: KiCost-master/tests/digikey/dpn_492-1344-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5744329Z   inflating: KiCost-master/tests/digikey/dpn_492-1510-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5744810Z   inflating: KiCost-master/tests/digikey/dpn_497-17311-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5745292Z   inflating: KiCost-master/tests/digikey/dpn_497-19088-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5745798Z   inflating: KiCost-master/tests/digikey/dpn_497-STM32WB55CCU6-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5746318Z   inflating: KiCost-master/tests/digikey/dpn_505-ADUM121N0BRZ-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5746820Z   inflating: KiCost-master/tests/digikey/dpn_535-12619-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5747300Z   inflating: KiCost-master/tests/digikey/dpn_535-14095-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5747863Z   inflating: KiCost-master/tests/digikey/dpn_587-1231-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5754407Z   inflating: KiCost-master/tests/digikey/dpn_587-1256-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5754909Z   inflating: KiCost-master/tests/digikey/dpn_587-3354-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5755387Z   inflating: KiCost-master/tests/digikey/dpn_587-3990-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5755872Z   inflating: KiCost-master/tests/digikey/dpn_587-4001-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5756349Z   inflating: KiCost-master/tests/digikey/dpn_587-5853-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5756820Z   inflating: KiCost-master/tests/digikey/dpn_609-3956-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5757300Z   inflating: KiCost-master/tests/digikey/dpn_732-11358-6-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5757781Z   inflating: KiCost-master/tests/digikey/dpn_732-3343-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5758272Z   inflating: KiCost-master/tests/digikey/dpn_732-4966-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5758745Z   inflating: KiCost-master/tests/digikey/dpn_732-4980-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5759308Z   inflating: KiCost-master/tests/digikey/dpn_732-7015-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5759783Z   inflating: KiCost-master/tests/digikey/dpn_754-1545-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5760254Z   inflating: KiCost-master/tests/digikey/dpn_754-2038-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5760879Z   inflating: KiCost-master/tests/digikey/dpn_887-1995-1-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5761344Z   inflating: KiCost-master/tests/digikey/dpn_A121375-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5761816Z   inflating: KiCost-master/tests/digikey/dpn_A121375-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5762290Z   inflating: KiCost-master/tests/digikey/dpn_A124738CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5762791Z  extracting: KiCost-master/tests/digikey/dpn_ADUM121N0BRZ-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5763308Z   inflating: KiCost-master/tests/digikey/dpn_BAT54SLT1GOSCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5763843Z   inflating: KiCost-master/tests/digikey/dpn_BSS314PEH6327XTSA1CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5764386Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-FX-1004ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5764912Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-FX-5103ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5765430Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-101ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5765947Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-102ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5766446Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-103ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5766941Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-104ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5772852Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-151ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5773387Z  extracting: KiCost-master/tests/digikey/dpn_CR0603-JW-223ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5773897Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-224ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5774397Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-393ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5774929Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-JW-473ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5780746Z  extracting: KiCost-master/tests/digikey/dpn_CR0603-JW-510ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5781281Z  extracting: KiCost-master/tests/digikey/dpn_CR0603-JW-512ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5781792Z   inflating: KiCost-master/tests/digikey/dpn_CR0603-J_-000ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5782305Z   inflating: KiCost-master/tests/digikey/dpn_DMG2305UX-13DICT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5782807Z   inflating: KiCost-master/tests/digikey/dpn_F5778CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5794890Z   inflating: KiCost-master/tests/digikey/dpn_F6571CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5795427Z   inflating: KiCost-master/tests/digikey/dpn_MCP2561FDT-E_SNCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5811646Z   inflating: KiCost-master/tests/digikey/dpn_MCP4922-E_P-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5812160Z   inflating: KiCost-master/tests/digikey/dpn_MCP4922-E_P-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5812692Z   inflating: KiCost-master/tests/digikey/dpn_MMBT3904LT3GOSCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5820606Z   inflating: KiCost-master/tests/digikey/dpn_P47NJCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5833813Z   inflating: KiCost-master/tests/digikey/dpn_P510ADCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5834415Z   inflating: KiCost-master/tests/digikey/dpn_P68.0KLCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5834930Z   inflating: KiCost-master/tests/digikey/dpn_RMCF0402JT100KCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5835431Z   inflating: KiCost-master/tests/digikey/dpn_S9214-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5835944Z   inflating: KiCost-master/tests/digikey/dpn_SBR2A40P1Q-7DICT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5836446Z   inflating: KiCost-master/tests/digikey/dpn_SER4069CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5836932Z   inflating: KiCost-master/tests/digikey/dpn_SER4084CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5837417Z   inflating: KiCost-master/tests/digikey/dpn_SS26FLCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5857092Z   inflating: KiCost-master/tests/digikey/dpn_W25N01GVZEIGCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5857613Z   inflating: KiCost-master/tests/digikey/dpn_WM1114-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5858093Z   inflating: KiCost-master/tests/digikey/dpn_WM1114-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5858583Z   inflating: KiCost-master/tests/digikey/dpn_WM13351-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5859064Z   inflating: KiCost-master/tests/digikey/dpn_WM1351-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5859538Z   inflating: KiCost-master/tests/digikey/dpn_WM1351-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5860044Z   inflating: KiCost-master/tests/digikey/dpn_WM1742-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5860520Z   inflating: KiCost-master/tests/digikey/dpn_WM19299CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5861008Z   inflating: KiCost-master/tests/digikey/dpn_WM3670CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5861486Z   inflating: KiCost-master/tests/digikey/dpn_WM5587CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5861962Z   inflating: KiCost-master/tests/digikey/dpn_XC2776CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5862440Z   inflating: KiCost-master/tests/digikey/dpn_YAG3137CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5862929Z   inflating: KiCost-master/tests/digikey/dpn_YAG3155CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5863404Z   inflating: KiCost-master/tests/digikey/dpn_YAG3248CT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5863895Z   inflating: KiCost-master/tests/digikey/dpn_Z1012-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5864369Z   inflating: KiCost-master/tests/digikey/dpn_Z1012-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5864852Z   inflating: KiCost-master/tests/digikey/dpn_ZVP4424GCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5865339Z   inflating: KiCost-master/tests/digikey/dpn_ZVP4525ZCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5865819Z   inflating: KiCost-master/tests/digikey/key_08-50-0114_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5866286Z   inflating: KiCost-master/tests/digikey/key_08-50-0114_US_en_USD_US.dat  
+2022-12-15T14:18:45.5866779Z   inflating: KiCost-master/tests/digikey/key_400MDP1R1BLKM2QE-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5867301Z   inflating: KiCost-master/tests/digikey/key_400MDP1R1BLKM2QE-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5867806Z   inflating: KiCost-master/tests/digikey/key_ADUM121N0BRZ-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5868301Z   inflating: KiCost-master/tests/digikey/key_C0805C104K5RACTU_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5868979Z   inflating: KiCost-master/tests/digikey/key_CR0603-JW-223ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5869525Z   inflating: KiCost-master/tests/digikey/key_CR0603-JW-510ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5870033Z   inflating: KiCost-master/tests/digikey/key_CR0603-JW-512ELFCT-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5870505Z   inflating: KiCost-master/tests/digikey/key_FSM4JH_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5870966Z   inflating: KiCost-master/tests/digikey/key_FSM4JH_US_en_USD_US.dat  
+2022-12-15T14:18:45.5871451Z   inflating: KiCost-master/tests/digikey/key_G5LE-14-DC12_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5876434Z   inflating: KiCost-master/tests/digikey/key_G5LE-14-DC12_US_en_USD_US.dat  
+2022-12-15T14:18:45.5877005Z   inflating: KiCost-master/tests/digikey/key_MCP4922-E_P-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5877500Z   inflating: KiCost-master/tests/digikey/key_MCP4922-E_P-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5877983Z   inflating: KiCost-master/tests/digikey/key_SIM7000G_US_en_USD_US.dat  
+2022-12-15T14:18:45.5878456Z   inflating: KiCost-master/tests/digikey/key_STN2100_US_en_USD_US.dat  
+2022-12-15T14:18:45.5884951Z   inflating: KiCost-master/tests/digikey/key_TMS320-XDS100V3_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5885501Z   inflating: KiCost-master/tests/digikey/key_TMS320-XDS100V3_US_en_USD_US.dat  
+2022-12-15T14:18:45.5886002Z   inflating: KiCost-master/tests/digikey/key_YH1012-24V_US_en_USD_US.dat  
+2022-12-15T14:18:45.5886471Z   inflating: KiCost-master/tests/digikey/mpn_0022012067_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5887124Z   inflating: KiCost-master/tests/digikey/mpn_0022012067_US_en_USD_US.dat  
+2022-12-15T14:18:45.5893305Z   inflating: KiCost-master/tests/digikey/mpn_0022232061_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5893783Z   inflating: KiCost-master/tests/digikey/mpn_0022232061_US_en_USD_US.dat  
+2022-12-15T14:18:45.5894244Z   inflating: KiCost-master/tests/digikey/mpn_08-50-0114_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5894708Z  extracting: KiCost-master/tests/digikey/mpn_08-50-0114_US_en_USD_US.dat  
+2022-12-15T14:18:45.5895192Z   inflating: KiCost-master/tests/digikey/mpn_3020-14-0100-00_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5895679Z   inflating: KiCost-master/tests/digikey/mpn_3020-14-0100-00_US_en_USD_US.dat  
+2022-12-15T14:18:45.5896183Z   inflating: KiCost-master/tests/digikey/mpn_400MDP1R1BLKM2QE-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5896705Z  extracting: KiCost-master/tests/digikey/mpn_400MDP1R1BLKM2QE-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5897211Z   inflating: KiCost-master/tests/digikey/mpn_760390013_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5897681Z   inflating: KiCost-master/tests/digikey/mpn_760390013_US_en_USD_US.dat  
+2022-12-15T14:18:45.5898155Z   inflating: KiCost-master/tests/digikey/mpn_860020474012_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5898623Z   inflating: KiCost-master/tests/digikey/mpn_860020474012_US_en_USD_US.dat  
+2022-12-15T14:18:45.5899096Z   inflating: KiCost-master/tests/digikey/mpn_A-DS 09 PP_Z_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5899573Z   inflating: KiCost-master/tests/digikey/mpn_A-DS 09 PP_Z_US_en_USD_US.dat  
+2022-12-15T14:18:45.5900055Z   inflating: KiCost-master/tests/digikey/mpn_AP2114H-3.3TRG1_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5900555Z   inflating: KiCost-master/tests/digikey/mpn_AP2114H-3.3TRG1_US_en_USD_US.dat  
+2022-12-15T14:18:45.5901034Z   inflating: KiCost-master/tests/digikey/mpn_BAT46ZFILM_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5901512Z   inflating: KiCost-master/tests/digikey/mpn_BAT46ZFILM_US_en_USD_US.dat  
+2022-12-15T14:18:45.5901989Z   inflating: KiCost-master/tests/digikey/mpn_BC847BLT1G_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5902458Z   inflating: KiCost-master/tests/digikey/mpn_BC847BLT1G_US_en_USD_US.dat  
+2022-12-15T14:18:45.5902955Z   inflating: KiCost-master/tests/digikey/mpn_C0805C104K5RACTU_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5903450Z   inflating: KiCost-master/tests/digikey/mpn_C0805C104K5RACTU_US_en_USD_US.dat  
+2022-12-15T14:18:45.5903937Z   inflating: KiCost-master/tests/digikey/mpn_C0805C105K5RACTU_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5904591Z   inflating: KiCost-master/tests/digikey/mpn_C0805C105K5RACTU_US_en_USD_US.dat  
+2022-12-15T14:18:45.5905101Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VGD_TR8_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5905588Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VGD_TR8_US_en_USD_US.dat  
+2022-12-15T14:18:45.5906080Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VRD_TR8_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5912976Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VRD_TR8_US_en_USD_US.dat  
+2022-12-15T14:18:45.5917961Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VYD_TR8_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5918518Z   inflating: KiCost-master/tests/digikey/mpn_CMD17-21VYD_TR8_US_en_USD_US.dat  
+2022-12-15T14:18:45.5919099Z   inflating: KiCost-master/tests/digikey/mpn_FOD814ASD_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5924550Z   inflating: KiCost-master/tests/digikey/mpn_FOD814ASD_US_en_USD_US.dat  
+2022-12-15T14:18:45.5925095Z   inflating: KiCost-master/tests/digikey/mpn_FSM4JH_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5932017Z  extracting: KiCost-master/tests/digikey/mpn_FSM4JH_US_en_USD_US.dat  
+2022-12-15T14:18:45.5932586Z   inflating: KiCost-master/tests/digikey/mpn_G5LE-14-DC12_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5933085Z  extracting: KiCost-master/tests/digikey/mpn_G5LE-14-DC12_US_en_USD_US.dat  
+2022-12-15T14:18:45.5933581Z   inflating: KiCost-master/tests/digikey/mpn_HCPL-7520-300E_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5934282Z   inflating: KiCost-master/tests/digikey/mpn_HCPL-7520-300E_US_en_USD_US.dat  
+2022-12-15T14:18:45.5934785Z   inflating: KiCost-master/tests/digikey/mpn_KA78L05AMTF_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5935272Z   inflating: KiCost-master/tests/digikey/mpn_KA78L05AMTF_US_en_USD_US.dat  
+2022-12-15T14:18:45.5935739Z   inflating: KiCost-master/tests/digikey/mpn_LL4148_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5936202Z   inflating: KiCost-master/tests/digikey/mpn_LL4148_US_en_USD_US.dat  
+2022-12-15T14:18:45.5936700Z   inflating: KiCost-master/tests/digikey/mpn_LM4040DEX3-3.3+T_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5937217Z   inflating: KiCost-master/tests/digikey/mpn_LM4040DEX3-3.3+T_US_en_USD_US.dat  
+2022-12-15T14:18:45.5937711Z   inflating: KiCost-master/tests/digikey/mpn_LM4040DIX3-5.0+T_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5938207Z   inflating: KiCost-master/tests/digikey/mpn_LM4040DIX3-5.0+T_US_en_USD_US.dat  
+2022-12-15T14:18:45.5938700Z   inflating: KiCost-master/tests/digikey/mpn_MC14504BDTR2G_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5939192Z   inflating: KiCost-master/tests/digikey/mpn_MC14504BDTR2G_US_en_USD_US.dat  
+2022-12-15T14:18:45.5939677Z   inflating: KiCost-master/tests/digikey/mpn_MC7805CDTG_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5940152Z   inflating: KiCost-master/tests/digikey/mpn_MC7805CDTG_US_en_USD_US.dat  
+2022-12-15T14:18:45.5940637Z   inflating: KiCost-master/tests/digikey/mpn_MCP4922-E_P-ND_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5941141Z  extracting: KiCost-master/tests/digikey/mpn_MCP4922-E_P-ND_US_en_USD_US.dat  
+2022-12-15T14:18:45.5941655Z   inflating: KiCost-master/tests/digikey/mpn_MFR-25FBF52-100R_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5942161Z   inflating: KiCost-master/tests/digikey/mpn_MFR-25FBF52-100R_US_en_USD_US.dat  
+2022-12-15T14:18:45.5942669Z   inflating: KiCost-master/tests/digikey/mpn_OPA4197IDR_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5943146Z   inflating: KiCost-master/tests/digikey/mpn_OPA4197IDR_US_en_USD_US.dat  
+2022-12-15T14:18:45.5943635Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT10K0_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5944133Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT10K0_US_en_USD_US.dat  
+2022-12-15T14:18:45.5944619Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT120R_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5945106Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT120R_US_en_USD_US.dat  
+2022-12-15T14:18:45.5945595Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT180R_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5946164Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT180R_US_en_USD_US.dat  
+2022-12-15T14:18:45.5946662Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT1K20_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5947150Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT1K20_US_en_USD_US.dat  
+2022-12-15T14:18:45.5947643Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT330R_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5948141Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT330R_US_en_USD_US.dat  
+2022-12-15T14:18:45.5948636Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT4K70_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5949138Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT4K70_US_en_USD_US.dat  
+2022-12-15T14:18:45.5949627Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT560R_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5950107Z   inflating: KiCost-master/tests/digikey/mpn_RMCF0805JT560R_US_en_USD_US.dat  
+2022-12-15T14:18:45.5950587Z   inflating: KiCost-master/tests/digikey/mpn_SI8660BA-B-IS1_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5955073Z   inflating: KiCost-master/tests/digikey/mpn_SI8660BA-B-IS1_US_en_USD_US.dat  
+2022-12-15T14:18:45.5955559Z   inflating: KiCost-master/tests/digikey/mpn_SIM7000G_US_en_USD_US.dat  
+2022-12-15T14:18:45.5956057Z   inflating: KiCost-master/tests/digikey/mpn_SJ2-2532B-SMT-TR_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5956561Z   inflating: KiCost-master/tests/digikey/mpn_SJ2-2532B-SMT-TR_US_en_USD_US.dat  
+2022-12-15T14:18:45.5957197Z   inflating: KiCost-master/tests/digikey/mpn_SN6501DBVR_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5957690Z   inflating: KiCost-master/tests/digikey/mpn_SN6501DBVR_US_en_USD_US.dat  
+2022-12-15T14:18:45.5958163Z   inflating: KiCost-master/tests/digikey/mpn_STN2100_US_en_USD_US.dat  
+2022-12-15T14:18:45.5958652Z   inflating: KiCost-master/tests/digikey/mpn_TMS320-XDS100V3_ES_es_EUR_ES.dat  
+2022-12-15T14:18:45.5959265Z  extracting: KiCost-master/tests/digikey/mpn_TMS320-XDS100V3_US_en_USD_US.dat  
+2022-12-15T14:18:45.5963466Z   inflating: KiCost-master/tests/digikey/mpn_YH1012-24V_US_en_USD_US.dat  
+2022-12-15T14:18:45.5963888Z    creating: KiCost-master/tests/discard/
+2022-12-15T14:18:45.5964289Z  extracting: KiCost-master/tests/discard/.gitignore  
+2022-12-15T14:18:45.5964722Z   inflating: KiCost-master/tests/dummy-web-server.py  
+2022-12-15T14:18:45.5965116Z    creating: KiCost-master/tests/element14/
+2022-12-15T14:18:45.5965588Z  extracting: KiCost-master/tests/element14/key_ACC-AADBL-5212_uk.farnell.com.dat  
+2022-12-15T14:18:45.5966118Z  extracting: KiCost-master/tests/element14/key_ACC-AADBL-5212_www.newark.com.dat  
+2022-12-15T14:18:45.5966641Z  extracting: KiCost-master/tests/element14/key_ACC-AANEG-5201_uk.farnell.com.dat  
+2022-12-15T14:18:45.5967165Z  extracting: KiCost-master/tests/element14/key_ACC-AANEG-5201_www.newark.com.dat  
+2022-12-15T14:18:45.5967698Z  extracting: KiCost-master/tests/element14/key_ACC-AAPOS-5223_uk.farnell.com.dat  
+2022-12-15T14:18:45.5968219Z  extracting: KiCost-master/tests/element14/key_ACC-AAPOS-5223_www.newark.com.dat  
+2022-12-15T14:18:45.5968741Z  extracting: KiCost-master/tests/element14/key_LPS4018-103MRB_www.newark.com.dat  
+2022-12-15T14:18:45.5969248Z  extracting: KiCost-master/tests/element14/key_LPS4018-153MRB_www.newark.com.dat  
+2022-12-15T14:18:45.5969753Z  extracting: KiCost-master/tests/element14/key_LPS4018-473MRB_www.newark.com.dat  
+2022-12-15T14:18:45.5970252Z  extracting: KiCost-master/tests/element14/key_S3A-361413_uk.farnell.com.dat  
+2022-12-15T14:18:45.5970743Z  extracting: KiCost-master/tests/element14/key_S3A-361413_www.newark.com.dat  
+2022-12-15T14:18:45.5971240Z   inflating: KiCost-master/tests/element14/mpn_0603B104K500CT_uk.farnell.com.dat  
+2022-12-15T14:18:45.5971736Z   inflating: KiCost-master/tests/element14/mpn_0603B104K500CT_www.newark.com.dat  
+2022-12-15T14:18:45.5972237Z   inflating: KiCost-master/tests/element14/mpn_0603N102J500CT_uk.farnell.com.dat  
+2022-12-15T14:18:45.5972732Z   inflating: KiCost-master/tests/element14/mpn_0603N102J500CT_www.newark.com.dat  
+2022-12-15T14:18:45.5973397Z   inflating: KiCost-master/tests/element14/mpn_10103594-0001LF_uk.farnell.com.dat  
+2022-12-15T14:18:45.5973920Z   inflating: KiCost-master/tests/element14/mpn_10103594-0001LF_www.newark.com.dat  
+2022-12-15T14:18:45.5974414Z   inflating: KiCost-master/tests/element14/mpn_2041126-1_uk.farnell.com.dat  
+2022-12-15T14:18:45.5974904Z   inflating: KiCost-master/tests/element14/mpn_2041126-1_www.newark.com.dat  
+2022-12-15T14:18:45.5975411Z   inflating: KiCost-master/tests/element14/mpn_ACC-AADBL-5212_uk.farnell.com.dat  
+2022-12-15T14:18:45.5975924Z   inflating: KiCost-master/tests/element14/mpn_ACC-AADBL-5212_www.newark.com.dat  
+2022-12-15T14:18:45.5976442Z   inflating: KiCost-master/tests/element14/mpn_ACC-AANEG-5201_uk.farnell.com.dat  
+2022-12-15T14:18:45.5976949Z   inflating: KiCost-master/tests/element14/mpn_ACC-AANEG-5201_www.newark.com.dat  
+2022-12-15T14:18:45.5977452Z   inflating: KiCost-master/tests/element14/mpn_ACC-AAPOS-5223_uk.farnell.com.dat  
+2022-12-15T14:18:45.5977958Z   inflating: KiCost-master/tests/element14/mpn_ACC-AAPOS-5223_www.newark.com.dat  
+2022-12-15T14:18:45.5978465Z   inflating: KiCost-master/tests/element14/mpn_AP3211KTR-G1_uk.farnell.com.dat  
+2022-12-15T14:18:45.5978989Z   inflating: KiCost-master/tests/element14/mpn_AP3211KTR-G1_www.newark.com.dat  
+2022-12-15T14:18:45.5979477Z   inflating: KiCost-master/tests/element14/mpn_BRT-L_www.newark.com.dat  
+2022-12-15T14:18:45.5979988Z   inflating: KiCost-master/tests/element14/mpn_C0603C103K5RACTU_uk.farnell.com.dat  
+2022-12-15T14:18:45.5980594Z   inflating: KiCost-master/tests/element14/mpn_C0603C103K5RACTU_www.newark.com.dat  
+2022-12-15T14:18:45.5981110Z   inflating: KiCost-master/tests/element14/mpn_C0603C330J5GACTU_uk.farnell.com.dat  
+2022-12-15T14:18:45.5981618Z   inflating: KiCost-master/tests/element14/mpn_C0603C330J5GACTU_www.newark.com.dat  
+2022-12-15T14:18:45.5982127Z   inflating: KiCost-master/tests/element14/mpn_CRCW06030000Z0EA_uk.farnell.com.dat  
+2022-12-15T14:18:45.5982634Z   inflating: KiCost-master/tests/element14/mpn_CRCW06030000Z0EA_www.newark.com.dat  
+2022-12-15T14:18:45.5983142Z   inflating: KiCost-master/tests/element14/mpn_CRCW06033K30FKEA_uk.farnell.com.dat  
+2022-12-15T14:18:45.5983649Z   inflating: KiCost-master/tests/element14/mpn_CRCW06033K30FKEA_www.newark.com.dat  
+2022-12-15T14:18:45.5984155Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1002V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5984672Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1002V_www.newark.com.dat  
+2022-12-15T14:18:45.5985179Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1003V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5985685Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1003V_www.newark.com.dat  
+2022-12-15T14:18:45.5986187Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1004V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5986686Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1004V_www.newark.com.dat  
+2022-12-15T14:18:45.5987187Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1803V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5987689Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF1803V_www.newark.com.dat  
+2022-12-15T14:18:45.5988185Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF2003V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5988682Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF2003V_www.newark.com.dat  
+2022-12-15T14:18:45.5989179Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF2493V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5989681Z   inflating: KiCost-master/tests/element14/mpn_ERJ3EKF2493V_www.newark.com.dat  
+2022-12-15T14:18:45.5990193Z   inflating: KiCost-master/tests/element14/mpn_ERJP03F47R0V_uk.farnell.com.dat  
+2022-12-15T14:18:45.5990683Z   inflating: KiCost-master/tests/element14/mpn_ERJP03F47R0V_www.newark.com.dat  
+2022-12-15T14:18:45.5991204Z   inflating: KiCost-master/tests/element14/mpn_GRM1885C1H221JA01D_uk.farnell.com.dat  
+2022-12-15T14:18:45.5991734Z   inflating: KiCost-master/tests/element14/mpn_GRM1885C1H221JA01D_www.newark.com.dat  
+2022-12-15T14:18:45.5992336Z   inflating: KiCost-master/tests/element14/mpn_GRM188R61A226ME15D_uk.farnell.com.dat  
+2022-12-15T14:18:45.5992869Z   inflating: KiCost-master/tests/element14/mpn_GRM188R61A226ME15D_www.newark.com.dat  
+2022-12-15T14:18:45.5993397Z   inflating: KiCost-master/tests/element14/mpn_GRM188R61H225KE11D_uk.farnell.com.dat  
+2022-12-15T14:18:45.5993917Z   inflating: KiCost-master/tests/element14/mpn_GRM188R61H225KE11D_www.newark.com.dat  
+2022-12-15T14:18:45.5994444Z   inflating: KiCost-master/tests/element14/mpn_GRM21BR71A106KE51L_uk.farnell.com.dat  
+2022-12-15T14:18:45.5994964Z   inflating: KiCost-master/tests/element14/mpn_GRM21BR71A106KE51L_www.newark.com.dat  
+2022-12-15T14:18:45.5995507Z   inflating: KiCost-master/tests/element14/mpn_GRM21BR71H105KA12L_uk.farnell.com.dat  
+2022-12-15T14:18:45.5996030Z   inflating: KiCost-master/tests/element14/mpn_GRM21BR71H105KA12L_www.newark.com.dat  
+2022-12-15T14:18:45.5996538Z   inflating: KiCost-master/tests/element14/mpn_HLMP-K150_uk.farnell.com.dat  
+2022-12-15T14:18:45.5997032Z   inflating: KiCost-master/tests/element14/mpn_HLMP-K150_www.newark.com.dat  
+2022-12-15T14:18:45.5997544Z   inflating: KiCost-master/tests/element14/mpn_LM2611BMF_NOPB_uk.farnell.com.dat  
+2022-12-15T14:18:45.5998057Z   inflating: KiCost-master/tests/element14/mpn_LM2611BMF_NOPB_www.newark.com.dat  
+2022-12-15T14:18:45.5998571Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-103MRB_uk.farnell.com.dat  
+2022-12-15T14:18:45.5999772Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-103MRB_www.newark.com.dat  
+2022-12-15T14:18:45.6000280Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-153MRB_uk.farnell.com.dat  
+2022-12-15T14:18:45.6000788Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-153MRB_www.newark.com.dat  
+2022-12-15T14:18:45.6001291Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-473MRB_uk.farnell.com.dat  
+2022-12-15T14:18:45.6001813Z   inflating: KiCost-master/tests/element14/mpn_LPS4018-473MRB_www.newark.com.dat  
+2022-12-15T14:18:45.6002322Z   inflating: KiCost-master/tests/element14/mpn_NC7SZ74K8X_uk.farnell.com.dat  
+2022-12-15T14:18:45.6002823Z   inflating: KiCost-master/tests/element14/mpn_NC7SZ74K8X_www.newark.com.dat  
+2022-12-15T14:18:45.6003318Z   inflating: KiCost-master/tests/element14/mpn_NP2X_www.newark.com.dat  
+2022-12-15T14:18:45.6003828Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-07100RL_uk.farnell.com.dat  
+2022-12-15T14:18:45.6004347Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-07100RL_www.newark.com.dat  
+2022-12-15T14:18:45.6004866Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0710RL_uk.farnell.com.dat  
+2022-12-15T14:18:45.6005382Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0710RL_www.newark.com.dat  
+2022-12-15T14:18:45.6005898Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0715K0L_uk.farnell.com.dat  
+2022-12-15T14:18:45.6006411Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0715K0L_www.newark.com.dat  
+2022-12-15T14:18:45.6006925Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-071KL_uk.farnell.com.dat  
+2022-12-15T14:18:45.6007453Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-071KL_www.newark.com.dat  
+2022-12-15T14:18:45.6007965Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-071M8L_uk.farnell.com.dat  
+2022-12-15T14:18:45.6008488Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-071M8L_www.newark.com.dat  
+2022-12-15T14:18:45.6009004Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0747KL_uk.farnell.com.dat  
+2022-12-15T14:18:45.6009508Z   inflating: KiCost-master/tests/element14/mpn_RC0603FR-0747KL_www.newark.com.dat  
+2022-12-15T14:18:45.6010006Z   inflating: KiCost-master/tests/element14/mpn_RT3FC-B_www.newark.com.dat  
+2022-12-15T14:18:45.6010504Z   inflating: KiCost-master/tests/element14/mpn_RT3MPR_uk.farnell.com.dat  
+2022-12-15T14:18:45.6010994Z   inflating: KiCost-master/tests/element14/mpn_RT3MPR_www.newark.com.dat  
+2022-12-15T14:18:45.6011595Z   inflating: KiCost-master/tests/element14/mpn_S3A-361413_uk.farnell.com.dat  
+2022-12-15T14:18:45.6012095Z   inflating: KiCost-master/tests/element14/mpn_S3A-361413_www.newark.com.dat  
+2022-12-15T14:18:45.6012589Z   inflating: KiCost-master/tests/element14/mpn_SKHHLQA010_uk.farnell.com.dat  
+2022-12-15T14:18:45.6013082Z   inflating: KiCost-master/tests/element14/mpn_SKHHLQA010_www.newark.com.dat  
+2022-12-15T14:18:45.6013600Z   inflating: KiCost-master/tests/element14/mpn_SMAJ18A-TR_uk.farnell.com.dat  
+2022-12-15T14:18:45.6014102Z   inflating: KiCost-master/tests/element14/mpn_SMAJ18A-TR_www.newark.com.dat  
+2022-12-15T14:18:45.6014610Z   inflating: KiCost-master/tests/element14/mpn_TPD4S009DCKR_uk.farnell.com.dat  
+2022-12-15T14:18:45.6015127Z   inflating: KiCost-master/tests/element14/mpn_TPD4S009DCKR_www.newark.com.dat  
+2022-12-15T14:18:45.6015634Z   inflating: KiCost-master/tests/element14/mpn_TPS61070DDCR_uk.farnell.com.dat  
+2022-12-15T14:18:45.6016130Z   inflating: KiCost-master/tests/element14/mpn_TPS61070DDCR_www.newark.com.dat  
+2022-12-15T14:18:45.6016631Z   inflating: KiCost-master/tests/element14/mpn_ZHCS1000_uk.farnell.com.dat  
+2022-12-15T14:18:45.6017120Z   inflating: KiCost-master/tests/element14/mpn_ZHCS1000_www.newark.com.dat  
+2022-12-15T14:18:45.6017600Z   inflating: KiCost-master/tests/element14/sku_1813715_uk.farnell.com.dat  
+2022-12-15T14:18:45.6018080Z   inflating: KiCost-master/tests/element14/sku_2383458_uk.farnell.com.dat  
+2022-12-15T14:18:45.6018636Z   inflating: KiCost-master/tests/element14/sku_8314535_uk.farnell.com.dat  
+2022-12-15T14:18:45.6019065Z    creating: KiCost-master/tests/expected_test/
+2022-12-15T14:18:45.6019485Z   inflating: KiCost-master/tests/expected_test/300-010.csv  
+2022-12-15T14:18:45.6019927Z   inflating: KiCost-master/tests/expected_test/300-010.xlsx.txt  
+2022-12-15T14:18:45.6020371Z   inflating: KiCost-master/tests/expected_test/Aeronav_R.csv  
+2022-12-15T14:18:45.6020938Z   inflating: KiCost-master/tests/expected_test/Aeronav_R.xlsx.txt  
+2022-12-15T14:18:45.6021443Z   inflating: KiCost-master/tests/expected_test/BoulderCreekMotherBoard.csv  
+2022-12-15T14:18:45.6021999Z   inflating: KiCost-master/tests/expected_test/BoulderCreekMotherBoard.xlsx.txt  
+2022-12-15T14:18:45.6022495Z   inflating: KiCost-master/tests/expected_test/CAN Balancer.csv  
+2022-12-15T14:18:45.6022977Z   inflating: KiCost-master/tests/expected_test/CAN Balancer.xlsx.txt  
+2022-12-15T14:18:45.6023455Z   inflating: KiCost-master/tests/expected_test/Decoder.csv  
+2022-12-15T14:18:45.6023912Z   inflating: KiCost-master/tests/expected_test/Decoder.xlsx.txt  
+2022-12-15T14:18:45.6024408Z   inflating: KiCost-master/tests/expected_test/Indium_X2.csv  
+2022-12-15T14:18:45.6024863Z   inflating: KiCost-master/tests/expected_test/Indium_X2.xlsx.txt  
+2022-12-15T14:18:45.6025308Z   inflating: KiCost-master/tests/expected_test/LedTest.csv  
+2022-12-15T14:18:45.6025759Z   inflating: KiCost-master/tests/expected_test/LedTest.xlsx.txt  
+2022-12-15T14:18:45.6026228Z   inflating: KiCost-master/tests/expected_test/NF6X_TestBoard.csv  
+2022-12-15T14:18:45.6026707Z   inflating: KiCost-master/tests/expected_test/NF6X_TestBoard.xlsx.txt  
+2022-12-15T14:18:45.6027162Z   inflating: KiCost-master/tests/expected_test/RPi-Test.csv  
+2022-12-15T14:18:45.6027750Z   inflating: KiCost-master/tests/expected_test/RPi-Test.xlsx.txt  
+2022-12-15T14:18:45.6028210Z   inflating: KiCost-master/tests/expected_test/RX LR lite.csv  
+2022-12-15T14:18:45.6028668Z   inflating: KiCost-master/tests/expected_test/RX LR lite.xlsx.txt  
+2022-12-15T14:18:45.6029129Z   inflating: KiCost-master/tests/expected_test/Receiver_1W.csv  
+2022-12-15T14:18:45.6029600Z   inflating: KiCost-master/tests/expected_test/Receiver_1W.xlsx.txt  
+2022-12-15T14:18:45.6030074Z   inflating: KiCost-master/tests/expected_test/StickIt-Hat-old.csv  
+2022-12-15T14:18:45.6030565Z   inflating: KiCost-master/tests/expected_test/StickIt-Hat-old.xlsx.txt  
+2022-12-15T14:18:45.6031043Z   inflating: KiCost-master/tests/expected_test/StickIt-Hat.csv  
+2022-12-15T14:18:45.6031603Z   inflating: KiCost-master/tests/expected_test/StickIt-Hat.xlsx.txt  
+2022-12-15T14:18:45.6032091Z   inflating: KiCost-master/tests/expected_test/StickIt-QuadDAC.csv  
+2022-12-15T14:18:45.6032586Z   inflating: KiCost-master/tests/expected_test/StickIt-QuadDAC.xlsx.txt  
+2022-12-15T14:18:45.6033094Z   inflating: KiCost-master/tests/expected_test/StickIt-RotaryEncoder.csv  
+2022-12-15T14:18:45.6033627Z   inflating: KiCost-master/tests/expected_test/StickIt-RotaryEncoder.xlsx.txt  
+2022-12-15T14:18:45.6034150Z   inflating: KiCost-master/tests/expected_test/SubPartGroupTest_266.csv  
+2022-12-15T14:18:45.6034618Z   inflating: KiCost-master/tests/expected_test/TestParts.csv  
+2022-12-15T14:18:45.6035075Z   inflating: KiCost-master/tests/expected_test/TestParts.xlsx.txt  
+2022-12-15T14:18:45.6035561Z   inflating: KiCost-master/tests/expected_test/acquire-PWM.csv  
+2022-12-15T14:18:45.6036034Z   inflating: KiCost-master/tests/expected_test/acquire-PWM.xlsx.txt  
+2022-12-15T14:18:45.6036505Z   inflating: KiCost-master/tests/expected_test/acquire-PWM_2.csv  
+2022-12-15T14:18:45.6036983Z   inflating: KiCost-master/tests/expected_test/acquire-PWM_2.xlsx.txt  
+2022-12-15T14:18:45.6037449Z   inflating: KiCost-master/tests/expected_test/acquire_PWM_dk.csv  
+2022-12-15T14:18:45.6037913Z   inflating: KiCost-master/tests/expected_test/acquire_PWM_dk.xlsx.txt  
+2022-12-15T14:18:45.6038389Z   inflating: KiCost-master/tests/expected_test/acquire_PWM_eur_dk.csv  
+2022-12-15T14:18:45.6039142Z   inflating: KiCost-master/tests/expected_test/acquire_PWM_eur_dk.xlsx.txt  
+2022-12-15T14:18:45.6039603Z   inflating: KiCost-master/tests/expected_test/b3u_test.csv  
+2022-12-15T14:18:45.6040051Z   inflating: KiCost-master/tests/expected_test/b3u_test.xlsx.txt  
+2022-12-15T14:18:45.6040493Z   inflating: KiCost-master/tests/expected_test/bbsram.csv  
+2022-12-15T14:18:45.6040944Z   inflating: KiCost-master/tests/expected_test/bbsram.xlsx.txt  
+2022-12-15T14:18:45.6041405Z   inflating: KiCost-master/tests/expected_test/board_qty_1.csv  
+2022-12-15T14:18:45.6041874Z   inflating: KiCost-master/tests/expected_test/board_qty_1.xlsx.txt  
+2022-12-15T14:18:45.6042329Z   inflating: KiCost-master/tests/expected_test/board_qty_2.csv  
+2022-12-15T14:18:45.6042791Z   inflating: KiCost-master/tests/expected_test/board_qty_2.xlsx.txt  
+2022-12-15T14:18:45.6043241Z   inflating: KiCost-master/tests/expected_test/board_qty_3.csv  
+2022-12-15T14:18:45.6043692Z   inflating: KiCost-master/tests/expected_test/board_qty_3.xlsx.txt  
+2022-12-15T14:18:45.6044166Z   inflating: KiCost-master/tests/expected_test/complex_multipart.csv  
+2022-12-15T14:18:45.6044655Z   inflating: KiCost-master/tests/expected_test/complex_multipart.xlsx.txt  
+2022-12-15T14:18:45.6045121Z   inflating: KiCost-master/tests/expected_test/element14_1.csv  
+2022-12-15T14:18:45.6045575Z   inflating: KiCost-master/tests/expected_test/element14_1.xlsx.txt  
+2022-12-15T14:18:45.6046025Z   inflating: KiCost-master/tests/expected_test/exclude_1.csv  
+2022-12-15T14:18:45.6046485Z   inflating: KiCost-master/tests/expected_test/exclude_1.xlsx.txt  
+2022-12-15T14:18:45.6046941Z   inflating: KiCost-master/tests/expected_test/fitting_test.csv  
+2022-12-15T14:18:45.6047421Z   inflating: KiCost-master/tests/expected_test/fitting_test.xlsx.txt  
+2022-12-15T14:18:45.6047902Z   inflating: KiCost-master/tests/expected_test/group_1_group_fields.csv  
+2022-12-15T14:18:45.6048397Z   inflating: KiCost-master/tests/expected_test/group_1_group_fields.xlsx.txt  
+2022-12-15T14:18:45.6048896Z   inflating: KiCost-master/tests/expected_test/group_1_ignore_comment.csv  
+2022-12-15T14:18:45.6049403Z   inflating: KiCost-master/tests/expected_test/group_1_ignore_comment.xlsx.txt  
+2022-12-15T14:18:45.6049874Z   inflating: KiCost-master/tests/expected_test/include_1.csv  
+2022-12-15T14:18:45.6068281Z   inflating: KiCost-master/tests/expected_test/include_1.xlsx.txt  
+2022-12-15T14:18:45.6068836Z   inflating: KiCost-master/tests/expected_test/kc-test.csv  
+2022-12-15T14:18:45.6069306Z   inflating: KiCost-master/tests/expected_test/kc-test.xlsx.txt  
+2022-12-15T14:18:45.6069962Z   inflating: KiCost-master/tests/expected_test/local_Indium_X2.csv  
+2022-12-15T14:18:45.6070459Z   inflating: KiCost-master/tests/expected_test/local_Indium_X2.xlsx.txt  
+2022-12-15T14:18:45.6070943Z   inflating: KiCost-master/tests/expected_test/manf_no_manf_num.csv  
+2022-12-15T14:18:45.6071433Z   inflating: KiCost-master/tests/expected_test/manf_no_manf_num.xlsx.txt  
+2022-12-15T14:18:45.6071891Z   inflating: KiCost-master/tests/expected_test/mouser_1.csv  
+2022-12-15T14:18:45.6072343Z   inflating: KiCost-master/tests/expected_test/mouser_1.xlsx.txt  
+2022-12-15T14:18:45.6072790Z   inflating: KiCost-master/tests/expected_test/multipart.csv  
+2022-12-15T14:18:45.6073250Z   inflating: KiCost-master/tests/expected_test/multipart.xlsx.txt  
+2022-12-15T14:18:45.6073720Z   inflating: KiCost-master/tests/expected_test/multipart1+2.csv  
+2022-12-15T14:18:45.6074202Z   inflating: KiCost-master/tests/expected_test/multipart1+2.xlsx.txt  
+2022-12-15T14:18:45.6074674Z   inflating: KiCost-master/tests/expected_test/multipart2.csv  
+2022-12-15T14:18:45.6075140Z   inflating: KiCost-master/tests/expected_test/multipart2.xlsx.txt  
+2022-12-15T14:18:45.6075588Z   inflating: KiCost-master/tests/expected_test/nexar_1.csv  
+2022-12-15T14:18:45.6076030Z   inflating: KiCost-master/tests/expected_test/nexar_1.xlsx.txt  
+2022-12-15T14:18:45.6076467Z   inflating: KiCost-master/tests/expected_test/nexar_2.csv  
+2022-12-15T14:18:45.6076912Z   inflating: KiCost-master/tests/expected_test/nexar_2.xlsx.txt  
+2022-12-15T14:18:45.6077453Z   inflating: KiCost-master/tests/expected_test/nexar_3.csv  
+2022-12-15T14:18:45.6077898Z   inflating: KiCost-master/tests/expected_test/nexar_3.xlsx.txt  
+2022-12-15T14:18:45.6088121Z   inflating: KiCost-master/tests/expected_test/nexar_4.csv  
+2022-12-15T14:18:45.6095210Z   inflating: KiCost-master/tests/expected_test/nexar_4.xlsx.txt  
+2022-12-15T14:18:45.6095694Z   inflating: KiCost-master/tests/expected_test/no_empty_overwrite.csv  
+2022-12-15T14:18:45.6103185Z   inflating: KiCost-master/tests/expected_test/no_empty_overwrite.xlsx.txt  
+2022-12-15T14:18:45.6103696Z   inflating: KiCost-master/tests/expected_test/octopart_1_ambi.csv  
+2022-12-15T14:18:45.6113215Z   inflating: KiCost-master/tests/expected_test/octopart_1_ambi.xlsx.txt  
+2022-12-15T14:18:45.6113704Z   inflating: KiCost-master/tests/expected_test/octopart_1n.csv  
+2022-12-15T14:18:45.6114171Z   inflating: KiCost-master/tests/expected_test/octopart_1n.xlsx.txt  
+2022-12-15T14:18:45.6114641Z   inflating: KiCost-master/tests/expected_test/octopart_1p.csv  
+2022-12-15T14:18:45.6115112Z   inflating: KiCost-master/tests/expected_test/octopart_1p.xlsx.txt  
+2022-12-15T14:18:45.6115583Z   inflating: KiCost-master/tests/expected_test/octopart_2n.csv  
+2022-12-15T14:18:45.6116052Z   inflating: KiCost-master/tests/expected_test/octopart_2n.xlsx.txt  
+2022-12-15T14:18:45.6116520Z   inflating: KiCost-master/tests/expected_test/part_list_big.csv  
+2022-12-15T14:18:45.6138703Z   inflating: KiCost-master/tests/expected_test/part_list_big.xlsx.txt  
+2022-12-15T14:18:45.6139315Z   inflating: KiCost-master/tests/expected_test/part_list_small.csv  
+2022-12-15T14:18:45.6139808Z   inflating: KiCost-master/tests/expected_test/part_list_small.xlsx.txt  
+2022-12-15T14:18:45.6140310Z   inflating: KiCost-master/tests/expected_test/part_list_small_nohdr.csv  
+2022-12-15T14:18:45.6140819Z   inflating: KiCost-master/tests/expected_test/part_list_small_nohdr.xlsx.txt  
+2022-12-15T14:18:45.6141319Z   inflating: KiCost-master/tests/expected_test/parts_and_comments.csv  
+2022-12-15T14:18:45.6141823Z   inflating: KiCost-master/tests/expected_test/parts_and_comments.xlsx.txt  
+2022-12-15T14:18:45.6142336Z   inflating: KiCost-master/tests/expected_test/rare_refs_collapse.csv  
+2022-12-15T14:18:45.6142825Z   inflating: KiCost-master/tests/expected_test/rare_refs_collapse.xlsx.txt  
+2022-12-15T14:18:45.6143317Z   inflating: KiCost-master/tests/expected_test/rare_refs_no_collapse.csv  
+2022-12-15T14:18:45.6143818Z   inflating: KiCost-master/tests/expected_test/rare_refs_no_collapse.xlsx.txt  
+2022-12-15T14:18:45.6144472Z   inflating: KiCost-master/tests/expected_test/safelink_receiver.csv  
+2022-12-15T14:18:45.6144971Z   inflating: KiCost-master/tests/expected_test/safelink_receiver.xlsx.txt  
+2022-12-15T14:18:45.6292809Z   inflating: KiCost-master/tests/expected_test/scrape_over.csv  
+2022-12-15T14:18:45.6298808Z   inflating: KiCost-master/tests/expected_test/scrape_over.xlsx.txt  
+2022-12-15T14:18:45.6302638Z   inflating: KiCost-master/tests/expected_test/scrape_over_2.csv  
+2022-12-15T14:18:45.6307440Z   inflating: KiCost-master/tests/expected_test/scrape_over_2.xlsx.txt  
+2022-12-15T14:18:45.6316187Z   inflating: KiCost-master/tests/expected_test/single_component.csv  
+2022-12-15T14:18:45.6322820Z   inflating: KiCost-master/tests/expected_test/single_component.xlsx.txt  
+2022-12-15T14:18:45.6331785Z   inflating: KiCost-master/tests/expected_test/subparts.csv  
+2022-12-15T14:18:45.6340096Z   inflating: KiCost-master/tests/expected_test/subparts.xlsx.txt  
+2022-12-15T14:18:45.6342760Z   inflating: KiCost-master/tests/expected_test/subparts_err1.csv  
+2022-12-15T14:18:45.6343751Z   inflating: KiCost-master/tests/expected_test/subparts_err1.xlsx.txt  
+2022-12-15T14:18:45.6348234Z   inflating: KiCost-master/tests/expected_test/test.csv  
+2022-12-15T14:18:45.6355058Z   inflating: KiCost-master/tests/expected_test/test.xlsx.txt  
+2022-12-15T14:18:45.6358001Z   inflating: KiCost-master/tests/expected_test/test2.csv  
+2022-12-15T14:18:45.6373687Z   inflating: KiCost-master/tests/expected_test/test2.xlsx.txt  
+2022-12-15T14:18:45.6380625Z   inflating: KiCost-master/tests/expected_test/test3.csv  
+2022-12-15T14:18:45.6399778Z   inflating: KiCost-master/tests/expected_test/test3.xlsx.txt  
+2022-12-15T14:18:45.6403204Z   inflating: KiCost-master/tests/expected_test/test_2e.csv  
+2022-12-15T14:18:45.6406019Z   inflating: KiCost-master/tests/expected_test/test_2e.xlsx.txt  
+2022-12-15T14:18:45.6410522Z   inflating: KiCost-master/tests/expected_test/test_337_UserFieldCombining.csv  
+2022-12-15T14:18:45.6411913Z   inflating: KiCost-master/tests/expected_test/test_337_UserFieldCombining.xlsx.txt  
+2022-12-15T14:18:45.6415539Z   inflating: KiCost-master/tests/expected_test/test_423_csv_ok.csv  
+2022-12-15T14:18:45.6417678Z   inflating: KiCost-master/tests/expected_test/test_423_csv_ok.xlsx.txt  
+2022-12-15T14:18:45.6422143Z   inflating: KiCost-master/tests/expected_test/test_423_csv_wrong.csv  
+2022-12-15T14:18:45.6427392Z   inflating: KiCost-master/tests/expected_test/test_423_csv_wrong.xlsx.txt  
+2022-12-15T14:18:45.6430351Z   inflating: KiCost-master/tests/expected_test/test_423_xml_ok.csv  
+2022-12-15T14:18:45.6433968Z   inflating: KiCost-master/tests/expected_test/test_423_xml_ok.xlsx.txt  
+2022-12-15T14:18:45.6437990Z   inflating: KiCost-master/tests/expected_test/test_423_xml_wrong.csv  
+2022-12-15T14:18:45.6441624Z   inflating: KiCost-master/tests/expected_test/test_423_xml_wrong.xlsx.txt  
+2022-12-15T14:18:45.6445904Z   inflating: KiCost-master/tests/expected_test/tme_1.csv  
+2022-12-15T14:18:45.6447246Z   inflating: KiCost-master/tests/expected_test/tme_1.xlsx.txt  
+2022-12-15T14:18:45.6450735Z   inflating: KiCost-master/tests/expected_test/user_fields_1.csv  
+2022-12-15T14:18:45.6451704Z   inflating: KiCost-master/tests/expected_test/user_fields_1.xlsx.txt  
+2022-12-15T14:18:45.6457748Z   inflating: KiCost-master/tests/expected_test/variants_1.csv  
+2022-12-15T14:18:45.6460832Z   inflating: KiCost-master/tests/expected_test/variants_1.xlsx.txt  
+2022-12-15T14:18:45.6462798Z   inflating: KiCost-master/tests/expected_test/variants_1_default.csv  
+2022-12-15T14:18:45.6468649Z   inflating: KiCost-master/tests/expected_test/variants_1_default.xlsx.txt  
+2022-12-15T14:18:45.6470615Z   inflating: KiCost-master/tests/expected_test/variants_1_production.csv  
+2022-12-15T14:18:45.6474303Z   inflating: KiCost-master/tests/expected_test/variants_1_production.xlsx.txt  
+2022-12-15T14:18:45.6479685Z   inflating: KiCost-master/tests/expected_test/variants_1_test.csv  
+2022-12-15T14:18:45.6484556Z   inflating: KiCost-master/tests/expected_test/variants_1_test.xlsx.txt  
+2022-12-15T14:18:45.6486713Z   inflating: KiCost-master/tests/expected_test/variants_2.csv  
+2022-12-15T14:18:45.6492118Z   inflating: KiCost-master/tests/expected_test/variants_2.xlsx.txt  
+2022-12-15T14:18:45.6493466Z   inflating: KiCost-master/tests/expected_test/variants_2_variant1.csv  
+2022-12-15T14:18:45.6498486Z   inflating: KiCost-master/tests/expected_test/variants_2_variant1.xlsx.txt  
+2022-12-15T14:18:45.6501714Z   inflating: KiCost-master/tests/expected_test/variants_3.csv  
+2022-12-15T14:18:45.6502442Z   inflating: KiCost-master/tests/expected_test/variants_3.xlsx.txt  
+2022-12-15T14:18:45.6503066Z   inflating: KiCost-master/tests/expected_test/variants_3_variant1.csv  
+2022-12-15T14:18:45.6503726Z   inflating: KiCost-master/tests/expected_test/variants_3_variant1.xlsx.txt  
+2022-12-15T14:18:45.6504293Z   inflating: KiCost-master/tests/expected_test/wrong_pricing.csv  
+2022-12-15T14:18:45.6504855Z   inflating: KiCost-master/tests/expected_test/wrong_pricing.xlsx.txt  
+2022-12-15T14:18:45.6505374Z    creating: KiCost-master/tests/expected_test_small/
+2022-12-15T14:18:45.6505940Z   inflating: KiCost-master/tests/expected_test_small/Indium_X2.csv  
+2022-12-15T14:18:45.6506513Z   inflating: KiCost-master/tests/expected_test_small/NF6X_TestBoard.csv  
+2022-12-15T14:18:45.6507078Z   inflating: KiCost-master/tests/expected_test_small/StickIt-Hat.csv  
+2022-12-15T14:18:45.6507791Z   inflating: KiCost-master/tests/expected_test_small/multipart.csv  
+2022-12-15T14:18:45.6508407Z   inflating: KiCost-master/tests/expected_test_small/part_list_small.csv  
+2022-12-15T14:18:45.6508920Z   inflating: KiCost-master/tests/fitting_test.xml  
+2022-12-15T14:18:45.6509390Z   inflating: KiCost-master/tests/group_1.xml  
+2022-12-15T14:18:45.6509846Z   inflating: KiCost-master/tests/kc-test.xml  
+2022-12-15T14:18:45.6510398Z    creating: KiCost-master/tests/kitspace/
+2022-12-15T14:18:45.6510883Z   inflating: KiCost-master/tests/kitspace/mpn_0022012067.dat  
+2022-12-15T14:18:45.6511392Z   inflating: KiCost-master/tests/kitspace/mpn_0022232061.dat  
+2022-12-15T14:18:45.6511936Z  extracting: KiCost-master/tests/kitspace/mpn_0402CS-82N.dat  
+2022-12-15T14:18:45.6512467Z   inflating: KiCost-master/tests/kitspace/mpn_0603B104K500CT.dat  
+2022-12-15T14:18:45.6512999Z   inflating: KiCost-master/tests/kitspace/mpn_0603CS-33NX.dat  
+2022-12-15T14:18:45.6513520Z   inflating: KiCost-master/tests/kitspace/mpn_0603CS-8N2X.dat  
+2022-12-15T14:18:45.6514087Z   inflating: KiCost-master/tests/kitspace/mpn_0603N102J500CT.dat  
+2022-12-15T14:18:45.6514608Z   inflating: KiCost-master/tests/kitspace/mpn_08-50-0114.dat  
+2022-12-15T14:18:45.6515124Z   inflating: KiCost-master/tests/kitspace/mpn_08055C104KAT2A.dat  
+2022-12-15T14:18:45.6515669Z   inflating: KiCost-master/tests/kitspace/mpn_08055F104KAT2A.dat  
+2022-12-15T14:18:45.6516224Z   inflating: KiCost-master/tests/kitspace/mpn_09551667812741.dat  
+2022-12-15T14:18:45.6516739Z   inflating: KiCost-master/tests/kitspace/mpn_0ZCK0035FF2G.dat  
+2022-12-15T14:18:45.6517305Z  extracting: KiCost-master/tests/kitspace/mpn_10067847.dat  
+2022-12-15T14:18:45.6517835Z   inflating: KiCost-master/tests/kitspace/mpn_100X14W104MV4T.dat  
+2022-12-15T14:18:45.6518390Z  extracting: KiCost-master/tests/kitspace/mpn_10103594-0001LF.dat  
+2022-12-15T14:18:45.6519031Z   inflating: KiCost-master/tests/kitspace/mpn_1065.dat  
+2022-12-15T14:18:45.6519546Z   inflating: KiCost-master/tests/kitspace/mpn_1206L110THYR.dat  
+2022-12-15T14:18:45.6520064Z   inflating: KiCost-master/tests/kitspace/mpn_132322.dat  
+2022-12-15T14:18:45.6520593Z   inflating: KiCost-master/tests/kitspace/mpn_1729128.dat  
+2022-12-15T14:18:45.6521087Z   inflating: KiCost-master/tests/kitspace/mpn_1729131.dat  
+2022-12-15T14:18:45.6521598Z   inflating: KiCost-master/tests/kitspace/mpn_1N4007-TP.dat  
+2022-12-15T14:18:45.6522099Z   inflating: KiCost-master/tests/kitspace/mpn_1N5819.dat  
+2022-12-15T14:18:45.6522647Z   inflating: KiCost-master/tests/kitspace/mpn_20021121-00010C4LF.dat  
+2022-12-15T14:18:45.6523274Z   inflating: KiCost-master/tests/kitspace/mpn_20021321-00024T4LF.dat  
+2022-12-15T14:18:45.6523809Z  extracting: KiCost-master/tests/kitspace/mpn_2041126-1.dat  
+2022-12-15T14:18:45.6524450Z   inflating: KiCost-master/tests/kitspace/mpn_2051-09-SM-RPLF.dat  
+2022-12-15T14:18:45.6525031Z  extracting: KiCost-master/tests/kitspace/mpn_215570-8.dat  
+2022-12-15T14:18:45.6525554Z  extracting: KiCost-master/tests/kitspace/mpn_2278364.dat  
+2022-12-15T14:18:45.6526056Z  extracting: KiCost-master/tests/kitspace/mpn_2278377.dat  
+2022-12-15T14:18:45.6526599Z   inflating: KiCost-master/tests/kitspace/mpn_245046060600829+.dat  
+2022-12-15T14:18:45.6527117Z   inflating: KiCost-master/tests/kitspace/mpn_24AA128ISN.dat  
+2022-12-15T14:18:45.6527640Z  extracting: KiCost-master/tests/kitspace/mpn_2553-2x6G.dat  
+2022-12-15T14:18:45.6528171Z   inflating: KiCost-master/tests/kitspace/mpn_2N2222A PBFREE.dat  
+2022-12-15T14:18:45.6528724Z   inflating: KiCost-master/tests/kitspace/mpn_2N7002P,215.dat  
+2022-12-15T14:18:45.6529240Z   inflating: KiCost-master/tests/kitspace/mpn_30320-6002HB.dat  
+2022-12-15T14:18:45.6529774Z   inflating: KiCost-master/tests/kitspace/mpn_311-100FRCT-ND.dat  
+2022-12-15T14:18:45.6530303Z   inflating: KiCost-master/tests/kitspace/mpn_3220-10-0300-00.dat  
+2022-12-15T14:18:45.6530857Z   inflating: KiCost-master/tests/kitspace/mpn_322400B00000G.dat  
+2022-12-15T14:18:45.6531438Z   inflating: KiCost-master/tests/kitspace/mpn_3386C-1-103LF.dat  
+2022-12-15T14:18:45.6532057Z   inflating: KiCost-master/tests/kitspace/mpn_35RASMT2BHNTRX.dat  
+2022-12-15T14:18:45.6532582Z  extracting: KiCost-master/tests/kitspace/mpn_418217270902A.dat  
+2022-12-15T14:18:45.6533191Z  extracting: KiCost-master/tests/kitspace/mpn_431481.dat  
+2022-12-15T14:18:45.6533698Z  extracting: KiCost-master/tests/kitspace/mpn_431481031816.dat  
+2022-12-15T14:18:45.6534215Z  extracting: KiCost-master/tests/kitspace/mpn_490-2436-1-ND.dat  
+2022-12-15T14:18:45.6534728Z   inflating: KiCost-master/tests/kitspace/mpn_4N25S-TA1.dat  
+2022-12-15T14:18:45.6535293Z   inflating: KiCost-master/tests/kitspace/mpn_5-1814400-1.dat  
+2022-12-15T14:18:45.6535796Z   inflating: KiCost-master/tests/kitspace/mpn_500075-1517.dat  
+2022-12-15T14:18:45.6536294Z  extracting: KiCost-master/tests/kitspace/mpn_5010.dat  
+2022-12-15T14:18:45.6536795Z   inflating: KiCost-master/tests/kitspace/mpn_502352-0200.dat  
+2022-12-15T14:18:45.6537342Z   inflating: KiCost-master/tests/kitspace/mpn_53398-0371.dat  
+2022-12-15T14:18:45.6537852Z   inflating: KiCost-master/tests/kitspace/mpn_53398-0471.dat  
+2022-12-15T14:18:45.6538406Z   inflating: KiCost-master/tests/kitspace/mpn_53398-0671.dat  
+2022-12-15T14:18:45.6538941Z   inflating: KiCost-master/tests/kitspace/mpn_53398-0771.dat  
+2022-12-15T14:18:45.6539431Z   inflating: KiCost-master/tests/kitspace/mpn_53398-0871.dat  
+2022-12-15T14:18:45.6539933Z  extracting: KiCost-master/tests/kitspace/mpn_5MF 6-R.dat  
+2022-12-15T14:18:45.6684905Z   inflating: KiCost-master/tests/kitspace/mpn_61300311121.dat  
+2022-12-15T14:18:45.6685383Z   inflating: KiCost-master/tests/kitspace/mpn_693072010801.dat  
+2022-12-15T14:18:45.6685811Z  extracting: KiCost-master/tests/kitspace/mpn_695120004001.dat  
+2022-12-15T14:18:45.6686234Z  extracting: KiCost-master/tests/kitspace/mpn_696101000002.dat  
+2022-12-15T14:18:45.6686667Z   inflating: KiCost-master/tests/kitspace/mpn_73415-1471.dat  
+2022-12-15T14:18:45.6687092Z   inflating: KiCost-master/tests/kitspace/mpn_742C083392JP.dat  
+2022-12-15T14:18:45.6687524Z  extracting: KiCost-master/tests/kitspace/mpn_742c043472.dat  
+2022-12-15T14:18:45.6687950Z  extracting: KiCost-master/tests/kitspace/mpn_742c163472.dat  
+2022-12-15T14:18:45.6688373Z   inflating: KiCost-master/tests/kitspace/mpn_744383230082.dat  
+2022-12-15T14:18:45.6688807Z   inflating: KiCost-master/tests/kitspace/mpn_74438335047.dat  
+2022-12-15T14:18:45.6689232Z   inflating: KiCost-master/tests/kitspace/mpn_749010012A.dat  
+2022-12-15T14:18:45.6689679Z  extracting: KiCost-master/tests/kitspace/mpn_78-MSS2P2HM3_A_H.dat  
+2022-12-15T14:18:45.6690392Z   inflating: KiCost-master/tests/kitspace/mpn_870025574003.dat  
+2022-12-15T14:18:45.6690815Z   inflating: KiCost-master/tests/kitspace/mpn_870055775005.dat  
+2022-12-15T14:18:45.6691237Z  extracting: KiCost-master/tests/kitspace/mpn_9551667812741.dat  
+2022-12-15T14:18:45.6691683Z  extracting: KiCost-master/tests/kitspace/mpn_966210-2000-AR.dat  
+2022-12-15T14:18:45.6692136Z  extracting: KiCost-master/tests/kitspace/mpn_966240-2000-AR.dat  
+2022-12-15T14:18:45.6692597Z  extracting: KiCost-master/tests/kitspace/mpn_9774030151R.dat  
+2022-12-15T14:18:45.6693024Z  extracting: KiCost-master/tests/kitspace/mpn_9774030960R.dat  
+2022-12-15T14:18:45.6693495Z   inflating: KiCost-master/tests/kitspace/mpn_A759MW157M1JAAE048.dat  
+2022-12-15T14:18:45.6693985Z   inflating: KiCost-master/tests/kitspace/mpn_ABM10-166-12.000MHz-T3.dat  
+2022-12-15T14:18:45.6694481Z   inflating: KiCost-master/tests/kitspace/mpn_ABM8-16.000MHZ-7-1-U-T.dat  
+2022-12-15T14:18:45.6694957Z   inflating: KiCost-master/tests/kitspace/mpn_ABS06-32.768KHZ-1-T.dat  
+2022-12-15T14:18:45.6695426Z   inflating: KiCost-master/tests/kitspace/mpn_ABS06-32.768KHz-T.dat  
+2022-12-15T14:18:45.6695889Z   inflating: KiCost-master/tests/kitspace/mpn_ABS07-32.768KHZ-7-T.dat  
+2022-12-15T14:18:45.6696377Z   inflating: KiCost-master/tests/kitspace/mpn_ABS07-LR-32.768kHz-6-1-T.dat  
+2022-12-15T14:18:45.6696857Z  extracting: KiCost-master/tests/kitspace/mpn_ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.6697424Z  extracting: KiCost-master/tests/kitspace/mpn_ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.6697886Z  extracting: KiCost-master/tests/kitspace/mpn_ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.6698370Z   inflating: KiCost-master/tests/kitspace/mpn_ACM4520V-142-2P-T.dat  
+2022-12-15T14:18:45.6698828Z   inflating: KiCost-master/tests/kitspace/mpn_ADM3053BRWZ.dat  
+2022-12-15T14:18:45.6699291Z   inflating: KiCost-master/tests/kitspace/mpn_ADP2302ARDZ-3.3.dat  
+2022-12-15T14:18:45.6699758Z   inflating: KiCost-master/tests/kitspace/mpn_AP2204K-3.3TRG1.dat  
+2022-12-15T14:18:45.6700216Z   inflating: KiCost-master/tests/kitspace/mpn_AP3211KTR-G1.dat  
+2022-12-15T14:18:45.6700687Z   inflating: KiCost-master/tests/kitspace/mpn_APTD1608SECK_J3-PF.dat  
+2022-12-15T14:18:45.6701162Z  extracting: KiCost-master/tests/kitspace/mpn_APXW003A0X3-SRZ.dat  
+2022-12-15T14:18:45.6701614Z   inflating: KiCost-master/tests/kitspace/mpn_ASML-5822.dat  
+2022-12-15T14:18:45.6702048Z   inflating: KiCost-master/tests/kitspace/mpn_ATMEGA328P-AU.dat  
+2022-12-15T14:18:45.6702504Z   inflating: KiCost-master/tests/kitspace/mpn_ATMEGA8A-AU.dat  
+2022-12-15T14:18:45.6702958Z   inflating: KiCost-master/tests/kitspace/mpn_AZ1117EH-3.3TRG1.dat  
+2022-12-15T14:18:45.6703394Z   inflating: KiCost-master/tests/kitspace/mpn_B3U-1000P.dat  
+2022-12-15T14:18:45.6703852Z   inflating: KiCost-master/tests/kitspace/mpn_B4B-PH-K-S(LF)(SN).dat  
+2022-12-15T14:18:45.6704312Z   inflating: KiCost-master/tests/kitspace/mpn_B4B-PH-K-S.dat  
+2022-12-15T14:18:45.6704752Z   inflating: KiCost-master/tests/kitspace/mpn_B4B-XH-A.dat  
+2022-12-15T14:18:45.6705192Z   inflating: KiCost-master/tests/kitspace/mpn_B82462G4224M.dat  
+2022-12-15T14:18:45.6705616Z   inflating: KiCost-master/tests/kitspace/mpn_B8B-XH-A.dat  
+2022-12-15T14:18:45.6706049Z   inflating: KiCost-master/tests/kitspace/mpn_BAS40-05.dat  
+2022-12-15T14:18:45.6706468Z   inflating: KiCost-master/tests/kitspace/mpn_BC847BS.dat  
+2022-12-15T14:18:45.6706906Z  extracting: KiCost-master/tests/kitspace/mpn_BC856BDW1T.dat  
+2022-12-15T14:18:45.6707344Z   inflating: KiCost-master/tests/kitspace/mpn_BC857BS.dat  
+2022-12-15T14:18:45.6707794Z  extracting: KiCost-master/tests/kitspace/mpn_BLM15PD121SN.dat  
+2022-12-15T14:18:45.6708251Z   inflating: KiCost-master/tests/kitspace/mpn_BLM15PD121SN1D.dat  
+2022-12-15T14:18:45.6708708Z   inflating: KiCost-master/tests/kitspace/mpn_BLM15PX121SN1D.dat  
+2022-12-15T14:18:45.6709159Z   inflating: KiCost-master/tests/kitspace/mpn_BLM18EG221SN1D.dat  
+2022-12-15T14:18:45.6709628Z  extracting: KiCost-master/tests/kitspace/mpn_BLM18SG121TN.dat  
+2022-12-15T14:18:45.6710152Z   inflating: KiCost-master/tests/kitspace/mpn_BM10B-SRSS-TB.dat  
+2022-12-15T14:18:45.6710603Z   inflating: KiCost-master/tests/kitspace/mpn_BME280.dat  
+2022-12-15T14:18:45.6711026Z   inflating: KiCost-master/tests/kitspace/mpn_BMI160.dat  
+2022-12-15T14:18:45.6711439Z   inflating: KiCost-master/tests/kitspace/mpn_BMM150.dat  
+2022-12-15T14:18:45.6711849Z   inflating: KiCost-master/tests/kitspace/mpn_BRT-L.dat  
+2022-12-15T14:18:45.6712283Z   inflating: KiCost-master/tests/kitspace/mpn_BSS138BK.dat  
+2022-12-15T14:18:45.6712715Z   inflating: KiCost-master/tests/kitspace/mpn_BSS84.dat  
+2022-12-15T14:18:45.6713166Z   inflating: KiCost-master/tests/kitspace/mpn_BT136S-600D,118.dat  
+2022-12-15T14:18:45.6713706Z   inflating: KiCost-master/tests/kitspace/mpn_C0402C270J5GACTU.dat  
+2022-12-15T14:18:45.6714167Z   inflating: KiCost-master/tests/kitspace/mpn_C0402C333K4RACTU.dat  
+2022-12-15T14:18:45.6714627Z   inflating: KiCost-master/tests/kitspace/mpn_C0603C103K5RACTU.dat  
+2022-12-15T14:18:45.6715103Z   inflating: KiCost-master/tests/kitspace/mpn_C0603C330J5GACTU.dat  
+2022-12-15T14:18:45.6715612Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C103K4RACTU.dat  
+2022-12-15T14:18:45.6716080Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C104K5RAC7210.dat  
+2022-12-15T14:18:45.6716542Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C104K5RACTU.dat  
+2022-12-15T14:18:45.6716996Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C105K5RACTU.dat  
+2022-12-15T14:18:45.6717532Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C225K4RACTU.dat  
+2022-12-15T14:18:45.6717987Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C472J5RACTU.dat  
+2022-12-15T14:18:45.6718438Z   inflating: KiCost-master/tests/kitspace/mpn_C0805C472K5RACTU.dat  
+2022-12-15T14:18:45.6719160Z   inflating: KiCost-master/tests/kitspace/mpn_C1005C0G1H040B050BA.dat  
+2022-12-15T14:18:45.6719648Z  extracting: KiCost-master/tests/kitspace/mpn_C1005C0G1H060D050BA.dat  
+2022-12-15T14:18:45.6720121Z   inflating: KiCost-master/tests/kitspace/mpn_C1005X7R1E104K050BB.dat  
+2022-12-15T14:18:45.6720583Z   inflating: KiCost-master/tests/kitspace/mpn_C1206C104K5RACTU.dat  
+2022-12-15T14:18:45.6721044Z   inflating: KiCost-master/tests/kitspace/mpn_CAT24C32WI-GT3.dat  
+2022-12-15T14:18:45.6721517Z  extracting: KiCost-master/tests/kitspace/mpn_CAT24C64WI.dat  
+2022-12-15T14:18:45.6721978Z   inflating: KiCost-master/tests/kitspace/mpn_CC0201KRX5R7BB103.dat  
+2022-12-15T14:18:45.6722452Z   inflating: KiCost-master/tests/kitspace/mpn_CC0402JRNPO9BN220.dat  
+2022-12-15T14:18:45.6722908Z   inflating: KiCost-master/tests/kitspace/mpn_CC0805KRX7R9BB103.dat  
+2022-12-15T14:18:45.6723360Z  extracting: KiCost-master/tests/kitspace/mpn_CL-SB-22A-01T.dat  
+2022-12-15T14:18:45.6723818Z   inflating: KiCost-master/tests/kitspace/mpn_CL10A106MQ8NNNC.dat  
+2022-12-15T14:18:45.6724283Z   inflating: KiCost-master/tests/kitspace/mpn_CL10B104KA8NNNC.dat  
+2022-12-15T14:18:45.6724777Z   inflating: KiCost-master/tests/kitspace/mpn_CL10C150JB8NNNC.dat  
+2022-12-15T14:18:45.6725246Z   inflating: KiCost-master/tests/kitspace/mpn_CL32B106KBJNNWE.dat  
+2022-12-15T14:18:45.6725699Z   inflating: KiCost-master/tests/kitspace/mpn_CP2108-B02-GM.dat  
+2022-12-15T14:18:45.6726160Z   inflating: KiCost-master/tests/kitspace/mpn_CR0603-JW-101ELF.dat  
+2022-12-15T14:18:45.6726624Z   inflating: KiCost-master/tests/kitspace/mpn_CR0603-JW-104ELF.dat  
+2022-12-15T14:18:45.6727104Z   inflating: KiCost-master/tests/kitspace/mpn_CR0603-J_-000ELF.dat  
+2022-12-15T14:18:45.6727553Z  extracting: KiCost-master/tests/kitspace/mpn_CRCW02011K00FKED.dat  
+2022-12-15T14:18:45.6727999Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW04020000Z0ED.dat  
+2022-12-15T14:18:45.6728453Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW040218R0FKED.dat  
+2022-12-15T14:18:45.6728905Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW04021M00FKED.dat  
+2022-12-15T14:18:45.6729359Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW0402220RJNED.dat  
+2022-12-15T14:18:45.6729912Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW06030000Z0EA.dat  
+2022-12-15T14:18:45.6730665Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW06033K30FKEA.dat  
+2022-12-15T14:18:45.6731135Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW08050000Z0EA.dat  
+2022-12-15T14:18:45.6731600Z  extracting: KiCost-master/tests/kitspace/mpn_CRCW08050000Z0EAHP.dat  
+2022-12-15T14:18:45.6732061Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW08051K00F.dat  
+2022-12-15T14:18:45.6732525Z   inflating: KiCost-master/tests/kitspace/mpn_CRCW080556K0FKEA.dat  
+2022-12-15T14:18:45.6733003Z   inflating: KiCost-master/tests/kitspace/mpn_CSTCE8M00G55Z-R0.dat  
+2022-12-15T14:18:45.6733463Z  extracting: KiCost-master/tests/kitspace/mpn_CY62167EV30.dat  
+2022-12-15T14:18:45.6735869Z   inflating: KiCost-master/tests/kitspace/mpn_D3Z12BF-7.dat  
+2022-12-15T14:18:45.6736320Z   inflating: KiCost-master/tests/kitspace/mpn_DB2X41500L.dat  
+2022-12-15T14:18:45.6736756Z   inflating: KiCost-master/tests/kitspace/mpn_DF06S-T.dat  
+2022-12-15T14:18:45.6737230Z   inflating: KiCost-master/tests/kitspace/mpn_DF12(5.0)-30DP-0.5V(86).dat  
+2022-12-15T14:18:45.6737700Z  extracting: KiCost-master/tests/kitspace/mpn_DLP11SN121SL2.dat  
+2022-12-15T14:18:45.6738149Z  extracting: KiCost-master/tests/kitspace/mpn_DMG2305UX.dat  
+2022-12-15T14:18:45.6738591Z   inflating: KiCost-master/tests/kitspace/mpn_DMP3099L-7.dat  
+2022-12-15T14:18:45.6739030Z  extracting: KiCost-master/tests/kitspace/mpn_DRV5033FA.dat  
+2022-12-15T14:18:45.6739735Z   inflating: KiCost-master/tests/kitspace/mpn_DS1374U-3+.dat  
+2022-12-15T14:18:45.6740187Z   inflating: KiCost-master/tests/kitspace/mpn_ECMF04-4HSM10.dat  
+2022-12-15T14:18:45.6740648Z   inflating: KiCost-master/tests/kitspace/mpn_EEE-1EA331UP.dat  
+2022-12-15T14:18:45.6741115Z   inflating: KiCost-master/tests/kitspace/mpn_EEE-1HA101UP.dat  
+2022-12-15T14:18:45.6741560Z  extracting: KiCost-master/tests/kitspace/mpn_EMK212BJ.dat  
+2022-12-15T14:18:45.6742013Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF1002X.dat  
+2022-12-15T14:18:45.6742470Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF1103X.dat  
+2022-12-15T14:18:45.6742916Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF2002X.dat  
+2022-12-15T14:18:45.6743363Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF22R0X.dat  
+2022-12-15T14:18:45.6743807Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF4701X.dat  
+2022-12-15T14:18:45.6744245Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-2RKF6803X.dat  
+2022-12-15T14:18:45.6744693Z  extracting: KiCost-master/tests/kitspace/mpn_ERJ-6ENF10K0V.dat  
+2022-12-15T14:18:45.6745149Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ-P6WJ100V.dat  
+2022-12-15T14:18:45.6745597Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF1002V.dat  
+2022-12-15T14:18:45.6745833Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF1003V.dat  
+2022-12-15T14:18:45.6746069Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF1004V.dat  
+2022-12-15T14:18:45.6746301Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF1803V.dat  
+2022-12-15T14:18:45.6746552Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF2003V.dat  
+2022-12-15T14:18:45.6746783Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ3EKF2493V.dat  
+2022-12-15T14:18:45.6747020Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF1152V.dat  
+2022-12-15T14:18:45.6747255Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF1963V.dat  
+2022-12-15T14:18:45.6747487Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF2002V.dat  
+2022-12-15T14:18:45.6747721Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF2802V.dat  
+2022-12-15T14:18:45.6747949Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF4120V.dat  
+2022-12-15T14:18:45.6748179Z   inflating: KiCost-master/tests/kitspace/mpn_ERJ6ENF5603V.dat  
+2022-12-15T14:18:45.6748422Z   inflating: KiCost-master/tests/kitspace/mpn_ERJM1WSF10MU.dat  
+2022-12-15T14:18:45.6748662Z   inflating: KiCost-master/tests/kitspace/mpn_ERJP03F47R0V.dat  
+2022-12-15T14:18:45.6748894Z   inflating: KiCost-master/tests/kitspace/mpn_ERJU06F1502V.dat  
+2022-12-15T14:18:45.6749189Z   inflating: KiCost-master/tests/kitspace/mpn_ERJU06F2003V.dat  
+2022-12-15T14:18:45.6749427Z   inflating: KiCost-master/tests/kitspace/mpn_ERJU06F2702V.dat  
+2022-12-15T14:18:45.6749671Z   inflating: KiCost-master/tests/kitspace/mpn_ESD5Z5.0T1G.dat  
+2022-12-15T14:18:45.6749923Z   inflating: KiCost-master/tests/kitspace/mpn_F380J476MSAAH1.dat  
+2022-12-15T14:18:45.6750159Z   inflating: KiCost-master/tests/kitspace/mpn_FDC606P.dat  
+2022-12-15T14:18:45.6750417Z   inflating: KiCost-master/tests/kitspace/mpn_FH19C-4S-0.5SH(05).dat  
+2022-12-15T14:18:45.6750686Z   inflating: KiCost-master/tests/kitspace/mpn_FLE-102-01-G-DV.dat  
+2022-12-15T14:18:45.6750920Z   inflating: KiCost-master/tests/kitspace/mpn_FLLD261.dat  
+2022-12-15T14:18:45.6751166Z  extracting: KiCost-master/tests/kitspace/mpn_FQ7050B-8.000.dat  
+2022-12-15T14:18:45.6751423Z   inflating: KiCost-master/tests/kitspace/mpn_FTSH-110-01-L-DV.dat  
+2022-12-15T14:18:45.6751668Z   inflating: KiCost-master/tests/kitspace/mpn_G5LE-14-DC5.dat  
+2022-12-15T14:18:45.6751930Z   inflating: KiCost-master/tests/kitspace/mpn_GA343DR7GD472KW01L.dat  
+2022-12-15T14:18:45.6752189Z   inflating: KiCost-master/tests/kitspace/mpn_GCM1555C1H151JA16D.dat  
+2022-12-15T14:18:45.6752438Z   inflating: KiCost-master/tests/kitspace/mpn_GCM1885C1H151JA16D.dat  
+2022-12-15T14:18:45.6752691Z   inflating: KiCost-master/tests/kitspace/mpn_GJM1555C1H3R9CB01D.dat  
+2022-12-15T14:18:45.6752997Z   inflating: KiCost-master/tests/kitspace/mpn_GJM1555C1H4R7WB01D.dat  
+2022-12-15T14:18:45.6753245Z   inflating: KiCost-master/tests/kitspace/mpn_GQM1875C2E150JB12D.dat  
+2022-12-15T14:18:45.6753490Z   inflating: KiCost-master/tests/kitspace/mpn_GQM1875C2E3R9DB12D.dat  
+2022-12-15T14:18:45.6753737Z   inflating: KiCost-master/tests/kitspace/mpn_GRJ21BC72A105KE11L.dat  
+2022-12-15T14:18:45.6753984Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1E100JA01D.dat  
+2022-12-15T14:18:45.6754237Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H101JA01D.dat  
+2022-12-15T14:18:45.6754494Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H102JA01#.dat  
+2022-12-15T14:18:45.6754741Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H102JA01D.dat  
+2022-12-15T14:18:45.6755003Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H120JA01D.dat  
+2022-12-15T14:18:45.6755250Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H220JA01D.dat  
+2022-12-15T14:18:45.6756400Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H221JA01D.dat  
+2022-12-15T14:18:45.6756687Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H2R2CA01D.dat  
+2022-12-15T14:18:45.6756936Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H390JA01D.dat  
+2022-12-15T14:18:45.6757190Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H3R0CA01D.dat  
+2022-12-15T14:18:45.6757443Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H560JA01D.dat  
+2022-12-15T14:18:45.6757690Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H5R1CA01D.dat  
+2022-12-15T14:18:45.6757943Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H6R2CA01D.dat  
+2022-12-15T14:18:45.6758193Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1555C1H8R2CA01D.dat  
+2022-12-15T14:18:45.6758442Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1557U1A152JA01D.dat  
+2022-12-15T14:18:45.6758694Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R61A224KE19D.dat  
+2022-12-15T14:18:45.6759037Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R61C105KA12D.dat  
+2022-12-15T14:18:45.6759293Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R70J105KA12D.dat  
+2022-12-15T14:18:45.6759541Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R71C104KA88J.dat  
+2022-12-15T14:18:45.6759789Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R71E103KA01D.dat  
+2022-12-15T14:18:45.6760037Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R71E472KA01D.dat  
+2022-12-15T14:18:45.6760303Z   inflating: KiCost-master/tests/kitspace/mpn_GRM155R71E473KA88D.dat  
+2022-12-15T14:18:45.6760643Z   inflating: KiCost-master/tests/kitspace/mpn_GRM1885C1H221JA01D.dat  
+2022-12-15T14:18:45.6760903Z   inflating: KiCost-master/tests/kitspace/mpn_GRM188R60J106ME47D.dat  
+2022-12-15T14:18:45.6761152Z   inflating: KiCost-master/tests/kitspace/mpn_GRM188R61A226ME15D.dat  
+2022-12-15T14:18:45.6761399Z   inflating: KiCost-master/tests/kitspace/mpn_GRM188R61H225KE11D.dat  
+2022-12-15T14:18:45.6761647Z   inflating: KiCost-master/tests/kitspace/mpn_GRM21BR71A106KE51L.dat  
+2022-12-15T14:18:45.6761898Z   inflating: KiCost-master/tests/kitspace/mpn_GRM21BR71H105KA12L.dat  
+2022-12-15T14:18:45.6762151Z   inflating: KiCost-master/tests/kitspace/mpn_GRPB062MWCN-RC.dat  
+2022-12-15T14:18:45.6762394Z   inflating: KiCost-master/tests/kitspace/mpn_HLMP-K150.dat  
+2022-12-15T14:18:45.6762625Z  extracting: KiCost-master/tests/kitspace/mpn_HTU21D.dat  
+2022-12-15T14:18:45.6762864Z   inflating: KiCost-master/tests/kitspace/mpn_IRLML6344.dat  
+2022-12-15T14:18:45.6763107Z   inflating: KiCost-master/tests/kitspace/mpn_ISO1050DUBR.dat  
+2022-12-15T14:18:45.6763363Z   inflating: KiCost-master/tests/kitspace/mpn_JMK107BJ225KA-T.dat  
+2022-12-15T14:18:45.6763604Z   inflating: KiCost-master/tests/kitspace/mpn_KMR221G LFS.dat  
+2022-12-15T14:18:45.6763842Z   inflating: KiCost-master/tests/kitspace/mpn_KP-1608SGC.dat  
+2022-12-15T14:18:45.6764080Z   inflating: KiCost-master/tests/kitspace/mpn_KSL0V311LFT.dat  
+2022-12-15T14:18:45.6764311Z   inflating: KiCost-master/tests/kitspace/mpn_LA 55-P.dat  
+2022-12-15T14:18:45.6764630Z   inflating: KiCost-master/tests/kitspace/mpn_LAN9514-JZX.dat  
+2022-12-15T14:18:45.6764862Z   inflating: KiCost-master/tests/kitspace/mpn_LC03-3.3BTG.dat  
+2022-12-15T14:18:45.6765110Z   inflating: KiCost-master/tests/kitspace/mpn_LGQ396-PS-35.dat  
+2022-12-15T14:18:45.6765355Z   inflating: KiCost-master/tests/kitspace/mpn_LM2611BMF_NOPB.dat  
+2022-12-15T14:18:45.6765583Z  extracting: KiCost-master/tests/kitspace/mpn_LM4889.dat  
+2022-12-15T14:18:45.6765834Z   inflating: KiCost-master/tests/kitspace/mpn_LMK105BJ104KV-F.dat  
+2022-12-15T14:18:45.6766084Z   inflating: KiCost-master/tests/kitspace/mpn_LMK105BJ105KV-F.dat  
+2022-12-15T14:18:45.6766322Z  extracting: KiCost-master/tests/kitspace/mpn_LMK212BJ.dat  
+2022-12-15T14:18:45.6766565Z   inflating: KiCost-master/tests/kitspace/mpn_LMK212BJ475KD-T.dat  
+2022-12-15T14:18:45.6766803Z   inflating: KiCost-master/tests/kitspace/mpn_LMV321IDCKR.dat  
+2022-12-15T14:18:45.6767060Z   inflating: KiCost-master/tests/kitspace/mpn_LP3982IMM-3.3_NOPB.dat  
+2022-12-15T14:18:45.6767313Z   inflating: KiCost-master/tests/kitspace/mpn_LPC1549JBD48QL.dat  
+2022-12-15T14:18:45.6767557Z   inflating: KiCost-master/tests/kitspace/mpn_LPC1549JBD64.dat  
+2022-12-15T14:18:45.6767804Z   inflating: KiCost-master/tests/kitspace/mpn_LPS4018-103MRB.dat  
+2022-12-15T14:18:45.6768044Z   inflating: KiCost-master/tests/kitspace/mpn_LPS4018-153MRB.dat  
+2022-12-15T14:18:45.6768289Z   inflating: KiCost-master/tests/kitspace/mpn_LPS4018-473MRB.dat  
+2022-12-15T14:18:45.6768539Z  extracting: KiCost-master/tests/kitspace/mpn_LQW15AN12NJ00.dat  
+2022-12-15T14:18:45.6768801Z   inflating: KiCost-master/tests/kitspace/mpn_LQW15AN15NJ00D.dat  
+2022-12-15T14:18:45.6769046Z   inflating: KiCost-master/tests/kitspace/mpn_LQW15AN22NJ00B.dat  
+2022-12-15T14:18:45.6769284Z   inflating: KiCost-master/tests/kitspace/mpn_LQW15AN27NJ00D.dat  
+2022-12-15T14:18:45.6769519Z   inflating: KiCost-master/tests/kitspace/mpn_LQW15AN43NJ00D.dat  
+2022-12-15T14:18:45.6769758Z   inflating: KiCost-master/tests/kitspace/mpn_LQW15AN56NJ00D.dat  
+2022-12-15T14:18:45.6770007Z  extracting: KiCost-master/tests/kitspace/mpn_LTC3807EFE#PBF.dat  
+2022-12-15T14:18:45.6770243Z   inflating: KiCost-master/tests/kitspace/mpn_LTV-846S.dat  
+2022-12-15T14:18:45.6770475Z   inflating: KiCost-master/tests/kitspace/mpn_M20-9991645.dat  
+2022-12-15T14:18:45.6770718Z   inflating: KiCost-master/tests/kitspace/mpn_MAX17501GATB.dat  
+2022-12-15T14:18:45.6770969Z   inflating: KiCost-master/tests/kitspace/mpn_MAX6034BEXR25-T.dat  
+2022-12-15T14:18:45.6771258Z   inflating: KiCost-master/tests/kitspace/mpn_MBR0580S1-7.dat  
+2022-12-15T14:18:45.6771503Z   inflating: KiCost-master/tests/kitspace/mpn_MBRS1100T3G.dat  
+2022-12-15T14:18:45.6771755Z   inflating: KiCost-master/tests/kitspace/mpn_MC1206B102K202CT.dat  
+2022-12-15T14:18:45.6772005Z   inflating: KiCost-master/tests/kitspace/mpn_MCP3221A5T-E_OT.dat  
+2022-12-15T14:18:45.6772246Z   inflating: KiCost-master/tests/kitspace/mpn_MCP4361-503E_ST.dat  
+2022-12-15T14:18:45.6772486Z   inflating: KiCost-master/tests/kitspace/mpn_MCP4802-E_MS.dat  
+2022-12-15T14:18:45.6782883Z   inflating: KiCost-master/tests/kitspace/mpn_MCP4822-E_SN.dat  
+2022-12-15T14:18:45.6783353Z   inflating: KiCost-master/tests/kitspace/mpn_MCP98243-BE_ST.dat  
+2022-12-15T14:18:45.6783821Z   inflating: KiCost-master/tests/kitspace/mpn_MCVKZ6R3M101EA1L.dat  
+2022-12-15T14:18:45.6784297Z   inflating: KiCost-master/tests/kitspace/mpn_MIC5205-5.0YM5TR.dat  
+2022-12-15T14:18:45.6784767Z  extracting: KiCost-master/tests/kitspace/mpn_MICRF113YM6TRRHB.dat  
+2022-12-15T14:18:45.6785901Z   inflating: KiCost-master/tests/kitspace/mpn_MK23-66-C-2.dat  
+2022-12-15T14:18:45.6786360Z   inflating: KiCost-master/tests/kitspace/mpn_MLZ2012N220LT000.dat  
+2022-12-15T14:18:45.6786823Z   inflating: KiCost-master/tests/kitspace/mpn_MOC3021S-TA1.dat  
+2022-12-15T14:18:45.6787271Z   inflating: KiCost-master/tests/kitspace/mpn_MPL3115A2.dat  
+2022-12-15T14:18:45.6787713Z  extracting: KiCost-master/tests/kitspace/mpn_MR256A08B.dat  
+2022-12-15T14:18:45.6788300Z  extracting: KiCost-master/tests/kitspace/mpn_MS5637.dat  
+2022-12-15T14:18:45.6788743Z   inflating: KiCost-master/tests/kitspace/mpn_MS621FE-FL11E.dat  
+2022-12-15T14:18:45.6789189Z   inflating: KiCost-master/tests/kitspace/mpn_MTM232270LBF.dat  
+2022-12-15T14:18:45.6789632Z   inflating: KiCost-master/tests/kitspace/mpn_NC7SZ74K8X.dat  
+2022-12-15T14:18:45.6790078Z   inflating: KiCost-master/tests/kitspace/mpn_NCP1117ST33T3G.dat  
+2022-12-15T14:18:45.6790539Z   inflating: KiCost-master/tests/kitspace/mpn_NFM18PC225B0J3D.dat  
+2022-12-15T14:18:45.6790997Z  extracting: KiCost-master/tests/kitspace/mpn_NFM18PS105.dat  
+2022-12-15T14:18:45.6791450Z   inflating: KiCost-master/tests/kitspace/mpn_NFM18PS474R0J3.dat  
+2022-12-15T14:18:45.6791911Z  extracting: KiCost-master/tests/kitspace/mpn_NFM21PS106B0J3.dat  
+2022-12-15T14:18:45.6792608Z   inflating: KiCost-master/tests/kitspace/mpn_NHD-0216K1Z-NSW-BBW-L.dat  
+2022-12-15T14:18:45.6793059Z   inflating: KiCost-master/tests/kitspace/mpn_NI.dat  
+2022-12-15T14:18:45.6793484Z   inflating: KiCost-master/tests/kitspace/mpn_NP2X.dat  
+2022-12-15T14:18:45.6793939Z  extracting: KiCost-master/tests/kitspace/mpn_NVTFS5116PL.dat  
+2022-12-15T14:18:45.6794428Z   inflating: KiCost-master/tests/kitspace/mpn_NX3225SA-12.000M-STD-CSR-1.dat  
+2022-12-15T14:18:45.6802475Z   inflating: KiCost-master/tests/kitspace/mpn_OPA170AIDBVT.dat  
+2022-12-15T14:18:45.6804153Z   inflating: KiCost-master/tests/kitspace/mpn_OPA2347EA_250.dat  
+2022-12-15T14:18:45.6806083Z   inflating: KiCost-master/tests/kitspace/mpn_PCF8523TS_1.dat  
+2022-12-15T14:18:45.6806699Z   inflating: KiCost-master/tests/kitspace/mpn_PCF85263ATT1_AJ.dat  
+2022-12-15T14:18:45.6808306Z   inflating: KiCost-master/tests/kitspace/mpn_PEC11R-4220F-S0024.dat  
+2022-12-15T14:18:45.6808938Z   inflating: KiCost-master/tests/kitspace/mpn_PJ-002A.dat  
+2022-12-15T14:18:45.6809405Z   inflating: KiCost-master/tests/kitspace/mpn_PKM13EPYH4000-A0.dat  
+2022-12-15T14:18:45.6809880Z   inflating: KiCost-master/tests/kitspace/mpn_PKMCS0909E4000-R1.dat  
+2022-12-15T14:18:45.6812581Z   inflating: KiCost-master/tests/kitspace/mpn_PMEG2005EB.dat  
+2022-12-15T14:18:45.6813044Z   inflating: KiCost-master/tests/kitspace/mpn_PSSI2021SAY,115.dat  
+2022-12-15T14:18:45.6817877Z   inflating: KiCost-master/tests/kitspace/mpn_PTVS43VS1UR.dat  
+2022-12-15T14:18:45.6818368Z  extracting: KiCost-master/tests/kitspace/mpn_Q45.dat  
+2022-12-15T14:18:45.6818822Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402FR-07100KL.dat  
+2022-12-15T14:18:45.6821652Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402FR-0710KL.dat  
+2022-12-15T14:18:45.6822399Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402FR-071ML.dat  
+2022-12-15T14:18:45.6822850Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402FR-071RL.dat  
+2022-12-15T14:18:45.6823311Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402FR-07330RL.dat  
+2022-12-15T14:18:45.6823759Z   inflating: KiCost-master/tests/kitspace/mpn_RC0402JR-070RL.dat  
+2022-12-15T14:18:45.6824209Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-07100RL.dat  
+2022-12-15T14:18:45.6825992Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-0710KL.dat  
+2022-12-15T14:18:45.6826477Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-0710RL.dat  
+2022-12-15T14:18:45.6826936Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-0715K0L.dat  
+2022-12-15T14:18:45.6827388Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-071KL.dat  
+2022-12-15T14:18:45.6827850Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-071M8L.dat  
+2022-12-15T14:18:45.6828313Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-0743K2L.dat  
+2022-12-15T14:18:45.6828769Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603FR-0747KL.dat  
+2022-12-15T14:18:45.6829210Z   inflating: KiCost-master/tests/kitspace/mpn_RC0603JR-0710KL.dat  
+2022-12-15T14:18:45.6829658Z   inflating: KiCost-master/tests/kitspace/mpn_RC0805JR-0710KL.dat  
+2022-12-15T14:18:45.6830102Z   inflating: KiCost-master/tests/kitspace/mpn_RC0805JR-071KL.dat  
+2022-12-15T14:18:45.6832094Z   inflating: KiCost-master/tests/kitspace/mpn_RC0805JR-0739KL.dat  
+2022-12-15T14:18:45.6832569Z   inflating: KiCost-master/tests/kitspace/mpn_RC1005F330CS.dat  
+2022-12-15T14:18:45.6833013Z   inflating: KiCost-master/tests/kitspace/mpn_RC1005J000CS.dat  
+2022-12-15T14:18:45.6833447Z   inflating: KiCost-master/tests/kitspace/mpn_RFLA1022.dat  
+2022-12-15T14:18:45.6833901Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0603FT22R0.dat  
+2022-12-15T14:18:45.6834353Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT100K.dat  
+2022-12-15T14:18:45.6836042Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT10K0.dat  
+2022-12-15T14:18:45.6836677Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT10R0.dat  
+2022-12-15T14:18:45.6837148Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT15K0.dat  
+2022-12-15T14:18:45.6837597Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT1K00.dat  
+2022-12-15T14:18:45.6838044Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT1M00.dat  
+2022-12-15T14:18:45.6839546Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT330K.dat  
+2022-12-15T14:18:45.6840234Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT3K30.dat  
+2022-12-15T14:18:45.6843081Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT47K0.dat  
+2022-12-15T14:18:45.6843581Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805FT4K70.dat  
+2022-12-15T14:18:45.6844024Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805JT1K50.dat  
+2022-12-15T14:18:45.6844470Z   inflating: KiCost-master/tests/kitspace/mpn_RMCF0805JT330R.dat  
+2022-12-15T14:18:45.6844925Z   inflating: KiCost-master/tests/kitspace/mpn_RS-282G05A3-SM RT.dat  
+2022-12-15T14:18:45.6846539Z   inflating: KiCost-master/tests/kitspace/mpn_RSB36VTE-17.dat  
+2022-12-15T14:18:45.6847138Z   inflating: KiCost-master/tests/kitspace/mpn_RT3FC-B.dat  
+2022-12-15T14:18:45.6847580Z   inflating: KiCost-master/tests/kitspace/mpn_RT3MPR.dat  
+2022-12-15T14:18:45.6848047Z   inflating: KiCost-master/tests/kitspace/mpn_S2B-PH-SM4-TB(LF)(SN).dat  
+2022-12-15T14:18:45.6848523Z  extracting: KiCost-master/tests/kitspace/mpn_S3A-361413.dat  
+2022-12-15T14:18:45.6848968Z   inflating: KiCost-master/tests/kitspace/mpn_SDE0805A-470K.dat  
+2022-12-15T14:18:45.6850489Z   inflating: KiCost-master/tests/kitspace/mpn_SHT21.dat  
+2022-12-15T14:18:45.6851111Z  extracting: KiCost-master/tests/kitspace/mpn_SHUNT1AQ5.dat  
+2022-12-15T14:18:45.6851567Z  extracting: KiCost-master/tests/kitspace/mpn_SHUNT2AW3.dat  
+2022-12-15T14:18:45.6852180Z   inflating: KiCost-master/tests/kitspace/mpn_SI2302CDS-T1-E3.dat  
+2022-12-15T14:18:45.6852654Z   inflating: KiCost-master/tests/kitspace/mpn_SI7850DP-T1-E3.dat  
+2022-12-15T14:18:45.6854396Z   inflating: KiCost-master/tests/kitspace/mpn_SKHHLQA010.dat  
+2022-12-15T14:18:45.6854995Z  extracting: KiCost-master/tests/kitspace/mpn_SKY13372.dat  
+2022-12-15T14:18:45.6855471Z   inflating: KiCost-master/tests/kitspace/mpn_SM03B-SRSS-TB(LF)(SN).dat  
+2022-12-15T14:18:45.6857053Z   inflating: KiCost-master/tests/kitspace/mpn_SM04B-GHS-TB.dat  
+2022-12-15T14:18:45.6857669Z   inflating: KiCost-master/tests/kitspace/mpn_SMAJ18A-TR.dat  
+2022-12-15T14:18:45.6858104Z   inflating: KiCost-master/tests/kitspace/mpn_SMAJ26CA.dat  
+2022-12-15T14:18:45.6859704Z   inflating: KiCost-master/tests/kitspace/mpn_SMBJ24A.dat  
+2022-12-15T14:18:45.6864773Z   inflating: KiCost-master/tests/kitspace/mpn_SMBJ24CA.dat  
+2022-12-15T14:18:45.6865389Z   inflating: KiCost-master/tests/kitspace/mpn_SMDA15CDR2G.dat  
+2022-12-15T14:18:45.6865857Z   inflating: KiCost-master/tests/kitspace/mpn_SML-D12U1WT86.dat  
+2022-12-15T14:18:45.6866325Z  extracting: KiCost-master/tests/kitspace/mpn_SML-LX0603SRW-TR.dat  
+2022-12-15T14:18:45.6866795Z  extracting: KiCost-master/tests/kitspace/mpn_SN65HVD78DRB.dat  
+2022-12-15T14:18:45.6867249Z   inflating: KiCost-master/tests/kitspace/mpn_SR05-02CTG.dat  
+2022-12-15T14:18:45.6867688Z   inflating: KiCost-master/tests/kitspace/mpn_SRR1260-331K.dat  
+2022-12-15T14:18:45.6869282Z   inflating: KiCost-master/tests/kitspace/mpn_SSM3J332R,LF.dat  
+2022-12-15T14:18:45.6870091Z   inflating: KiCost-master/tests/kitspace/mpn_STM32F072CBT6.dat  
+2022-12-15T14:18:45.6870553Z   inflating: KiCost-master/tests/kitspace/mpn_STM32F205ZGT6.dat  
+2022-12-15T14:18:45.6870995Z   inflating: KiCost-master/tests/kitspace/mpn_TC7WH74FU.dat  
+2022-12-15T14:18:45.6871436Z   inflating: KiCost-master/tests/kitspace/mpn_TCA9555RGER.dat  
+2022-12-15T14:18:45.6871896Z   inflating: KiCost-master/tests/kitspace/mpn_TCJB156M025R0100.dat  
+2022-12-15T14:18:45.6873665Z  extracting: KiCost-master/tests/kitspace/mpn_TJA1051TK.dat  
+2022-12-15T14:18:45.6874142Z  extracting: KiCost-master/tests/kitspace/mpn_TJA1051TK_3.dat  
+2022-12-15T14:18:45.6874594Z   inflating: KiCost-master/tests/kitspace/mpn_TL2575-05IKTTR.dat  
+2022-12-15T14:18:45.6875052Z   inflating: KiCost-master/tests/kitspace/mpn_TLV71333PDBVR.dat  
+2022-12-15T14:18:45.6875511Z   inflating: KiCost-master/tests/kitspace/mpn_TMK107BJ104KA-T.dat  
+2022-12-15T14:18:45.6877227Z  extracting: KiCost-master/tests/kitspace/mpn_TPD4S009DCKR.dat  
+2022-12-15T14:18:45.6877843Z  extracting: KiCost-master/tests/kitspace/mpn_TPS2052BDRB.dat  
+2022-12-15T14:18:45.6878301Z  extracting: KiCost-master/tests/kitspace/mpn_TPS22810DBVR.dat  
+2022-12-15T14:18:45.6879992Z   inflating: KiCost-master/tests/kitspace/mpn_TPS61070DDCR.dat  
+2022-12-15T14:18:45.6880594Z   inflating: KiCost-master/tests/kitspace/mpn_TPS61088RHLT.dat  
+2022-12-15T14:18:45.6881043Z   inflating: KiCost-master/tests/kitspace/mpn_TPS63060DSC.dat  
+2022-12-15T14:18:45.6881494Z  extracting: KiCost-master/tests/kitspace/mpn_TPS71725QDRV.dat  
+2022-12-15T14:18:45.6881937Z  extracting: KiCost-master/tests/kitspace/mpn_TPS71750QDRV.dat  
+2022-12-15T14:18:45.6882378Z   inflating: KiCost-master/tests/kitspace/mpn_TRF250-145.dat  
+2022-12-15T14:18:45.6882812Z  extracting: KiCost-master/tests/kitspace/mpn_TRS3122E.dat  
+2022-12-15T14:18:45.6884477Z   inflating: KiCost-master/tests/kitspace/mpn_TSOP33438.dat  
+2022-12-15T14:18:45.6885119Z   inflating: KiCost-master/tests/kitspace/mpn_TSX-3225 16.0000MF18X-AC3.dat  
+2022-12-15T14:18:45.6885590Z   inflating: KiCost-master/tests/kitspace/mpn_USB2514B-AEZC.dat  
+2022-12-15T14:18:45.6886040Z   inflating: KiCost-master/tests/kitspace/mpn_USB3076-30-A.dat  
+2022-12-15T14:18:45.6886492Z   inflating: KiCost-master/tests/kitspace/mpn_UWT1H101MNL1GS.dat  
+2022-12-15T14:18:45.6888028Z   inflating: KiCost-master/tests/kitspace/mpn_UWX1C220MCL1GB.dat  
+2022-12-15T14:18:45.6888669Z   inflating: KiCost-master/tests/kitspace/mpn_VLMW1300-GS08.dat  
+2022-12-15T14:18:45.6889306Z   inflating: KiCost-master/tests/kitspace/mpn_XFL4020-102.dat  
+2022-12-15T14:18:45.6889782Z   inflating: KiCost-master/tests/kitspace/mpn_XRCGB24M000F2P00R0.dat  
+2022-12-15T14:18:45.6890259Z   inflating: KiCost-master/tests/kitspace/mpn_XRCGB25M000F2P00R0.dat  
+2022-12-15T14:18:45.6891983Z  extracting: KiCost-master/tests/kitspace/mpn_YA-V36P-2X20-LF.dat  
+2022-12-15T14:18:45.6892616Z   inflating: KiCost-master/tests/kitspace/mpn_Z30C1T8219731.dat  
+2022-12-15T14:18:45.6893068Z   inflating: KiCost-master/tests/kitspace/mpn_ZHCS1000.dat  
+2022-12-15T14:18:45.6894577Z   inflating: KiCost-master/tests/kitspace/mpn_ZHCS350TA.dat  
+2022-12-15T14:18:45.6895198Z   inflating: KiCost-master/tests/kitspace/mpn_ZLLS350TA.dat  
+2022-12-15T14:18:45.6895620Z  extracting: KiCost-master/tests/kitspace/mpn__.dat  
+2022-12-15T14:18:45.6896048Z   inflating: KiCost-master/tests/kitspace/mpn_lv 25-P.dat  
+2022-12-15T14:18:45.6896530Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_1514-2N2222APBFREE-ND.dat  
+2022-12-15T14:18:45.6897026Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_398-1010-ND.dat  
+2022-12-15T14:18:45.6898686Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_398-1019-ND.dat  
+2022-12-15T14:18:45.6899331Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_CR0603-JW-101ELFCT-ND.dat  
+2022-12-15T14:18:45.6899842Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_CR0603-JW-104ELFCT-ND.dat  
+2022-12-15T14:18:45.6901724Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_CR0603-J_-000ELFCT-ND.dat  
+2022-12-15T14:18:45.6902383Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_HS100-ND.dat  
+2022-12-15T14:18:45.6907563Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_WM1114-ND.dat  
+2022-12-15T14:18:45.6908088Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_WM2015-ND.dat  
+2022-12-15T14:18:45.6908692Z   inflating: KiCost-master/tests/kitspace/sku_Digikey_WM4204-ND.dat  
+2022-12-15T14:18:45.6909133Z  extracting: KiCost-master/tests/kitspace/sku_Digikey_~.dat  
+2022-12-15T14:18:45.6910715Z   inflating: KiCost-master/tests/kitspace/sku_Farnell_1813715.dat  
+2022-12-15T14:18:45.6911342Z   inflating: KiCost-master/tests/kitspace/sku_Farnell_2383458.dat  
+2022-12-15T14:18:45.6912954Z   inflating: KiCost-master/tests/kitspace/sku_Farnell_8314535.dat  
+2022-12-15T14:18:45.6914934Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_530-5MF6-R.dat  
+2022-12-15T14:18:45.6915639Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_568-BRT-L.dat  
+2022-12-15T14:18:45.6916104Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_568-NP2X.dat  
+2022-12-15T14:18:45.6917891Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_568-RT3FC-B.dat  
+2022-12-15T14:18:45.6918395Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_571-2041126-1.dat  
+2022-12-15T14:18:45.6919060Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_710-696101000002.dat  
+2022-12-15T14:18:45.6919561Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_789-ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.6920070Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_789-ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.6921803Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_789-ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.6922470Z   inflating: KiCost-master/tests/kitspace/sku_Mouser_789-S3A-361413.dat  
+2022-12-15T14:18:45.6922945Z   inflating: KiCost-master/tests/kitspace/sku_RS_166-327.dat  
+2022-12-15T14:18:45.6924487Z   inflating: KiCost-master/tests/kitspace/sku_RS_694-9374.dat  
+2022-12-15T14:18:45.6927885Z   inflating: KiCost-master/tests/kitspace_queries.txt  
+2022-12-15T14:18:45.6928336Z   inflating: KiCost-master/tests/local_Indium_X2.xml  
+2022-12-15T14:18:45.6928748Z   inflating: KiCost-master/tests/manf_no_manf_num.xml  
+2022-12-15T14:18:45.6930247Z    creating: KiCost-master/tests/mouser/
+2022-12-15T14:18:45.6930813Z   inflating: KiCost-master/tests/mouser/mou_530-5MF6-R.dat  
+2022-12-15T14:18:45.6932411Z   inflating: KiCost-master/tests/mouser/mou_710-696101000002.dat  
+2022-12-15T14:18:45.6933152Z   inflating: KiCost-master/tests/mouser/mpn_695120004001.dat  
+2022-12-15T14:18:45.6933565Z   inflating: KiCost-master/tests/multipart.xml  
+2022-12-15T14:18:45.6933960Z   inflating: KiCost-master/tests/multipart2.xml  
+2022-12-15T14:18:45.6934325Z    creating: KiCost-master/tests/nexar/
+2022-12-15T14:18:45.6934740Z   inflating: KiCost-master/tests/nexar/mpn_ALPS_SKHHLQA010.dat  
+2022-12-15T14:18:45.6936387Z   inflating: KiCost-master/tests/nexar/mpn_AMPHENOL_FCI_10103594-0001LF.dat  
+2022-12-15T14:18:45.6937037Z   inflating: KiCost-master/tests/nexar/mpn_Adafruit_Industries_4062.dat  
+2022-12-15T14:18:45.6937502Z   inflating: KiCost-master/tests/nexar/mpn_Avago_HLMP-K150.dat  
+2022-12-15T14:18:45.6937968Z   inflating: KiCost-master/tests/nexar/mpn_Coilcraft_LPS4018-103MRB.dat  
+2022-12-15T14:18:45.6938446Z   inflating: KiCost-master/tests/nexar/mpn_Coilcraft_LPS4018-153MRB.dat  
+2022-12-15T14:18:45.6938915Z   inflating: KiCost-master/tests/nexar/mpn_Coilcraft_LPS4018-473MRB.dat  
+2022-12-15T14:18:45.6940555Z   inflating: KiCost-master/tests/nexar/mpn_DIODES_AP3211KTR-G1.dat  
+2022-12-15T14:18:45.6941201Z   inflating: KiCost-master/tests/nexar/mpn_DIODES_ZHCS1000.dat  
+2022-12-15T14:18:45.6941659Z   inflating: KiCost-master/tests/nexar/mpn_Fairchild_NC7SZ74K8X.dat  
+2022-12-15T14:18:45.6942130Z   inflating: KiCost-master/tests/nexar/mpn_Kemet_C0603C103K5RACTU.dat  
+2022-12-15T14:18:45.6942596Z   inflating: KiCost-master/tests/nexar/mpn_Kemet_C0603C330J5GACTU.dat  
+2022-12-15T14:18:45.6943208Z   inflating: KiCost-master/tests/nexar/mpn_Kemet_C0603C475K8PACTU.dat  
+2022-12-15T14:18:45.6944835Z   inflating: KiCost-master/tests/nexar/mpn_Kingbright_APTF1616LSEEZGKQBKC.dat  
+2022-12-15T14:18:45.6946723Z   inflating: KiCost-master/tests/nexar/mpn_MPD_BU2032SM-BT-GTR.dat  
+2022-12-15T14:18:45.6947357Z   inflating: KiCost-master/tests/nexar/mpn_Murata_GRM1885C1H221JA01D.dat  
+2022-12-15T14:18:45.6947843Z   inflating: KiCost-master/tests/nexar/mpn_Murata_GRM188R61A226ME15D.dat  
+2022-12-15T14:18:45.6948321Z   inflating: KiCost-master/tests/nexar/mpn_Murata_GRM188R61H225KE11D.dat  
+2022-12-15T14:18:45.6948793Z   inflating: KiCost-master/tests/nexar/mpn_Murata_GRM21BR71A106KE51L.dat  
+2022-12-15T14:18:45.6949258Z   inflating: KiCost-master/tests/nexar/mpn_Murata_GRM21BR71H105KA12L.dat  
+2022-12-15T14:18:45.6950842Z   inflating: KiCost-master/tests/nexar/mpn_NEUTRIK_NP2X.dat  
+2022-12-15T14:18:45.6951493Z   inflating: KiCost-master/tests/nexar/mpn_New_Age_Enclosures_ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.6953159Z   inflating: KiCost-master/tests/nexar/mpn_New_Age_Enclosures_ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.6953867Z   inflating: KiCost-master/tests/nexar/mpn_New_Age_Enclosures_ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.6954371Z   inflating: KiCost-master/tests/nexar/mpn_New_Age_Enclosures_S3A-361413.dat  
+2022-12-15T14:18:45.6955968Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ-3EKF1001V.dat  
+2022-12-15T14:18:45.6956617Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ-3EKF3000V.dat  
+2022-12-15T14:18:45.6958240Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ-3EKF4700V.dat  
+2022-12-15T14:18:45.6958965Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ-3EKF6040V.dat  
+2022-12-15T14:18:45.6959475Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF1002V.dat  
+2022-12-15T14:18:45.6959946Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF1003V.dat  
+2022-12-15T14:18:45.6960412Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF1004V.dat  
+2022-12-15T14:18:45.6960885Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF1803V.dat  
+2022-12-15T14:18:45.6961353Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF2003V.dat  
+2022-12-15T14:18:45.6961818Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJ3EKF2493V.dat  
+2022-12-15T14:18:45.6963514Z   inflating: KiCost-master/tests/nexar/mpn_Panasonic_ERJP03F47R0V.dat  
+2022-12-15T14:18:45.6964107Z   inflating: KiCost-master/tests/nexar/mpn_Rean_BRT-L.dat  
+2022-12-15T14:18:45.6965926Z   inflating: KiCost-master/tests/nexar/mpn_Rean_RT3FC-B.dat  
+2022-12-15T14:18:45.6968940Z   inflating: KiCost-master/tests/nexar/mpn_Rean_RT3MPR.dat  
+2022-12-15T14:18:45.6971777Z   inflating: KiCost-master/tests/nexar/mpn_ST_Microelectronics_SMAJ18A-TR.dat  
+2022-12-15T14:18:45.6973560Z   inflating: KiCost-master/tests/nexar/mpn_Samtec_TMM-103-01-G-S.dat  
+2022-12-15T14:18:45.6975246Z   inflating: KiCost-master/tests/nexar/mpn_TE_Connectivity_2041126-1.dat  
+2022-12-15T14:18:45.6977701Z   inflating: KiCost-master/tests/nexar/mpn_Texas_Instrumentos_SN74LS00N.dat  
+2022-12-15T14:18:45.6981192Z   inflating: KiCost-master/tests/nexar/mpn_Texas_Instruments_TPD4S009DCKR.dat  
+2022-12-15T14:18:45.6986058Z   inflating: KiCost-master/tests/nexar/mpn_Vishay_CRCW06030000Z0EA.dat  
+2022-12-15T14:18:45.6986711Z   inflating: KiCost-master/tests/nexar/mpn_Vishay_CRCW06033K30FKEA.dat  
+2022-12-15T14:18:45.6989448Z   inflating: KiCost-master/tests/nexar/mpn_Vishay_Lite-On_LTST-C193KSKT-5A.dat  
+2022-12-15T14:18:45.6990105Z   inflating: KiCost-master/tests/nexar/mpn_Walsin_0603B104K500CT.dat  
+2022-12-15T14:18:45.6992269Z   inflating: KiCost-master/tests/nexar/mpn_Walsin_0603N102J500CT.dat  
+2022-12-15T14:18:45.6996959Z   inflating: KiCost-master/tests/nexar/mpn_YAGEO_RC0603FR-0747KL.dat  
+2022-12-15T14:18:45.6997603Z   inflating: KiCost-master/tests/nexar/mpn_Yageo_RC0603FR-07100RL.dat  
+2022-12-15T14:18:45.6998069Z   inflating: KiCost-master/tests/nexar/mpn_Yageo_RC0603FR-0710RL.dat  
+2022-12-15T14:18:45.7001196Z   inflating: KiCost-master/tests/nexar/mpn_Yageo_RC0603FR-0715K0L.dat  
+2022-12-15T14:18:45.7001717Z   inflating: KiCost-master/tests/nexar/mpn_Yageo_RC0603FR-071KL.dat  
+2022-12-15T14:18:45.7002179Z   inflating: KiCost-master/tests/nexar/mpn_Yageo_RC0603FR-071M8L.dat  
+2022-12-15T14:18:45.7003724Z   inflating: KiCost-master/tests/nexar/mpn_unk_LM2611BMF_NOPB.dat  
+2022-12-15T14:18:45.7004326Z   inflating: KiCost-master/tests/nexar/mpn_unk_MBR1020VL.dat  
+2022-12-15T14:18:45.7004760Z   inflating: KiCost-master/tests/nexar/mpn_unk_SN74LS00N.dat  
+2022-12-15T14:18:45.7005210Z   inflating: KiCost-master/tests/nexar/mpn_unk_TPS61070DDCR.dat  
+2022-12-15T14:18:45.7005649Z   inflating: KiCost-master/tests/nexar/sku_Farnell_1813715.dat  
+2022-12-15T14:18:45.7006093Z   inflating: KiCost-master/tests/nexar/sku_Farnell_2383458.dat  
+2022-12-15T14:18:45.7006518Z   inflating: KiCost-master/tests/nexar/sku_Farnell_8314535.dat  
+2022-12-15T14:18:45.7006950Z   inflating: KiCost-master/tests/nexar/sku_Mouser_568-BRT-L.dat  
+2022-12-15T14:18:45.7007391Z   inflating: KiCost-master/tests/nexar/sku_Mouser_568-NP2X.dat  
+2022-12-15T14:18:45.7007837Z   inflating: KiCost-master/tests/nexar/sku_Mouser_568-RT3FC-B.dat  
+2022-12-15T14:18:45.7009440Z   inflating: KiCost-master/tests/nexar/sku_Mouser_571-2041126-1.dat  
+2022-12-15T14:18:45.7010089Z   inflating: KiCost-master/tests/nexar/sku_Mouser_789-ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.7010579Z   inflating: KiCost-master/tests/nexar/sku_Mouser_789-ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.7011061Z   inflating: KiCost-master/tests/nexar/sku_Mouser_789-ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.7011524Z   inflating: KiCost-master/tests/nexar/sku_Mouser_789-S3A-361413.dat  
+2022-12-15T14:18:45.7011982Z   inflating: KiCost-master/tests/nexar/sku_RS_Components_166-327.dat  
+2022-12-15T14:18:45.7013570Z   inflating: KiCost-master/tests/nexar/sku_RS_Components_694-9374.dat  
+2022-12-15T14:18:45.7014142Z   inflating: KiCost-master/tests/nexar_2.xml  
+2022-12-15T14:18:45.7014535Z   inflating: KiCost-master/tests/nexar_3.xml  
+2022-12-15T14:18:45.7014903Z    creating: KiCost-master/tests/nexar_alt/
+2022-12-15T14:18:45.7015337Z   inflating: KiCost-master/tests/nexar_alt/mpn_ALPS_SKHHLQA010.dat  
+2022-12-15T14:18:45.7017766Z   inflating: KiCost-master/tests/nexar_alt/mpn_AMPHENOL_FCI_10103594-0001LF.dat  
+2022-12-15T14:18:45.7018255Z   inflating: KiCost-master/tests/nexar_alt/mpn_Avago_HLMP-K150.dat  
+2022-12-15T14:18:45.7018740Z   inflating: KiCost-master/tests/nexar_alt/mpn_Coilcraft_LPS4018-103MRB.dat  
+2022-12-15T14:18:45.7021060Z   inflating: KiCost-master/tests/nexar_alt/mpn_Coilcraft_LPS4018-153MRB.dat  
+2022-12-15T14:18:45.7021643Z   inflating: KiCost-master/tests/nexar_alt/mpn_Coilcraft_LPS4018-473MRB.dat  
+2022-12-15T14:18:45.7022124Z   inflating: KiCost-master/tests/nexar_alt/mpn_DIODES_AP3211KTR-G1.dat  
+2022-12-15T14:18:45.7023869Z   inflating: KiCost-master/tests/nexar_alt/mpn_DIODES_ZHCS1000.dat  
+2022-12-15T14:18:45.7024541Z   inflating: KiCost-master/tests/nexar_alt/mpn_Fairchild_NC7SZ74K8X.dat  
+2022-12-15T14:18:45.7025077Z   inflating: KiCost-master/tests/nexar_alt/mpn_Kemet_C0603C103K5RACTU.dat  
+2022-12-15T14:18:45.7026782Z   inflating: KiCost-master/tests/nexar_alt/mpn_Kemet_C0603C330J5GACTU.dat  
+2022-12-15T14:18:45.7027295Z   inflating: KiCost-master/tests/nexar_alt/mpn_Murata_GRM1885C1H221JA01D.dat  
+2022-12-15T14:18:45.7034106Z   inflating: KiCost-master/tests/nexar_alt/mpn_Murata_GRM188R61A226ME15D.dat  
+2022-12-15T14:18:45.7034773Z   inflating: KiCost-master/tests/nexar_alt/mpn_Murata_GRM188R61H225KE11D.dat  
+2022-12-15T14:18:45.7035272Z   inflating: KiCost-master/tests/nexar_alt/mpn_Murata_GRM21BR71A106KE51L.dat  
+2022-12-15T14:18:45.7035763Z   inflating: KiCost-master/tests/nexar_alt/mpn_Murata_GRM21BR71H105KA12L.dat  
+2022-12-15T14:18:45.7036276Z   inflating: KiCost-master/tests/nexar_alt/mpn_NEUTRIK_NP2X.dat  
+2022-12-15T14:18:45.7036785Z   inflating: KiCost-master/tests/nexar_alt/mpn_New_Age_Enclosures_ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.7039255Z   inflating: KiCost-master/tests/nexar_alt/mpn_New_Age_Enclosures_ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.7039791Z   inflating: KiCost-master/tests/nexar_alt/mpn_New_Age_Enclosures_ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.7040316Z   inflating: KiCost-master/tests/nexar_alt/mpn_New_Age_Enclosures_S3A-361413.dat  
+2022-12-15T14:18:45.7041250Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF1002V.dat  
+2022-12-15T14:18:45.7043952Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF1003V.dat  
+2022-12-15T14:18:45.7047733Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF1004V.dat  
+2022-12-15T14:18:45.7050824Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF1803V.dat  
+2022-12-15T14:18:45.7054917Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF2003V.dat  
+2022-12-15T14:18:45.7061708Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJ3EKF2493V.dat  
+2022-12-15T14:18:45.7063961Z   inflating: KiCost-master/tests/nexar_alt/mpn_Panasonic_ERJP03F47R0V.dat  
+2022-12-15T14:18:45.7064460Z   inflating: KiCost-master/tests/nexar_alt/mpn_Rean_BRT-L.dat  
+2022-12-15T14:18:45.7067722Z   inflating: KiCost-master/tests/nexar_alt/mpn_Rean_RT3FC-B.dat  
+2022-12-15T14:18:45.7068338Z   inflating: KiCost-master/tests/nexar_alt/mpn_Rean_RT3MPR.dat  
+2022-12-15T14:18:45.7070538Z   inflating: KiCost-master/tests/nexar_alt/mpn_ST_Microelectronics_SMAJ18A-TR.dat  
+2022-12-15T14:18:45.7071057Z   inflating: KiCost-master/tests/nexar_alt/mpn_TE_Connectivity_2041126-1.dat  
+2022-12-15T14:18:45.7071573Z   inflating: KiCost-master/tests/nexar_alt/mpn_Texas_Instruments_TPD4S009DCKR.dat  
+2022-12-15T14:18:45.7074623Z   inflating: KiCost-master/tests/nexar_alt/mpn_Vishay_CRCW06030000Z0EA.dat  
+2022-12-15T14:18:45.7077378Z   inflating: KiCost-master/tests/nexar_alt/mpn_Vishay_CRCW06033K30FKEA.dat  
+2022-12-15T14:18:45.7080221Z   inflating: KiCost-master/tests/nexar_alt/mpn_Walsin_0603B104K500CT.dat  
+2022-12-15T14:18:45.7082783Z   inflating: KiCost-master/tests/nexar_alt/mpn_Walsin_0603N102J500CT.dat  
+2022-12-15T14:18:45.7086313Z   inflating: KiCost-master/tests/nexar_alt/mpn_YAGEO_RC0603FR-0747KL.dat  
+2022-12-15T14:18:45.7090306Z   inflating: KiCost-master/tests/nexar_alt/mpn_Yageo_RC0603FR-07100RL.dat  
+2022-12-15T14:18:45.7095595Z   inflating: KiCost-master/tests/nexar_alt/mpn_Yageo_RC0603FR-0710RL.dat  
+2022-12-15T14:18:45.7096084Z   inflating: KiCost-master/tests/nexar_alt/mpn_Yageo_RC0603FR-0715K0L.dat  
+2022-12-15T14:18:45.7099857Z   inflating: KiCost-master/tests/nexar_alt/mpn_Yageo_RC0603FR-071KL.dat  
+2022-12-15T14:18:45.7104023Z   inflating: KiCost-master/tests/nexar_alt/mpn_Yageo_RC0603FR-071M8L.dat  
+2022-12-15T14:18:45.7108912Z   inflating: KiCost-master/tests/nexar_alt/mpn_unk_LM2611BMF_NOPB.dat  
+2022-12-15T14:18:45.7111889Z   inflating: KiCost-master/tests/nexar_alt/mpn_unk_TPS61070DDCR.dat  
+2022-12-15T14:18:45.7115369Z   inflating: KiCost-master/tests/nexar_alt/sku_Farnell_1813715.dat  
+2022-12-15T14:18:45.7127484Z   inflating: KiCost-master/tests/nexar_alt/sku_Farnell_2383458.dat  
+2022-12-15T14:18:45.7128269Z   inflating: KiCost-master/tests/nexar_alt/sku_Farnell_8314535.dat  
+2022-12-15T14:18:45.7128736Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_568-BRT-L.dat  
+2022-12-15T14:18:45.7129198Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_568-NP2X.dat  
+2022-12-15T14:18:45.7129658Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_568-RT3FC-B.dat  
+2022-12-15T14:18:45.7132286Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_571-2041126-1.dat  
+2022-12-15T14:18:45.7138320Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_789-ACC-AADBL-5212.dat  
+2022-12-15T14:18:45.7138885Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_789-ACC-AANEG-5201.dat  
+2022-12-15T14:18:45.7140483Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_789-ACC-AAPOS-5223.dat  
+2022-12-15T14:18:45.7142199Z   inflating: KiCost-master/tests/nexar_alt/sku_Mouser_789-S3A-361413.dat  
+2022-12-15T14:18:45.7142862Z   inflating: KiCost-master/tests/nexar_alt/sku_RS_Components_166-327.dat  
+2022-12-15T14:18:45.7143527Z   inflating: KiCost-master/tests/nexar_alt/sku_RS_Components_694-9374.dat  
+2022-12-15T14:18:45.7148087Z   inflating: KiCost-master/tests/no_empty_overwrite.xml  
+2022-12-15T14:18:45.7148668Z   inflating: KiCost-master/tests/part_list_big.csv  
+2022-12-15T14:18:45.7152456Z   inflating: KiCost-master/tests/part_list_small.csv  
+2022-12-15T14:18:45.7153061Z   inflating: KiCost-master/tests/part_list_small_nohdr.csv  
+2022-12-15T14:18:45.7153493Z   inflating: KiCost-master/tests/parts_and_comments.xml  
+2022-12-15T14:18:45.7154750Z   inflating: KiCost-master/tests/rare_refs.xml  
+2022-12-15T14:18:45.7156118Z   inflating: KiCost-master/tests/safelink_receiver.xml  
+2022-12-15T14:18:45.7181141Z   inflating: KiCost-master/tests/scrape_over.xml  
+2022-12-15T14:18:45.7181598Z   inflating: KiCost-master/tests/single_component.xml  
+2022-12-15T14:18:45.7182020Z   inflating: KiCost-master/tests/subparts.sch  
+2022-12-15T14:18:45.7182459Z   inflating: KiCost-master/tests/subparts.xml  
+2022-12-15T14:18:45.7182869Z   inflating: KiCost-master/tests/subparts_err1.xml  
+2022-12-15T14:18:45.7183255Z   inflating: KiCost-master/tests/test.cmd  
+2022-12-15T14:18:45.7214706Z   inflating: KiCost-master/tests/test.sh  
+2022-12-15T14:18:45.7215182Z   inflating: KiCost-master/tests/test.xml  
+2022-12-15T14:18:45.7215708Z   inflating: KiCost-master/tests/test2.xml  
+2022-12-15T14:18:45.7216086Z   inflating: KiCost-master/tests/test3.xml  
+2022-12-15T14:18:45.7216522Z   inflating: KiCost-master/tests/test_337_UserFieldCombining.xml  
+2022-12-15T14:18:45.7216953Z  extracting: KiCost-master/tests/test_423.csv  
+2022-12-15T14:18:45.7217341Z  extracting: KiCost-master/tests/test_423_ok.csv  
+2022-12-15T14:18:45.7217731Z   inflating: KiCost-master/tests/test_423_ok.xml  
+2022-12-15T14:18:45.7218137Z  extracting: KiCost-master/tests/test_423_wrong.csv  
+2022-12-15T14:18:45.7218535Z   inflating: KiCost-master/tests/test_423_wrong.xml  
+2022-12-15T14:18:45.7218926Z   inflating: KiCost-master/tests/test_kicost.py  
+2022-12-15T14:18:45.7219333Z   inflating: KiCost-master/tests/test_single.sh  
+2022-12-15T14:18:45.7219714Z   inflating: KiCost-master/tests/test_small.cmd  
+2022-12-15T14:18:45.7220097Z   inflating: KiCost-master/tests/test_small.sh  
+2022-12-15T14:18:45.7220456Z    creating: KiCost-master/tests/tme/
+2022-12-15T14:18:45.7220855Z   inflating: KiCost-master/tests/tme/all_countries_en.dat  
+2022-12-15T14:18:45.7222163Z   inflating: KiCost-master/tests/tme/all_countries_es.dat  
+2022-12-15T14:18:45.7222737Z   inflating: KiCost-master/tests/tme/all_languages.dat  
+2022-12-15T14:18:45.7223206Z   inflating: KiCost-master/tests/tme/data_0603B104K500CT_US_en_USD.dat  
+2022-12-15T14:18:45.7223677Z   inflating: KiCost-master/tests/tme/data_0603N102J500CT_US_en_USD.dat  
+2022-12-15T14:18:45.7224155Z   inflating: KiCost-master/tests/tme/data_10103594-0001LF_C_US_en_USD.dat  
+2022-12-15T14:18:45.7224626Z   inflating: KiCost-master/tests/tme/data_AP3211KTR-G1_US_en_USD.dat  
+2022-12-15T14:18:45.7225103Z   inflating: KiCost-master/tests/tme/data_C0603C103K5RAC_US_en_USD.dat  
+2022-12-15T14:18:45.7225571Z   inflating: KiCost-master/tests/tme/data_C0603C330J5GAC_US_en_USD.dat  
+2022-12-15T14:18:45.7226043Z   inflating: KiCost-master/tests/tme/data_CRCW06030000Z0EA_US_en_USD.dat  
+2022-12-15T14:18:45.7226511Z   inflating: KiCost-master/tests/tme/data_ERJ3EKF1002V_US_en_USD.dat  
+2022-12-15T14:18:45.7226973Z   inflating: KiCost-master/tests/tme/data_ERJ3EKF1003V_US_en_USD.dat  
+2022-12-15T14:18:45.7227433Z   inflating: KiCost-master/tests/tme/data_ERJ3EKF1004V_US_en_USD.dat  
+2022-12-15T14:18:45.7227887Z   inflating: KiCost-master/tests/tme/data_ERJ3EKF2003V_US_en_USD.dat  
+2022-12-15T14:18:45.7228372Z   inflating: KiCost-master/tests/tme/data_GRM1885C1H221JA01D_US_en_USD.dat  
+2022-12-15T14:18:45.7228859Z   inflating: KiCost-master/tests/tme/data_GRM188R61A226ME15D_US_en_USD.dat  
+2022-12-15T14:18:45.7229336Z   inflating: KiCost-master/tests/tme/data_GRM21BR71A106KE51L_US_en_USD.dat  
+2022-12-15T14:18:45.7229893Z   inflating: KiCost-master/tests/tme/data_HLMP-K150_US_en_USD.dat  
+2022-12-15T14:18:45.7230351Z   inflating: KiCost-master/tests/tme/data_NC7SZ74K8X_US_en_USD.dat  
+2022-12-15T14:18:45.7230806Z   inflating: KiCost-master/tests/tme/data_NTR-NP2X_US_en_USD.dat  
+2022-12-15T14:18:45.7231273Z   inflating: KiCost-master/tests/tme/data_RC0603FR-07100R_US_en_USD.dat  
+2022-12-15T14:18:45.7231755Z   inflating: KiCost-master/tests/tme/data_RC0603FR-0710R_US_en_USD.dat  
+2022-12-15T14:18:45.7232223Z   inflating: KiCost-master/tests/tme/data_RC0603FR-071K_US_en_USD.dat  
+2022-12-15T14:18:45.7232742Z   inflating: KiCost-master/tests/tme/data_RC0603FR-071M8L_US_en_USD.dat  
+2022-12-15T14:18:45.7233206Z   inflating: KiCost-master/tests/tme/data_RC0603FR-0747K_US_en_USD.dat  
+2022-12-15T14:18:45.7233666Z   inflating: KiCost-master/tests/tme/data_SKHHLQA010_US_en_USD.dat  
+2022-12-15T14:18:45.7234120Z   inflating: KiCost-master/tests/tme/data_SMAJ18A-TR_US_en_USD.dat  
+2022-12-15T14:18:45.7234583Z   inflating: KiCost-master/tests/tme/data_TPS61070DDCR_US_en_USD.dat  
+2022-12-15T14:18:45.7235047Z   inflating: KiCost-master/tests/tme/data_ZHCS1000TA_US_en_USD.dat  
+2022-12-15T14:18:45.7235526Z   inflating: KiCost-master/tests/tme/search_0603B104K500CT_US_en_USD.dat  
+2022-12-15T14:18:45.7235990Z   inflating: KiCost-master/tests/tme/search_0603N102J500CT_US_en_USD.dat  
+2022-12-15T14:18:45.7236446Z   inflating: KiCost-master/tests/tme/search_10103594-0001LF_US_en_USD.dat  
+2022-12-15T14:18:45.7236889Z   inflating: KiCost-master/tests/tme/search_1N400_US_en_USD.dat  
+2022-12-15T14:18:45.7237341Z  extracting: KiCost-master/tests/tme/search_2041126-1_US_en_USD.dat  
+2022-12-15T14:18:45.7237818Z  extracting: KiCost-master/tests/tme/search_ACC-AADBL-5212_US_en_USD.dat  
+2022-12-15T14:18:45.7238302Z  extracting: KiCost-master/tests/tme/search_ACC-AANEG-5201_US_en_USD.dat  
+2022-12-15T14:18:45.7238776Z  extracting: KiCost-master/tests/tme/search_ACC-AAPOS-5223_US_en_USD.dat  
+2022-12-15T14:18:45.7239440Z   inflating: KiCost-master/tests/tme/search_AP3211KTR-G1_US_en_USD.dat  
+2022-12-15T14:18:45.7239898Z  extracting: KiCost-master/tests/tme/search_BRT-L_US_en_USD.dat  
+2022-12-15T14:18:45.7240373Z   inflating: KiCost-master/tests/tme/search_C0603C103K5RACTU_US_en_USD.dat  
+2022-12-15T14:18:45.7240856Z   inflating: KiCost-master/tests/tme/search_C0603C330J5GACTU_US_en_USD.dat  
+2022-12-15T14:18:45.7241348Z   inflating: KiCost-master/tests/tme/search_CRCW06030000Z0EA_US_en_USD.dat  
+2022-12-15T14:18:45.7241824Z  extracting: KiCost-master/tests/tme/search_CRCW06033K30FKEA_US_en_USD.dat  
+2022-12-15T14:18:45.7242377Z   inflating: KiCost-master/tests/tme/search_ERJ3EKF1002V_US_en_USD.dat  
+2022-12-15T14:18:45.7242855Z   inflating: KiCost-master/tests/tme/search_ERJ3EKF1003V_US_en_USD.dat  
+2022-12-15T14:18:45.7243320Z   inflating: KiCost-master/tests/tme/search_ERJ3EKF1004V_US_en_USD.dat  
+2022-12-15T14:18:45.7243786Z  extracting: KiCost-master/tests/tme/search_ERJ3EKF1803V_US_en_USD.dat  
+2022-12-15T14:18:45.7244249Z   inflating: KiCost-master/tests/tme/search_ERJ3EKF2003V_US_en_USD.dat  
+2022-12-15T14:18:45.7244715Z  extracting: KiCost-master/tests/tme/search_ERJ3EKF2493V_US_en_USD.dat  
+2022-12-15T14:18:45.7245186Z  extracting: KiCost-master/tests/tme/search_ERJP03F47R0V_US_en_USD.dat  
+2022-12-15T14:18:45.7245673Z   inflating: KiCost-master/tests/tme/search_GRM1885C1H221JA01D_US_en_USD.dat  
+2022-12-15T14:18:45.7246166Z   inflating: KiCost-master/tests/tme/search_GRM188R61A226ME15D_US_en_USD.dat  
+2022-12-15T14:18:45.7246655Z  extracting: KiCost-master/tests/tme/search_GRM188R61H225KE11D_US_en_USD.dat  
+2022-12-15T14:18:45.7247155Z   inflating: KiCost-master/tests/tme/search_GRM21BR71A106KE51L_US_en_USD.dat  
+2022-12-15T14:18:45.7247636Z  extracting: KiCost-master/tests/tme/search_GRM21BR71H105KA12L_US_en_USD.dat  
+2022-12-15T14:18:45.7248104Z   inflating: KiCost-master/tests/tme/search_HLMP-K150_US_en_USD.dat  
+2022-12-15T14:18:45.7248573Z  extracting: KiCost-master/tests/tme/search_LM2611BMF_NOPB_US_en_USD.dat  
+2022-12-15T14:18:45.7249120Z  extracting: KiCost-master/tests/tme/search_LPS4018-103MRB_US_en_USD.dat  
+2022-12-15T14:18:45.7249595Z  extracting: KiCost-master/tests/tme/search_LPS4018-153MRB_US_en_USD.dat  
+2022-12-15T14:18:45.7250067Z  extracting: KiCost-master/tests/tme/search_LPS4018-473MRB_US_en_USD.dat  
+2022-12-15T14:18:45.7250523Z   inflating: KiCost-master/tests/tme/search_NC7SZ74K8X_US_en_USD.dat  
+2022-12-15T14:18:45.7250976Z   inflating: KiCost-master/tests/tme/search_NP2X_US_en_USD.dat  
+2022-12-15T14:18:45.7251450Z   inflating: KiCost-master/tests/tme/search_RC0603FR-07100RL_US_en_USD.dat  
+2022-12-15T14:18:45.7251925Z   inflating: KiCost-master/tests/tme/search_RC0603FR-0710RL_US_en_USD.dat  
+2022-12-15T14:18:45.7252407Z  extracting: KiCost-master/tests/tme/search_RC0603FR-0715K0L_US_en_USD.dat  
+2022-12-15T14:18:45.7252897Z   inflating: KiCost-master/tests/tme/search_RC0603FR-071KL_US_en_USD.dat  
+2022-12-15T14:18:45.7253368Z   inflating: KiCost-master/tests/tme/search_RC0603FR-071M8L_US_en_USD.dat  
+2022-12-15T14:18:45.7253846Z   inflating: KiCost-master/tests/tme/search_RC0603FR-0747KL_US_en_USD.dat  
+2022-12-15T14:18:45.7254297Z  extracting: KiCost-master/tests/tme/search_RT3FC-B_US_en_USD.dat  
+2022-12-15T14:18:45.7254751Z  extracting: KiCost-master/tests/tme/search_RT3MPR_US_en_USD.dat  
+2022-12-15T14:18:45.7255212Z  extracting: KiCost-master/tests/tme/search_S3A-361413_US_en_USD.dat  
+2022-12-15T14:18:45.7255671Z   inflating: KiCost-master/tests/tme/search_SKHHLQA010_US_en_USD.dat  
+2022-12-15T14:18:45.7256130Z   inflating: KiCost-master/tests/tme/search_SMAJ18A-TR_US_en_USD.dat  
+2022-12-15T14:18:45.7256600Z  extracting: KiCost-master/tests/tme/search_TPD4S009DCKR_US_en_USD.dat  
+2022-12-15T14:18:45.7257074Z   inflating: KiCost-master/tests/tme/search_TPS61070DDCR_US_en_USD.dat  
+2022-12-15T14:18:45.7257538Z   inflating: KiCost-master/tests/tme/search_ZHCS1000_US_en_USD.dat  
+2022-12-15T14:18:45.7257951Z   inflating: KiCost-master/tests/variants_1.xml  
+2022-12-15T14:18:45.7258344Z   inflating: KiCost-master/tests/variants_2.xml  
+2022-12-15T14:18:45.7258729Z   inflating: KiCost-master/tests/variants_3.xml  
+2022-12-15T14:18:45.7259125Z   inflating: KiCost-master/tests/wrong_currency.xml  
+2022-12-15T14:18:45.7259529Z   inflating: KiCost-master/tests/wrong_pricing.xml  
+2022-12-15T14:18:45.7259883Z    creating: KiCost-master/tools/
+2022-12-15T14:18:45.7260248Z   inflating: KiCost-master/tools/check_conv.py  
+2022-12-15T14:18:45.7260642Z   inflating: KiCost-master/tools/genGroupTest.sh  
+2022-12-15T14:18:45.7261083Z   inflating: KiCost-master/tools/genPartsAndCommentsTest.sh  
+2022-12-15T14:18:45.7261579Z   inflating: KiCost-master/tools/gen_currency_tables.py  
+2022-12-15T14:18:45.7261979Z   inflating: KiCost-master/tools/get_rates.py  
+2022-12-15T14:18:45.7262389Z   inflating: KiCost-master/tools/history2changelog.py  
+2022-12-15T14:18:45.7262759Z   inflating: KiCost-master/tox.ini   
+2022-12-15T14:18:45.7263052Z finishing deferred symbolic links:
+2022-12-15T14:18:45.7263455Z   KiCost-master/docs/kitspace.png -> ../kicost/kitspace.png
+2022-12-15T14:18:46.7882948Z WARNING: The directory '/github/home/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+2022-12-15T14:18:46.8250174Z Processing ./KiCost-master
+2022-12-15T14:18:47.6259201Z Requirement already satisfied: XlsxWriter>=0.7.3 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (1.1.2)
+2022-12-15T14:18:47.6264760Z Requirement already satisfied: beautifulsoup4>=4.3.2 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (4.9.3)
+2022-12-15T14:18:47.6268423Z Requirement already satisfied: colorama in /usr/lib/python3/dist-packages (from kicost==1.1.15) (0.4.4)
+2022-12-15T14:18:47.6273071Z Requirement already satisfied: kicost-digikey-api-v3 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (0.1.2)
+2022-12-15T14:18:47.6278417Z Requirement already satisfied: lxml>=3.7.2 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (4.6.3)
+2022-12-15T14:18:47.6282998Z Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from kicost==1.1.15) (5.3.1)
+2022-12-15T14:18:47.6290409Z Requirement already satisfied: requests>=2.18.4 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (2.25.1)
+2022-12-15T14:18:47.6295802Z Requirement already satisfied: tqdm>=4.30.0 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (4.57.0)
+2022-12-15T14:18:47.6301055Z Requirement already satisfied: validators>=0.14.2 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (0.14.2)
+2022-12-15T14:18:47.6306413Z Requirement already satisfied: wxPython>=3.0.2 in /usr/lib/python3/dist-packages (from kicost==1.1.15) (4.0.7)
+2022-12-15T14:18:47.6344306Z Requirement already satisfied: soupsieve>1.2 in /usr/lib/python3/dist-packages (from beautifulsoup4>=4.3.2->kicost==1.1.15) (2.2.1)
+2022-12-15T14:18:47.6483840Z Requirement already satisfied: numpy in /usr/lib/python3/dist-packages (from wxPython>=3.0.2->kicost==1.1.15) (1.19.5)
+2022-12-15T14:18:47.6517815Z Building wheels for collected packages: kicost
+2022-12-15T14:18:47.6523602Z   Building wheel for kicost (setup.py): started
+2022-12-15T14:18:48.2870830Z   Building wheel for kicost (setup.py): finished with status 'done'
+2022-12-15T14:18:48.2886048Z   Created wheel for kicost: filename=kicost-1.1.15-py2.py3-none-any.whl size=201612 sha256=6ebb400cadf5c942ab783b2f7ae89b17f2ff9e7de14b6a49ba9306505a250bc9
+2022-12-15T14:18:48.2886890Z   Stored in directory: /tmp/pip-ephem-wheel-cache-syj579xt/wheels/d4/da/8e/ee9bbcbb1b99223b0ac8d1227c9da2f4c8fec296336f3a96d5
+2022-12-15T14:18:48.2923974Z Successfully built kicost
+2022-12-15T14:18:48.3235605Z Installing collected packages: kicost
+2022-12-15T14:18:48.3240576Z   Attempting uninstall: kicost
+2022-12-15T14:18:48.3240979Z     Found existing installation: kicost 1.1.15
+2022-12-15T14:18:48.3811171Z     Uninstalling kicost-1.1.15:
+2022-12-15T14:18:48.3895973Z       Successfully uninstalled kicost-1.1.15
+2022-12-15T14:18:48.4858529Z Successfully installed kicost-1.1.15
+2022-12-15T14:18:52.4035688Z Using config file: t1.kibot.yaml
+2022-12-15T14:18:52.4041338Z Using SCH file: t1.kicad_sch
+2022-12-15T14:18:52.6939709Z - 'Bill of Materials with prices' (bom_internal) [bom]
+2022-12-15T14:18:53.5224875Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:18:57.5325421Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:19:25.1364355Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:19:52.1009407Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:19:58.1946991Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:20:00.8389872Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:20:25.4880244Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:20:37.6619008Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:20:39.8965191Z Found 57 unique warning/s (60 total)
+2022-12-15T14:20:39.9910943Z ##[group]Run actions/upload-artifact@v1
+2022-12-15T14:20:39.9911235Z with:
+2022-12-15T14:20:39.9911484Z   name: All_Outputs
+2022-12-15T14:20:39.9911711Z   path: KiCost
+2022-12-15T14:20:39.9911934Z ##[endgroup]
+2022-12-15T14:20:40.4345939Z Uploading artifact 'All_Outputs' from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' for run #3
+2022-12-15T14:20:40.5342256Z Uploading 2 files
+2022-12-15T14:20:41.2688898Z File upload complete.
+2022-12-15T14:20:41.2701071Z Uploaded '4111999' bytes from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' to server
+2022-12-15T14:20:41.4054394Z Associated artifact All_Outputs (3557242) with run #3
+2022-12-15T14:20:41.4138848Z Post job cleanup.
+2022-12-15T14:20:41.4140941Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:20:41.7338103Z [command]/bin/tar --posix -z -cf cache.tgz --exclude cache.tgz -P -C /__w/kicost_ci_test/kicost_ci_test --files-from manifest.txt
+2022-12-15T14:20:42.2039415Z Cache Size: ~1 MB (725765 B)
+2022-12-15T14:20:42.2907081Z Cache saved successfully
+2022-12-15T14:20:42.2915085Z Cache saved with key: kicost_cache
+2022-12-15T14:20:42.3073660Z Post job cleanup.
+2022-12-15T14:20:42.3100059Z ##[command]/usr/bin/docker exec  0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:20:42.6141070Z [command]/usr/bin/git version
+2022-12-15T14:20:42.6196922Z git version 2.34.1
+2022-12-15T14:20:42.6246092Z Temporarily overriding HOME='/__w/_temp/a6f2d866-036b-43a5-9e63-2e81ae0ae4e9' before making global git config changes
+2022-12-15T14:20:42.6249958Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:20:42.6254001Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:20:42.6295898Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:20:42.6337756Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:20:42.6571035Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:20:42.6599924Z http.https://github.com/.extraheader
+2022-12-15T14:20:42.6609944Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2022-12-15T14:20:42.6646480Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2022-12-15T14:20:42.7051627Z Stop and remove container: 93ca7a942b834bfd8d7d92cf57e85f1d_ghcriointicmnbkicad6_autodev_8ae9bc
+2022-12-15T14:20:42.7057117Z ##[command]/usr/bin/docker rm --force 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:20:42.9336979Z 0b9733770648fd1f3ec5e4c7cea9ad1a3df63855dea43cbe0a7e52bcf07a972b
+2022-12-15T14:20:42.9367289Z Remove container network: github_network_36c2e7e51f9d47d28b4c64cad89bda2e
+2022-12-15T14:20:42.9372839Z ##[command]/usr/bin/docker network rm github_network_36c2e7e51f9d47d28b4c64cad89bda2e
+2022-12-15T14:20:43.0594947Z github_network_36c2e7e51f9d47d28b4c64cad89bda2e
+2022-12-15T14:20:43.0746749Z Cleaning up orphan processes

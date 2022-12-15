@@ -1,0 +1,268 @@
+2022-12-15T14:26:30.4615422Z Requested labels: ubuntu-latest
+2022-12-15T14:26:30.4615457Z Job defined at: set-soft/kicost_ci_test/.github/workflows/kibot.yml@refs/heads/master
+2022-12-15T14:26:30.4615488Z Waiting for a runner to pick up this job...
+2022-12-15T14:26:30.9824220Z Job is waiting for a hosted runner to come online.
+2022-12-15T14:26:34.6534681Z Job is about to start running on the hosted runner: Hosted Agent (hosted)
+2022-12-15T14:26:36.9044567Z Current runner version: '2.299.1'
+2022-12-15T14:26:36.9071925Z ##[group]Operating System
+2022-12-15T14:26:36.9072592Z Ubuntu
+2022-12-15T14:26:36.9072915Z 22.04.1
+2022-12-15T14:26:36.9073223Z LTS
+2022-12-15T14:26:36.9073575Z ##[endgroup]
+2022-12-15T14:26:36.9073960Z ##[group]Runner Image
+2022-12-15T14:26:36.9074399Z Image: ubuntu-22.04
+2022-12-15T14:26:36.9074766Z Version: 20221212.1
+2022-12-15T14:26:36.9075368Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20221212.1/images/linux/Ubuntu2204-Readme.md
+2022-12-15T14:26:36.9076083Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20221212.1
+2022-12-15T14:26:36.9076577Z ##[endgroup]
+2022-12-15T14:26:36.9076965Z ##[group]Runner Image Provisioner
+2022-12-15T14:26:36.9077373Z 2.0.91.1
+2022-12-15T14:26:36.9077708Z ##[endgroup]
+2022-12-15T14:26:36.9078770Z ##[group]GITHUB_TOKEN Permissions
+2022-12-15T14:26:36.9079530Z Actions: write
+2022-12-15T14:26:36.9079886Z Checks: write
+2022-12-15T14:26:36.9080394Z Contents: write
+2022-12-15T14:26:36.9080827Z Deployments: write
+2022-12-15T14:26:36.9081205Z Discussions: write
+2022-12-15T14:26:36.9081566Z Issues: write
+2022-12-15T14:26:36.9081909Z Metadata: read
+2022-12-15T14:26:36.9082282Z Packages: write
+2022-12-15T14:26:36.9082631Z Pages: write
+2022-12-15T14:26:36.9082990Z PullRequests: write
+2022-12-15T14:26:36.9083380Z RepositoryProjects: write
+2022-12-15T14:26:36.9083807Z SecurityEvents: write
+2022-12-15T14:26:36.9084174Z Statuses: write
+2022-12-15T14:26:36.9084531Z ##[endgroup]
+2022-12-15T14:26:36.9088406Z Secret source: Actions
+2022-12-15T14:26:36.9088997Z Prepare workflow directory
+2022-12-15T14:26:37.0138623Z Prepare all required actions
+2022-12-15T14:26:37.0322341Z Getting action download info
+2022-12-15T14:26:37.3671624Z Download action repository 'actions/checkout@v3' (SHA:755da8c3cf115ac066823e79a1e1788f8940201b)
+2022-12-15T14:26:37.7170874Z Download action repository 'set-soft/cache@main' (SHA:baaa43ff1da8728ac1ac1f067c26a631830df13c)
+2022-12-15T14:26:38.2321028Z Download action repository 'actions/upload-artifact@v1' (SHA:3446296876d12d4e3a0f3145a3c87e67bf0a16b5)
+2022-12-15T14:26:38.6081138Z ##[group]Checking docker version
+2022-12-15T14:26:38.6097975Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2022-12-15T14:26:38.8364879Z '1.41'
+2022-12-15T14:26:38.8374212Z Docker daemon API version: '1.41'
+2022-12-15T14:26:38.8374743Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2022-12-15T14:26:38.8807639Z '1.41'
+2022-12-15T14:26:38.8809519Z Docker client API version: '1.41'
+2022-12-15T14:26:38.8816247Z ##[endgroup]
+2022-12-15T14:26:38.8819400Z ##[group]Clean up resources from previous jobs
+2022-12-15T14:26:38.8827700Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=290506"
+2022-12-15T14:26:38.9040682Z ##[command]/usr/bin/docker network prune --force --filter "label=290506"
+2022-12-15T14:26:38.9229476Z ##[endgroup]
+2022-12-15T14:26:38.9229792Z ##[group]Create local container network
+2022-12-15T14:26:38.9240740Z ##[command]/usr/bin/docker network create --label 290506 github_network_3e2f1ef2439648b88101c704de4f9602
+2022-12-15T14:26:38.9921995Z 335f23dc8a6e2da448893214bef45a839e534f82c800aac26e6889f94491a784
+2022-12-15T14:26:38.9930584Z ##[endgroup]
+2022-12-15T14:26:39.0020848Z ##[group]Starting job container
+2022-12-15T14:26:39.0042077Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_f13a8147-76aa-43eb-99d2-9ebb5292262a login ghcr.io -u set-soft --password-stdin
+2022-12-15T14:26:39.1828420Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_f13a8147-76aa-43eb-99d2-9ebb5292262a pull ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:26:39.8085303Z dev: Pulling from inti-cmnb/kicad6_auto
+2022-12-15T14:26:39.8095032Z bd159e379b3b: Pulling fs layer
+2022-12-15T14:26:39.8095994Z c0d25d714a7e: Pulling fs layer
+2022-12-15T14:26:39.8096572Z fd3a5b7da5ea: Pulling fs layer
+2022-12-15T14:26:39.8097083Z 05b657998884: Pulling fs layer
+2022-12-15T14:26:39.8097423Z 4b11d6e85eed: Pulling fs layer
+2022-12-15T14:26:39.8098127Z 05b657998884: Waiting
+2022-12-15T14:26:39.8098447Z 4b11d6e85eed: Waiting
+2022-12-15T14:26:40.2035153Z c0d25d714a7e: Verifying Checksum
+2022-12-15T14:26:40.2040986Z c0d25d714a7e: Download complete
+2022-12-15T14:26:40.3184401Z bd159e379b3b: Verifying Checksum
+2022-12-15T14:26:40.3185268Z bd159e379b3b: Download complete
+2022-12-15T14:26:40.7220853Z 4b11d6e85eed: Verifying Checksum
+2022-12-15T14:26:40.7221329Z 4b11d6e85eed: Download complete
+2022-12-15T14:26:41.3905504Z 05b657998884: Verifying Checksum
+2022-12-15T14:26:41.3910686Z 05b657998884: Download complete
+2022-12-15T14:26:42.1731720Z fd3a5b7da5ea: Verifying Checksum
+2022-12-15T14:26:42.1736540Z fd3a5b7da5ea: Download complete
+2022-12-15T14:26:42.3933702Z bd159e379b3b: Pull complete
+2022-12-15T14:26:44.7137751Z c0d25d714a7e: Pull complete
+2022-12-15T14:26:58.4461443Z fd3a5b7da5ea: Pull complete
+2022-12-15T14:27:03.7113372Z 05b657998884: Pull complete
+2022-12-15T14:27:04.1005637Z 4b11d6e85eed: Pull complete
+2022-12-15T14:27:04.1055023Z Digest: sha256:8579c3a35f950fc29ca18f893400dd99a1954fd317cd0875477c562cd00e16a1
+2022-12-15T14:27:04.1080555Z Status: Downloaded newer image for ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:27:04.1117682Z ghcr.io/inti-cmnb/kicad6_auto:dev
+2022-12-15T14:27:04.1261685Z ##[command]/usr/bin/docker create --name bc737fcc0ece4103845186540090a262_ghcriointicmnbkicad6_autodev_e3541a --label 290506 --workdir /__w/kicost_ci_test/kicost_ci_test --network github_network_3e2f1ef2439648b88101c704de4f9602  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/runners/2.299.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/inti-cmnb/kicad6_auto:dev "-f" "/dev/null"
+2022-12-15T14:27:04.1644346Z 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:04.1659188Z ##[command]/usr/bin/docker start 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:04.4869884Z 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:04.4876383Z ##[command]/usr/bin/docker ps --all --filter id=773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2022-12-15T14:27:04.5057828Z 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 Up Less than a second
+2022-12-15T14:27:04.5080924Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:04.5256863Z CI=true
+2022-12-15T14:27:04.5257331Z HOME=/github/home
+2022-12-15T14:27:04.5257975Z GITHUB_ACTIONS=true
+2022-12-15T14:27:04.5258432Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2022-12-15T14:27:04.5259087Z TZ=Etc/UTC
+2022-12-15T14:27:04.5282288Z ##[endgroup]
+2022-12-15T14:27:04.5315255Z ##[group]Waiting for all services to be ready
+2022-12-15T14:27:04.5316977Z ##[endgroup]
+2022-12-15T14:27:04.5678305Z ##[group]Run actions/checkout@v3
+2022-12-15T14:27:04.5678584Z with:
+2022-12-15T14:27:04.5678830Z   repository: set-soft/kicost_ci_test
+2022-12-15T14:27:04.5679359Z   token: ***
+2022-12-15T14:27:04.5679577Z   ssh-strict: true
+2022-12-15T14:27:04.5679828Z   persist-credentials: true
+2022-12-15T14:27:04.5680081Z   clean: true
+2022-12-15T14:27:04.5680300Z   fetch-depth: 1
+2022-12-15T14:27:04.5680511Z   lfs: false
+2022-12-15T14:27:04.5680717Z   submodules: false
+2022-12-15T14:27:04.5680964Z   set-safe-directory: true
+2022-12-15T14:27:04.5681203Z ##[endgroup]
+2022-12-15T14:27:04.5825538Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:04.9969747Z Syncing repository: set-soft/kicost_ci_test
+2022-12-15T14:27:04.9972220Z ##[group]Getting Git version info
+2022-12-15T14:27:04.9973080Z Working directory is '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:27:04.9974077Z [command]/usr/bin/git version
+2022-12-15T14:27:04.9984983Z git version 2.34.1
+2022-12-15T14:27:05.0007826Z ##[endgroup]
+2022-12-15T14:27:05.0029004Z Temporarily overriding HOME='/__w/_temp/f6d5c6af-8133-4277-b1b2-04d9299e0285' before making global git config changes
+2022-12-15T14:27:05.0029496Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:27:05.0033609Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.0078755Z Deleting the contents of '/__w/kicost_ci_test/kicost_ci_test'
+2022-12-15T14:27:05.0085870Z ##[group]Initializing the repository
+2022-12-15T14:27:05.0090599Z [command]/usr/bin/git init /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.0124119Z hint: Using 'master' as the name for the initial branch. This default branch name
+2022-12-15T14:27:05.0124745Z hint: is subject to change. To configure the initial branch name to use in all
+2022-12-15T14:27:05.0125402Z hint: of your new repositories, which will suppress this warning, call:
+2022-12-15T14:27:05.0125860Z hint: 
+2022-12-15T14:27:05.0126773Z hint: 	git config --global init.defaultBranch <name>
+2022-12-15T14:27:05.0127129Z hint: 
+2022-12-15T14:27:05.0128314Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2022-12-15T14:27:05.0129034Z hint: 'development'. The just-created branch can be renamed via this command:
+2022-12-15T14:27:05.0129408Z hint: 
+2022-12-15T14:27:05.0130082Z hint: 	git branch -m <name>
+2022-12-15T14:27:05.0141337Z Initialized empty Git repository in /__w/kicost_ci_test/kicost_ci_test/.git/
+2022-12-15T14:27:05.0150184Z [command]/usr/bin/git remote add origin https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:27:05.0185358Z ##[endgroup]
+2022-12-15T14:27:05.0185842Z ##[group]Disabling automatic garbage collection
+2022-12-15T14:27:05.0190131Z [command]/usr/bin/git config --local gc.auto 0
+2022-12-15T14:27:05.0233439Z ##[endgroup]
+2022-12-15T14:27:05.0233868Z ##[group]Setting up auth
+2022-12-15T14:27:05.0234393Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:27:05.0263877Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:27:05.0488544Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:27:05.0519789Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2022-12-15T14:27:05.0738207Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2022-12-15T14:27:05.0777548Z ##[endgroup]
+2022-12-15T14:27:05.0778009Z ##[group]Fetching the repository
+2022-12-15T14:27:05.0786450Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +68b1aa4fe4f33119bcf317f7bef18400d46b3eea:refs/remotes/origin/master
+2022-12-15T14:27:05.2840175Z remote: Enumerating objects: 12, done.        
+2022-12-15T14:27:05.2843822Z remote: Counting objects:   8% (1/12)        
+2022-12-15T14:27:05.2845306Z remote: Counting objects:  16% (2/12)        
+2022-12-15T14:27:05.2845822Z remote: Counting objects:  25% (3/12)        
+2022-12-15T14:27:05.2846448Z remote: Counting objects:  33% (4/12)        
+2022-12-15T14:27:05.2846879Z remote: Counting objects:  41% (5/12)        
+2022-12-15T14:27:05.2847488Z remote: Counting objects:  50% (6/12)        
+2022-12-15T14:27:05.2847898Z remote: Counting objects:  58% (7/12)        
+2022-12-15T14:27:05.2848501Z remote: Counting objects:  66% (8/12)        
+2022-12-15T14:27:05.2848914Z remote: Counting objects:  75% (9/12)        
+2022-12-15T14:27:05.2849710Z remote: Counting objects:  83% (10/12)        
+2022-12-15T14:27:05.2850161Z remote: Counting objects:  91% (11/12)        
+2022-12-15T14:27:05.2850793Z remote: Counting objects: 100% (12/12)        
+2022-12-15T14:27:05.2851255Z remote: Counting objects: 100% (12/12), done.        
+2022-12-15T14:27:05.2851918Z remote: Compressing objects:  10% (1/10)        
+2022-12-15T14:27:05.2852382Z remote: Compressing objects:  20% (2/10)        
+2022-12-15T14:27:05.2853075Z remote: Compressing objects:  30% (3/10)        
+2022-12-15T14:27:05.2853515Z remote: Compressing objects:  40% (4/10)        
+2022-12-15T14:27:05.2854151Z remote: Compressing objects:  50% (5/10)        
+2022-12-15T14:27:05.2854583Z remote: Compressing objects:  60% (6/10)        
+2022-12-15T14:27:05.2855219Z remote: Compressing objects:  70% (7/10)        
+2022-12-15T14:27:05.2855669Z remote: Compressing objects:  80% (8/10)        
+2022-12-15T14:27:05.2856298Z remote: Compressing objects:  90% (9/10)        
+2022-12-15T14:27:05.2856745Z remote: Compressing objects: 100% (10/10)        
+2022-12-15T14:27:05.2857399Z remote: Compressing objects: 100% (10/10), done.        
+2022-12-15T14:27:05.3017060Z remote: Total 12 (delta 0), reused 10 (delta 0), pack-reused 0        
+2022-12-15T14:27:05.3176187Z From https://github.com/set-soft/kicost_ci_test
+2022-12-15T14:27:05.3176923Z  * [new ref]         68b1aa4fe4f33119bcf317f7bef18400d46b3eea -> origin/master
+2022-12-15T14:27:05.3197795Z ##[endgroup]
+2022-12-15T14:27:05.3198437Z ##[group]Determining the checkout info
+2022-12-15T14:27:05.3202298Z ##[endgroup]
+2022-12-15T14:27:05.3203202Z ##[group]Checking out the ref
+2022-12-15T14:27:05.3208994Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2022-12-15T14:27:05.3294509Z Reset branch 'master'
+2022-12-15T14:27:05.3300613Z Branch 'master' set up to track remote branch 'master' from 'origin'.
+2022-12-15T14:27:05.3305651Z ##[endgroup]
+2022-12-15T14:27:05.3345197Z [command]/usr/bin/git log -1 --format='%H'
+2022-12-15T14:27:05.3373270Z '68b1aa4fe4f33119bcf317f7bef18400d46b3eea'
+2022-12-15T14:27:05.3808672Z ##[group]Run set-soft/cache@main
+2022-12-15T14:27:05.3808922Z with:
+2022-12-15T14:27:05.3809131Z   path: ~/kicost_cache
+2022-12-15T14:27:05.3809356Z   key: kicost_cache
+2022-12-15T14:27:05.3809573Z ##[endgroup]
+2022-12-15T14:27:05.3811775Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:05.9761293Z Received 725765 of 725765 (100.0%), 18.2 MBs/sec
+2022-12-15T14:27:05.9761585Z Cache Size: ~1 MB (725765 B)
+2022-12-15T14:27:05.9773072Z [command]/bin/tar -z -xf /__w/_temp/1cb7a779-e670-4884-bfe8-d5329da76de3/cache.tgz -P -C /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:05.9988128Z Cache restored successfully
+2022-12-15T14:27:06.3873250Z Cache restored from key: kicost_cache
+2022-12-15T14:27:06.4067118Z ##[group]Run ##### Experimental stuff:
+2022-12-15T14:27:06.4067516Z [36;1m##### Experimental stuff:[0m
+2022-12-15T14:27:06.4067797Z [36;1m# apt-get update[0m
+2022-12-15T14:27:06.4068261Z [36;1m# apt-get -y install --no-install-recommends  -t bullseye-backports python3-pip unzip curl python3-setuptools python3-wheel[0m
+2022-12-15T14:27:06.4068683Z [36;1m## Install KiCost@master[0m
+2022-12-15T14:27:06.4069080Z [36;1m# curl https://codeload.github.com/hildogjr/KiCost/zip/refs/heads/master --output pp.zip[0m
+2022-12-15T14:27:06.4069443Z [36;1m# unzip pp.zip[0m
+2022-12-15T14:27:06.4069712Z [36;1m# pip3 install KiCost-master/[0m
+2022-12-15T14:27:06.4069998Z [36;1m## Clean the downloaded stuff[0m
+2022-12-15T14:27:06.4070282Z [36;1m# rm -rf KiCost-master pp.zip[0m
+2022-12-15T14:27:06.4070556Z [36;1m##### End Experimental stuff:[0m
+2022-12-15T14:27:06.4070815Z [36;1mmkdir KiCost[0m
+2022-12-15T14:27:06.4071081Z [36;1mkibot -vvvv 2> KiCost/kibot.log[0m
+2022-12-15T14:27:06.4074765Z shell: sh -e {0}
+2022-12-15T14:27:06.4074998Z env:
+2022-12-15T14:27:06.4075647Z   ELEMENT14_KEY: ***
+2022-12-15T14:27:06.4075956Z   MOUSER_KEY: ***
+2022-12-15T14:27:06.4076326Z   TME_TOKEN: ***
+2022-12-15T14:27:06.4076583Z   TME_APP_SECRET: ***
+2022-12-15T14:27:06.4076885Z   NEXAR_CLIENT_ID: ***
+2022-12-15T14:27:06.4077188Z   NEXAR_CLIENT_SECRET: ***
+2022-12-15T14:27:06.4077431Z ##[endgroup]
+2022-12-15T14:27:10.1928649Z Using config file: t1.kibot.yaml
+2022-12-15T14:27:10.1930935Z Using SCH file: t1.kicad_sch
+2022-12-15T14:27:10.4908233Z - 'Bill of Materials with prices' (bom_internal) [bom]
+2022-12-15T14:27:11.2712147Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:27:11.3210040Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:27:11.8181475Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:27:11.8645502Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:27:13.0342041Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:27:13.0709523Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:27:13.4672786Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:27:13.5152799Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:27:14.1417671Z Found 57 unique warning/s (60 total)
+2022-12-15T14:27:14.2161171Z ##[group]Run actions/upload-artifact@v1
+2022-12-15T14:27:14.2161454Z with:
+2022-12-15T14:27:14.2161664Z   name: All_Outputs
+2022-12-15T14:27:14.2161888Z   path: KiCost
+2022-12-15T14:27:14.2162102Z ##[endgroup]
+2022-12-15T14:27:14.6103891Z Uploading artifact 'All_Outputs' from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' for run #4
+2022-12-15T14:27:14.7108965Z Uploading 2 files
+2022-12-15T14:27:15.3553377Z File upload complete.
+2022-12-15T14:27:15.3580222Z Uploaded '8693353' bytes from '/home/runner/work/kicost_ci_test/kicost_ci_test/KiCost' to server
+2022-12-15T14:27:16.0993352Z Associated artifact All_Outputs (3557442) with run #4
+2022-12-15T14:27:16.1076679Z Post job cleanup.
+2022-12-15T14:27:16.1078627Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:16.4236619Z Cache hit occurred on the primary key kicost_cache, not saving cache.
+2022-12-15T14:27:16.4356617Z Post job cleanup.
+2022-12-15T14:27:16.4361318Z ##[command]/usr/bin/docker exec  773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9 sh -c "cat /etc/*release | grep ^ID"
+2022-12-15T14:27:16.7164118Z [command]/usr/bin/git version
+2022-12-15T14:27:16.7211659Z git version 2.34.1
+2022-12-15T14:27:16.7262950Z Temporarily overriding HOME='/__w/_temp/4b7a193b-deea-40f5-b7bb-2121f3425909' before making global git config changes
+2022-12-15T14:27:16.7265698Z Adding repository directory to the temporary git global config as a safe directory
+2022-12-15T14:27:16.7270863Z [command]/usr/bin/git config --global --add safe.directory /__w/kicost_ci_test/kicost_ci_test
+2022-12-15T14:27:16.7311344Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-12-15T14:27:16.7344004Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2022-12-15T14:27:16.7563549Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-12-15T14:27:16.7589004Z http.https://github.com/.extraheader
+2022-12-15T14:27:16.7598345Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2022-12-15T14:27:16.7630809Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2022-12-15T14:27:16.7989358Z Stop and remove container: bc737fcc0ece4103845186540090a262_ghcriointicmnbkicad6_autodev_e3541a
+2022-12-15T14:27:16.7995195Z ##[command]/usr/bin/docker rm --force 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:16.9978203Z 773dd799167ab9d3ff6c2184235658d3c0aed96a2124ad91bfa77ddb2216a7c9
+2022-12-15T14:27:17.0045258Z Remove container network: github_network_3e2f1ef2439648b88101c704de4f9602
+2022-12-15T14:27:17.0051406Z ##[command]/usr/bin/docker network rm github_network_3e2f1ef2439648b88101c704de4f9602
+2022-12-15T14:27:17.1250497Z github_network_3e2f1ef2439648b88101c704de4f9602
+2022-12-15T14:27:17.1395451Z Cleaning up orphan processes

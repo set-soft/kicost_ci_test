@@ -1,0 +1,37 @@
+2022-12-15T14:26:36.9044276Z Current runner version: '2.299.1'
+2022-12-15T14:26:36.9071896Z ##[group]Operating System
+2022-12-15T14:26:36.9072583Z Ubuntu
+2022-12-15T14:26:36.9072911Z 22.04.1
+2022-12-15T14:26:36.9073218Z LTS
+2022-12-15T14:26:36.9073570Z ##[endgroup]
+2022-12-15T14:26:36.9073955Z ##[group]Runner Image
+2022-12-15T14:26:36.9074393Z Image: ubuntu-22.04
+2022-12-15T14:26:36.9074761Z Version: 20221212.1
+2022-12-15T14:26:36.9075362Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20221212.1/images/linux/Ubuntu2204-Readme.md
+2022-12-15T14:26:36.9076077Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20221212.1
+2022-12-15T14:26:36.9076573Z ##[endgroup]
+2022-12-15T14:26:36.9076960Z ##[group]Runner Image Provisioner
+2022-12-15T14:26:36.9077368Z 2.0.91.1
+2022-12-15T14:26:36.9077690Z ##[endgroup]
+2022-12-15T14:26:36.9078765Z ##[group]GITHUB_TOKEN Permissions
+2022-12-15T14:26:36.9079523Z Actions: write
+2022-12-15T14:26:36.9079881Z Checks: write
+2022-12-15T14:26:36.9080245Z Contents: write
+2022-12-15T14:26:36.9080822Z Deployments: write
+2022-12-15T14:26:36.9081200Z Discussions: write
+2022-12-15T14:26:36.9081562Z Issues: write
+2022-12-15T14:26:36.9081905Z Metadata: read
+2022-12-15T14:26:36.9082277Z Packages: write
+2022-12-15T14:26:36.9082627Z Pages: write
+2022-12-15T14:26:36.9082986Z PullRequests: write
+2022-12-15T14:26:36.9083375Z RepositoryProjects: write
+2022-12-15T14:26:36.9083802Z SecurityEvents: write
+2022-12-15T14:26:36.9084170Z Statuses: write
+2022-12-15T14:26:36.9084527Z ##[endgroup]
+2022-12-15T14:26:36.9088384Z Secret source: Actions
+2022-12-15T14:26:36.9088991Z Prepare workflow directory
+2022-12-15T14:26:37.0138592Z Prepare all required actions
+2022-12-15T14:26:37.0322295Z Getting action download info
+2022-12-15T14:26:37.3671598Z Download action repository 'actions/checkout@v3' (SHA:755da8c3cf115ac066823e79a1e1788f8940201b)
+2022-12-15T14:26:37.7170841Z Download action repository 'set-soft/cache@main' (SHA:baaa43ff1da8728ac1ac1f067c26a631830df13c)
+2022-12-15T14:26:38.2321006Z Download action repository 'actions/upload-artifact@v1' (SHA:3446296876d12d4e3a0f3145a3c87e67bf0a16b5)

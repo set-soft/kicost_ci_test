@@ -1,0 +1,8 @@
+2022-12-15T14:26:29.9412829Z ##[section]Starting: Prepare job KiCost
+2022-12-15T14:26:29.9634329Z Evaluating strategy
+2022-12-15T14:26:29.9634575Z Creating job '__default'
+2022-12-15T14:26:29.9634856Z Evaluating timeout
+2022-12-15T14:26:29.9634895Z Evaluating cancel timeout
+2022-12-15T14:26:29.9634926Z Evaluating continue on error
+2022-12-15T14:26:29.9634958Z Evaluating target
+2022-12-15T14:26:29.9636388Z ##[section]Finishing: Prepare job KiCost

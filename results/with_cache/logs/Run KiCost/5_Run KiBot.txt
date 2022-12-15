@@ -1,0 +1,34 @@
+2022-12-15T14:27:06.4067097Z ##[group]Run ##### Experimental stuff:
+2022-12-15T14:27:06.4067512Z [36;1m##### Experimental stuff:[0m
+2022-12-15T14:27:06.4067793Z [36;1m# apt-get update[0m
+2022-12-15T14:27:06.4068257Z [36;1m# apt-get -y install --no-install-recommends  -t bullseye-backports python3-pip unzip curl python3-setuptools python3-wheel[0m
+2022-12-15T14:27:06.4068680Z [36;1m## Install KiCost@master[0m
+2022-12-15T14:27:06.4069076Z [36;1m# curl https://codeload.github.com/hildogjr/KiCost/zip/refs/heads/master --output pp.zip[0m
+2022-12-15T14:27:06.4069439Z [36;1m# unzip pp.zip[0m
+2022-12-15T14:27:06.4069708Z [36;1m# pip3 install KiCost-master/[0m
+2022-12-15T14:27:06.4069996Z [36;1m## Clean the downloaded stuff[0m
+2022-12-15T14:27:06.4070279Z [36;1m# rm -rf KiCost-master pp.zip[0m
+2022-12-15T14:27:06.4070553Z [36;1m##### End Experimental stuff:[0m
+2022-12-15T14:27:06.4070812Z [36;1mmkdir KiCost[0m
+2022-12-15T14:27:06.4071078Z [36;1mkibot -vvvv 2> KiCost/kibot.log[0m
+2022-12-15T14:27:06.4074718Z shell: sh -e {0}
+2022-12-15T14:27:06.4074994Z env:
+2022-12-15T14:27:06.4075642Z   ELEMENT14_KEY: ***
+2022-12-15T14:27:06.4075952Z   MOUSER_KEY: ***
+2022-12-15T14:27:06.4076322Z   TME_TOKEN: ***
+2022-12-15T14:27:06.4076580Z   TME_APP_SECRET: ***
+2022-12-15T14:27:06.4076882Z   NEXAR_CLIENT_ID: ***
+2022-12-15T14:27:06.4077184Z   NEXAR_CLIENT_SECRET: ***
+2022-12-15T14:27:06.4077428Z ##[endgroup]
+2022-12-15T14:27:10.1928618Z Using config file: t1.kibot.yaml
+2022-12-15T14:27:10.1930926Z Using SCH file: t1.kicad_sch
+2022-12-15T14:27:10.4908198Z - 'Bill of Materials with prices' (bom_internal) [bom]
+2022-12-15T14:27:11.2712114Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:27:11.3210004Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:27:11.8181439Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:27:11.8645476Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:27:13.0342008Z - Mouser [api] (https://api.mouser.com/)
+2022-12-15T14:27:13.0709491Z - Element14 [api] (https://partner.element14.com/)
+2022-12-15T14:27:13.4672741Z - TME [api] (https://developers.tme.eu/en/)
+2022-12-15T14:27:13.5152758Z - Nexar [api] (https://nexar.com/api)
+2022-12-15T14:27:14.1417639Z Found 57 unique warning/s (60 total)
