@@ -1,0 +1,41 @@
+# Example KiBot config file
+kibot:
+  version: 1
+
+outputs:
+  - name: 'bom_internal'
+    comment: "Bill of Materials with prices"
+    type: bom
+    dir: KiCost
+    options:
+      use_alt: true
+      number: 50
+      group_fields: ['Part', 'Part Lib', 'Value', 'Footprint', 'Footprint Lib']
+      columns:
+        - References
+        - Part
+        - Value
+        - Quantity Per PCB
+        - field: manf
+          name: Manufacturer
+        - field: manf#
+          name: Manufacturer P/N
+        - field: digikey#
+          level: 1
+          comment: 'Code used to buy the part at Digi-Key'
+      distributors:
+        - Mouser
+        - Digi-Key
+        - TME
+        - Arrow
+        - Farnell
+      xlsx:
+        kicost: true
+        specs: true
+        kicost_config: kicost_config.yaml
+        kicost_api_disable:
+          # Don't use KitSpace, we have keys
+          - KitSpace
+          # Digi-Key is tricky and we can't currently use it on CI/CD
+          - Digi-Key
+

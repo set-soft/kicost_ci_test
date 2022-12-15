@@ -1,0 +1,16 @@
+# KiCost configuration file
+kicost:
+  version: 1
+  # Prices are valid for a day
+  cache_ttl: 1
+  # We will store the cache here:
+  cache_path: ~/kicost_cache
+
+# Add any API option here
+# Avoid secrets
+APIs:
+  TME:
+    country: US
+    language: EN
+
+
