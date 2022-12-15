@@ -4,6 +4,8 @@ This is an example of how to get component prices using KiBot and KiCost inside 
 
 This example also shows how to use GitHub caches to keep data between KiBot runs.
 
+Note: Use KiCost 1.1.15 or newer
+
 ## The problematic
 
 When running KiBot locally you can just use your KiCost configuration, or even provide an alternative file.
@@ -24,7 +26,7 @@ In this case we added the following fields to the schematic components:
 - **manf**: The name of the manufacturer for the component
 - **manf#**: The name used by the manufacturer for this component
 
-If you are going to by the components from an specific distributor I recommend also adding a field named
+If you are going to buy the components from an specific distributor I recommend also adding a field named
 **DISTRIBUTOR#**, containing the code used by the distributor. As an example we added **digikey#**.
 
 ## KiCost configuration file
@@ -40,7 +42,7 @@ The configuration example is [kicost_config.yaml](kicost_config.yaml)
 In order to protect them this example uses *repository secrets*. In the current GitHub interface they can
 be defined choosing `Settings` (in the main menu bar, where the code, issues, etc. are located), then
 `Secrets` (bottom left), `Actions` and finally selecting `New repository secret`.
-Here is the sequence in the GitHub docs](https://docs.github.com/en/actions/security-guides/encrypted-secrets?tool=webui#creating-encrypted-secrets-for-a-repository).
+Here is the sequence in the [GitHub docs](https://docs.github.com/en/actions/security-guides/encrypted-secrets?tool=webui#creating-encrypted-secrets-for-a-repository).
 
 The name of the secrets is arbitrary, but I recommend using the same name used for the associated environment
 variable. The variables are named **DISTRIBUTOR**_**OPTION**, all in uppercase. As an example, the name for
@@ -185,7 +187,7 @@ we got from the APIs using GitHub caches. The relevant step is:
         key: kicost_cache
 ```
 
-Which is used to create cache that can be retrieved using the `kicost_cache` key. The cache will contain the
+Which is used to create a cache that can be retrieved using the `kicost_cache` key. The cache will contain the
 data from `~/kicost_cache`.
 
 Note that we are using a forked repo, not the original *actions/cache@v3*. This is because the original action
