@@ -1,0 +1,59 @@
+name: "KiCost demo using cache"
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    paths:
+      - '*.kicad_sch'
+      - '*.kicad_pcb'
+      - '*.kibot.yaml'
+      - 'Makefile'
+      - '.github/workflows/kibot.yml'
+  pull_request:
+    paths:
+      - '*.kicad_sch'
+      - '*.kicad_pcb'
+      - '*.kibot.yaml'
+      - 'Makefile'
+      - '.github/workflows/kibot.yml'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  KiCost:
+    name: Run KiCost
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad6_auto:dev
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache KiCost data
+      id: kicost-cache
+      uses: actions/cache@v3
+      with:
+        path: ~/kicost_cache
+        key: kicost_cache
+
+    - if: ${{ steps.kicost-cache.outputs.cache-hit != 'true' }}
+      name: "Inform we don't have a cache"
+      continue-on-error: true
+      run: echo "No cache found"
+
+    - name: Run KiBot
+      env:
+        ELEMENT14_KEY: ${{ secrets.ELEMENT14_KEY }}
+        MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
+        TME_TOKEN: ${{ secrets.TME_TOKEN }}
+        TME_APP_SECRET: ${{ secrets.TME_APP_SECRET }}
+        NEXAR_CLIENT_ID: ${{ secrets.NEXAR_CLIENT_ID }}
+        NEXAR_CLIENT_SECRET: ${{ secrets.NEXAR_CLIENT_SECRET }}
+      run: |
+        mkdir KiCost
+        kibot -vvvv 2> KiCost/kibot.log
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v1
+      with:
+        name: All_Outputs
+        path: KiCost
