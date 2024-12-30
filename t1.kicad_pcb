@@ -8,7 +8,7 @@
   (title_block
     (rev "${git_hash}")
     (company "Instituto Nacional de Tecnología Industrial")
-    (comment 4 "An example of KiBot variants")
+    (comment 4 "An example of KiBot variants.")
   )
 
   (layers
