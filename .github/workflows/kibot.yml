@@ -60,7 +60,7 @@ jobs:
         kibot -vvvv 2> KiCost/kibot.log
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
         name: All_Outputs
