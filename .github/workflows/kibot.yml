@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout (only last code)
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
 
     - name: Cache KiCost data
       id: kicost-cache
@@ -67,7 +67,7 @@ jobs:
         kibot -vvvv 2> KiCost/kibot.log
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: ${{ always() }}
       with:
         name: All_Outputs
