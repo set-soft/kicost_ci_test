@@ -23,7 +23,7 @@ jobs:
   KiCost:
     name: Run KiCost
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad6_auto:dev
+    container: ghcr.io/inti-cmnb/kicad9_auto:dev
 
     steps:
     - name: Checkout (only last code)
