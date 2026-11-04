@@ -116,14 +116,11 @@ As we mentioned before you can fine tune the APIs using a KiCost configuration. 
 ### Saving time and avoiding problems
 
 In order to avoid long time-outs, or even fails, you should disable APIs that you don't use.
-Disabling *KitSpace* is really important, you'll get the same information that you get from *Nexar*, but
-you'll load *KitSpace*, and risk to get an error.
+We disable *Digi-Key* because it needs a special mechanism.
 
 ```yaml
       xlsx:
         kicost_api_disable:
-          # Don't use KitSpace, we have keys
-          - KitSpace
           # Digi-Key is tricky and we can't currently use it on CI/CD
           - Digi-Key
 ```
@@ -216,4 +213,3 @@ generated in the previous run.
 - Using GitHub secrets and environment variables you can hide your API secrets.
 - You can still use a KiCost configuration, just avoid including the secrets.
 - You can exploit the KiCost cache using GitHub caches.
-- We can offload KitSpace by using other APIs.
