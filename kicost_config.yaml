@@ -12,5 +12,7 @@ APIs:
   TME:
     country: US
     language: EN
-
+  Digi-Key:
+    version: 4
+    exclude_market_place_products: true
 

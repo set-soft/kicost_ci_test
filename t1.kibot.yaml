@@ -27,15 +27,9 @@ outputs:
         - Mouser
         - Digi-Key
         - TME
-        - Arrow
         - Farnell
       xlsx:
         kicost: true
         specs: true
         kicost_config: kicost_config.yaml
-        kicost_api_disable:
-          # Don't use KitSpace, we have keys
-          - KitSpace
-          # Digi-Key is tricky and we can't currently use it on CI/CD
-          - Digi-Key
 
