@@ -55,12 +55,12 @@ jobs:
         # pip3 install KiCost-master/
         ## Clean the downloaded stuff
         # rm -rf KiCost-master pp.zip
-        ## Install kicost-digikey-api-v4@master
-        curl https://codeload.github.com/set-soft/kicost-digikey-api-v4/zip/refs/heads/master --output pp.zip
+        ## Install kicost-digikey-api-v4@main
+        curl https://codeload.github.com/set-soft/kicost-digikey-api-v4/zip/refs/heads/main --output pp.zip
         unzip pp.zip
-        pip3 install kicost-digikey-api-v4-master/
+        pip3 install kicost-digikey-api-v4-main/
         ## Clean the downloaded stuff
-        rm -rf kicost-digikey-api-v4-master pp.zip
+        rm -rf kicost-digikey-api-v4-main pp.zip
         ##### End Experimental stuff
         #
         mkdir KiCost
