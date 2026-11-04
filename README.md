@@ -4,8 +4,6 @@ This is an example of how to get component prices using KiBot and KiCost inside 
 
 This example also shows how to use GitHub caches to keep data between KiBot runs.
 
-Note: Use KiCost 1.1.15 or newer
-
 ## The problematic
 
 When running KiBot locally you can just use your KiCost configuration, or even provide an alternative file.
@@ -37,15 +35,22 @@ demonstration, and also selected some values for the *TME* API, again just to sh
 
 The configuration example is [kicost_config.yaml](kicost_config.yaml)
 
+In the above example you'll notice that we only list the APIs that needs some customization, the rest uses
+default values. Also note that no *key* or *token* is used in the configuration file, they will be defined
+using environment variables. Secrets for this repo.
+
+> [!NOTE]
+> In order to use Digi-Key you must use the V4 API
+
 ## The API secrets
 
 In order to protect them this example uses *repository secrets*. In the current GitHub interface they can
 be defined choosing `Settings` (in the main menu bar, where the code, issues, etc. are located), then
-`Secrets` (bottom left), `Actions` and finally selecting `New repository secret`.
+`Secrets and variables` (bottom left), `Actions` and finally selecting `New repository secret`.
 Here is the sequence in the [GitHub docs](https://docs.github.com/en/actions/security-guides/encrypted-secrets?tool=webui#creating-encrypted-secrets-for-a-repository).
 
-The name of the secrets is arbitrary, but I recommend using the same name used for the associated environment
-variable. The variables are named **DISTRIBUTOR**_**OPTION**, all in uppercase. As an example, the name for
+The name of the secret is arbitrary, but I recommend using the same name used for the associated environment
+variable. The variables are named *DISTRIBUTOR*_*OPTION*, all in uppercase. As an example, the name for
 the environment variable to set the Mouser key is **MOUSER_KEY**. So I recommend defining a repository secret
 named **MOUSER_KEY**. It should contain the key you got from Mouser.
 
@@ -55,10 +60,8 @@ In this repo we define the following secrets:
 - MOUSER_KEY
 - TME_TOKEN
 - TME_APP_SECRET
-- NEXAR_CLIENT_ID
-- NEXAR_CLIENT_SECRET
-
-Note that we left Digi-Key outside. This is because the current API plug-in needs user intervention.
+- DIGIKEY_CLIENT_ID
+- DIGIKEY_CLIENT_SECRET
 
 ## KiBot configuration
 
@@ -75,13 +78,11 @@ You can select which distributors will be included in the spreadsheet using:
         - Mouser
         - Digi-Key
         - TME
-        - Arrow
         - Farnell
 ```
 
-Note that these are **distributors**, not APIs. Here we want *Digi-Key* prices, even when we don't have
-access to it. In this case the prices will come from *Nexar* API. The same goes for *Arrow*. We'll try
-to get *Mouser*, *TME* and *Farnell* (*Element14*) prices directly.
+Note that these are **distributors**, not APIs. Here we want *Farnell* prices, provided by *Element14*. We'll try
+to get *Mouser*, *TME*, *Digi-Key* and *Farnell* (*Element14*) prices directly.
 
 ### Enabling KiCost use
 
@@ -116,14 +117,6 @@ As we mentioned before you can fine tune the APIs using a KiCost configuration. 
 ### Saving time and avoiding problems
 
 In order to avoid long time-outs, or even fails, you should disable APIs that you don't use.
-We disable *Digi-Key* because it needs a special mechanism.
-
-```yaml
-      xlsx:
-        kicost_api_disable:
-          # Digi-Key is tricky and we can't currently use it on CI/CD
-          - Digi-Key
-```
 
 ## Workflow configuration
 
@@ -142,12 +135,14 @@ Here we define environment variables to hold the secrets. Then we start KiBot.
         MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
         TME_TOKEN: ${{ secrets.TME_TOKEN }}
         TME_APP_SECRET: ${{ secrets.TME_APP_SECRET }}
-        NEXAR_CLIENT_ID: ${{ secrets.NEXAR_CLIENT_ID }}
-        NEXAR_CLIENT_SECRET: ${{ secrets.NEXAR_CLIENT_SECRET }}
+        DIGIKEY_CLIENT_ID: ${{ secrets.DIGIKEY_CLIENT_ID }}
+        DIGIKEY_CLIENT_SECRET: ${{ secrets.DIGIKEY_CLIENT_SECRET }}
       run: |
         mkdir KiCost
         kibot -vvvv 2> KiCost/kibot.log
 ```
+As the name of the secrets is the name used for the environment variables the
+mapping is trivial.
 
 In this example we store full debug information in *KiCost/kibot.log*.
 Note that KiCost will try to avoid dumping the keys to the debug file.
@@ -184,7 +179,7 @@ we got from the APIs using GitHub caches. The relevant step is:
         key: kicost_cache
 ```
 
-Which is used to create a cache that can be retrieved using the `kicost_cache` key. The cache will contain the
+Which is used to create a cache that can be retrieved using the `kicost_cache` identification key. The cache will contain the
 data from `~/kicost_cache`.
 
 Note that we are using a forked repo, not the original *actions/cache@v3*. This is because the original action
@@ -204,9 +199,6 @@ generated in the previous run.
 - Use the full debug information as shown above. The example workflow will create the artifacts even on fail,
   so you'll get KiBot logs.
 - Error 26 means that something went wrong during KiCost call.
-- Element14 seems to be returning 403 (Forbidden) in some cases. I guess this happens when we exceed the
-  maximum queries per second. But I need confirmation, I can't exceed it from my local machine, located in
-  Argentina.
 
 ## Conclusions
 
