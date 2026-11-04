@@ -48,7 +48,7 @@ jobs:
       run: |
         ##### Experimental stuff:
         apt-get update
-        apt-get -y install --no-install-recommends  -t bullseye-backports python3-pip unzip curl python3-setuptools python3-wheel
+        apt-get -y install --no-install-recommends  python3-pip unzip curl python3-setuptools python3-wheel
         ## Install KiCost@master
         # curl https://codeload.github.com/hildogjr/KiCost/zip/refs/heads/master --output pp.zip
         # unzip pp.zip
