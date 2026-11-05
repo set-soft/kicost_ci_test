@@ -76,6 +76,7 @@ jobs:
         kibot -vvvv 2> KiCost/kibot.log
 
     - name: Save cached KiCost data
+      # Refresh the components cache
       id: kicost-cache-save
       if: always()
       uses: actions/cache/save@v5
