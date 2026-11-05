@@ -4,6 +4,11 @@ This is an example of how to get component prices using KiBot and KiCost inside 
 
 This example also shows how to use GitHub caches to keep data between KiBot runs.
 
+> [!NOTE]
+> - KitSpace and Nexar are no longer recommended.
+> - Digi-Key can be used from CI/CD now.
+> - GitHub changed the cache mechanism, here you'll find a working mechanism.
+
 ## The problematic
 
 When running KiBot locally you can just use your KiCost configuration, or even provide an alternative file.
@@ -167,24 +172,59 @@ kicost:
 
 So caches will be stored at `~/kicost_cache`. The problem here is that this will go away as soon as the
 CI/CD workflow finishes. This will defeat the whole idea. In order to make it work we store the information
-we got from the APIs using GitHub caches. The relevant step is:
+we got from the APIs using GitHub caches. Before executing KiBot we restore the cached data using:
 
 ```yaml
-    - name: Cache KiCost data
-      id: kicost-cache
-      #uses: actions/cache@v3
-      uses: set-soft/cache@main
+    - name: Restore cached KiCost data
+      id: kicost-cache-restore
+      uses: actions/cache/restore@v5
       with:
+        # This path must match the one declared in kicost_config.yaml
         path: ~/kicost_cache
-        key: kicost_cache
+        # The key must be unique, this will be the name used to save, not restore
+        key: kicost_cache-${{ github.run_id }}-${{ github.run_attempt }}
+        # We restore the newest available
+        restore-keys: |
+          kicost_cache
 ```
 
-Which is used to create a cache that can be retrieved using the `kicost_cache` identification key. The cache will contain the
-data from `~/kicost_cache`.
+After running KiBot we update the cache using:
 
-Note that we are using a forked repo, not the original *actions/cache@v3*. This is because the original action
-doesn't store the results if the workflow fails. But we want to save the progress, so we want to store it
-anyways. The *set-soft/cache@main* is a forked repo with the success condition removed.
+```yaml
+    - name: Save cached KiCost data
+      # Refresh the components cache
+      id: kicost-cache-save
+      if: always()
+      uses: actions/cache/save@v5
+      with:
+        # This path must match the one declared in kicost_config.yaml
+        path: ~/kicost_cache
+        # Unique name
+        key: kicost_cache-${{ github.run_id }}-${{ github.run_attempt }}
+```
+
+This will always update the cache, even if KiBot failed during the operation, we always keep
+retrieved components.
+
+The caches are deleted after some time by GitHub, only the last is kept. If you want to do
+it manually to avoid using extra space you can add:
+
+```yaml
+    - name: Delete old cache entry
+      # This is optional, caches are deleted automatically after some time
+      if: always()
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        curl -fsS -X DELETE \
+          -H "Authorization: Bearer $GH_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/caches?key=${{ steps.kicost-cache-restore.outputs.cache-matched-key }}" \
+          || true
+```
+
+The name of the cache is `kicost_cache` followed by the run and retry ids. The cache will contain the
+data from `~/kicost_cache`.
 
 This is all you need to make the KiCost cache persistent. If you need to invalidate the cache you can just
 remove it from the [GitHub UI](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows).
