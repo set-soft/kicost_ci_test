@@ -32,6 +32,7 @@ jobs:
     - name: Restore cached KiCost data
       uses: actions/cache/restore@v5
       with:
+        # This path must match the one declared in kicost_config.yaml
         path: ~/kicost_cache
         key: kicost_cache
 
@@ -69,6 +70,7 @@ jobs:
       if: always()
       uses: actions/cache/save@v5
       with:
+        # This path must match the one declared in kicost_config.yaml
         path: ~/kicost_cache
         key: kicost_cache
 
