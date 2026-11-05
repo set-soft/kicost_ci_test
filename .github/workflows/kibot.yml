@@ -88,6 +88,7 @@ jobs:
 
     - name: Delete old cache entry
       # This is optional, caches are deleted automatically after some time
+      # We do it only after a succesful save
       if: >-
         always() &&
         steps.kicost-cache-save.outcome == 'success' &&
