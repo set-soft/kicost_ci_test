@@ -30,11 +30,16 @@ jobs:
       uses: actions/checkout@v6
 
     - name: Restore cached KiCost data
+      id: kicost-cache-restore
       uses: actions/cache/restore@v5
       with:
         # This path must match the one declared in kicost_config.yaml
         path: ~/kicost_cache
-        key: kicost_cache
+        # The key must be unique, this will be the name used to save, not restore
+        key: kicost_cache-${{ github.run_id }}-${{ github.run_attempt }}
+        # We restore the newest available
+        restore-keys: |
+          kicost_cache
 
     - name: Run KiBot
       env:
@@ -72,7 +77,8 @@ jobs:
       with:
         # This path must match the one declared in kicost_config.yaml
         path: ~/kicost_cache
-        key: kicost_cache
+        # Unique name
+        key: kicost_cache-${{ github.run_id }}-${{ github.run_attempt }}
 
     - name: Retrieve results
       uses: actions/upload-artifact@v7
