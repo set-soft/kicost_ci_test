@@ -1,5 +1,10 @@
 name: "KiCost demo using cache"
 
+permissions:
+  contents: read
+  # We need write to delete an old cache
+  actions: write
+
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
@@ -79,6 +84,18 @@ jobs:
         path: ~/kicost_cache
         # Unique name
         key: kicost_cache-${{ github.run_id }}-${{ github.run_attempt }}
+
+    - name: Delete old cache entry
+      # This is optional, caches are deleted automatically after some time
+      if: always()
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        curl -fsS -X DELETE \
+          -H "Authorization: Bearer $GH_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/caches?key=${{ steps.kicost-cache-restore.outputs.cache-matched-key }}" \
+          || true
 
     - name: Retrieve results
       uses: actions/upload-artifact@v7
