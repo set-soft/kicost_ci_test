@@ -212,14 +212,17 @@ it manually to avoid using extra space you can add:
 ```yaml
     - name: Delete old cache entry
       # This is optional, caches are deleted automatically after some time
-      if: always()
+      if: >-
+        always() &&
+        steps.kicost-cache-save.outcome == 'success' &&
+        steps.kicost-cache-restore.outputs.cache-matched-key != ''
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
         curl -fsS -X DELETE \
           -H "Authorization: Bearer $GH_TOKEN" \
           -H "Accept: application/vnd.github+json" \
-          "https://api.github.com/repos/${{ github.repository }}/actions/caches?key=${{ steps.kicost-cache-restore.outputs.cache-matched-key }}" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/caches?key=${{ steps.kicost-cache-restore.outputs.cache-matched-key }}&ref=${{ github.ref }}" \
           || true
 ```
 
