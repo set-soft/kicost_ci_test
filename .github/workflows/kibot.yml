@@ -29,10 +29,8 @@ jobs:
     - name: Checkout (only last code)
       uses: actions/checkout@v6
 
-    - name: Cache KiCost data
-      id: kicost-cache
-      #uses: actions/cache@v3
-      uses: set-soft/cache@main
+    - name: Restore cached KiCost data
+      uses: actions/cache/restore@v5
       with:
         path: ~/kicost_cache
         key: kicost_cache
@@ -65,6 +63,14 @@ jobs:
         #
         mkdir KiCost
         kibot -vvvv 2> KiCost/kibot.log
+
+    - name: Save cached KiCost data
+      id: kicost-cache-save
+      if: always()
+      uses: actions/cache/save@v5
+      with:
+        path: ~/kicost_cache
+        key: ${{ steps.kicost-cache-restore.outputs.cache-primary-key }}
 
     - name: Retrieve results
       uses: actions/upload-artifact@v7
