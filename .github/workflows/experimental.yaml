@@ -1,0 +1,31 @@
+name: "Test for KiCost and or plug-ins from repo"
+on:
+  push
+
+jobs:
+  KiCost:
+    name: Run KiCost
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout (only last code)
+      uses: actions/checkout@v6
+
+    - name: Run KiBot
+      run: |
+        ##### Experimental stuff:
+        apt-get update
+        apt-get -y install --no-install-recommends  python3-pip unzip curl python3-setuptools python3-wheel
+        ## Install KiCost@master
+        # curl https://codeload.github.com/hildogjr/KiCost/zip/refs/heads/master --output pp.zip
+        # unzip pp.zip
+        # pip3 install --break-system-packages KiCost-master/
+        ## Clean the downloaded stuff
+        # rm -rf KiCost-master pp.zip
+        ## Install kicost-digikey-api-v4@main
+        curl https://codeload.github.com/set-soft/kicost-digikey-api-v4/zip/refs/heads/main --output pp.zip
+        unzip pp.zip
+        pip3 install --break-system-packages kicost-digikey-api-v4-main/
+        ## Clean the downloaded stuff
+        rm -rf kicost-digikey-api-v4-main pp.zip
+        ##### End Experimental stuff
